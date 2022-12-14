@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="https://openai.com/content/images/2022/05/openai-avatar.png" width="150" />
-  <img src='https://img.lovepik.com/element/40217/4177.png_300.png' width='150'/>
+  <img src='https://files.catbox.moe/6vt564.png' width='150'/>
   <img src="https://dl0.creation.com/articles/p123/c12305/Leonhard-Euler.jpg" width="178" />
 </div>
 
