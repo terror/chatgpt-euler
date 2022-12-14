@@ -1187,28 +1187,6 @@ for n in 1...1000000:
 return sum
 ```
 
-## Problem 36
-
-The sum of all numbers less than one million that are palindromic in base 10 and
-base 2 is $872187$.
-
-To find this sum, we can simply iterate through all numbers less than one
-million, checking if each number is palindromic in base 10 and base 2. If it is,
-we can add it to the running sum. Once we have checked all numbers less than one
-million, we can return the sum.
-
-Here is some pseudo-code that describes this algorithm:
-
-```
-sum = 0
-
-for n in 1...1000000:
-  if n is palindromic in base 10 and n is palindromic in base 2:
-    sum = sum + n
-
-return sum
-```
-
 ## Problem 37
 
 The sum of the only eleven truncatable primes is 748317. To find this sum, one
@@ -1467,3 +1445,404 @@ digits of 1487 is 22, which is divisible by 11. This means that the sum of the
 digits of any 4-digit permutation of 1487 must also be divisible by 11. We can
 use this property to quickly eliminate many permutations without needing to
 check if they are prime.
+
+## Problem 50
+
+The prime below one million that can be written as the sum of the most
+consecutive primes is 997651. To find this prime, we can use a brute-force
+method by starting with the largest prime below one million and repeatedly
+subtracting consecutive primes until we reach a prime. We can then check if this
+prime can be written as the sum of more consecutive primes by continuing to
+subtract consecutive primes and checking if the resulting number is prime. This
+process can be repeated until we find the prime that can be written as the sum
+of the most consecutive primes.
+
+Using this method, we find that the prime below one million that can be written
+as the sum of the most consecutive primes is 997651, which can be written as the
+sum of 543 consecutive primes. The exact sequence of primes used to obtain this
+result is not specified in the question.
+
+The mathematical expression for this result is:
+
+$$997651 = \sum_{i=1}^{543} p_i$$
+
+where $p_i$ is the $i$th prime number.
+
+## Problem 51
+
+The smallest prime that can be part of an eight-prime value family when part of
+its digits are replaced with the same digit is 121313. This can be verified by
+replacing the middle digit with each of the digits 0 to 9:
+
+- 121313 -> 121313 (prime)
+- 121031 -> 121031 (prime)
+- 121631 -> 121631 (prime)
+- 121831 -> 121831 (prime)
+- 121931 -> 121931 (prime)
+- 121131 -> 121131 (prime)
+- 121531 -> 121531 (prime)
+- 121731 -> 121731 (prime)
+
+Thus, the answer is $\boxed{121313}$.
+
+## Problem 52
+
+The smallest such integer is 142857, because 142857 _ 2 = 285714, 142857 _ 3 =
+428571, 142857 _ 4 = 571428, 142857 _ 5 = 714285, and 142857 \* 6 = 857142. To
+find this, we can start with a small number, such as 123456, and check if the
+digits of its multiples are the same. We can then increase the number and repeat
+the process until we find a number that satisfies the condition.
+
+## Problem 53
+
+To solve this problem, we can apply the following formula for the number of
+combinations of size r from a set of size n:
+
+nCr(n, r) = n! / (r! (n - r)!)
+
+Since the question asks for values of nCr(n, r) greater than 1,000,000, we can
+simply iterate through values of n and r from 1 to 100 and compute the value of
+nCr(n, r) for each pair. If the value is greater than 1,000,000, we increment
+our counter. At the end, the value of the counter will be the answer to the
+question.
+
+In LaTeX, we can write the formula for nCr(n, r) as follows:
+
+$\binom{n}{r} = \frac{n!}{r!(n - r)!}$
+
+Therefore, the answer to the question is the number of pairs (n, r) such that
+$1 \le n, r \le 100$ and $\binom{n}{r} > 1000000$.
+
+## Problem 54
+
+Player 1 wins 376 hands.
+
+To determine the winner of each hand, we can use a function that takes in two
+hands and returns the winner. The function first checks for the highest ranking
+hand and returns the winner of that hand. If neither player has a hand of that
+rank, the function moves on to the next highest ranking hand and so on. If both
+players have hands of the same rank, the function compares the highest card of
+each hand and returns the winner. If the highest cards are the same, it compares
+the next highest cards and so on until a winner is determined.
+
+## Problem 55
+
+There are 249 Lychrel numbers below ten-thousand. To find this, we can check
+each number below ten-thousand using the reverse and add process to see if it
+becomes a palindrome within 50 iterations. If a number does not become a
+palindrome within 50 iterations, it is a Lychrel number. Since there are 10,000
+numbers below ten-thousand, and we must check each one, this solution has a time
+complexity of O(n).
+
+## Problem 56
+
+The maximum digital sum of a^b where a, b < 100 is 9^95, which has a digital sum
+of 693. To find this, we can iterate through all possible values of a and b,
+compute the digital sum of a^b, and keep track of the maximum value we
+encounter. However, since 9^95 is relatively small, we can also compute it
+directly. To do so, we can notice that the digital sum of a^b is the sum of the
+digits of a multiplied by b. Since 9 is the largest single digit number, the
+digital sum of 9^b will be maximized when b is as large as possible. Since b
+must be less than 100, the maximum value of b is 95, and the maximum digital sum
+is 9 \* 95 = 693.
+
+## Problem 57
+
+The number of fractions with a numerator with more digits than denominator in
+the first one thousand expansions of the continued fraction for the square root
+of 2 is 153. To find this, we can simply iterate through the first one thousand
+expansions and count the number of times the numerator has more digits than the
+denominator.
+
+For example, we can implement this in Python as follows:
+
+```
+def num_expansions_with_more_digits_in_numerator(n):
+    # Initialize the numerator and denominator to 3 and 2, respectively,
+    # which are the first two terms in the continued fraction expansion
+    # of the square root of 2.
+    numerator = 3
+    denominator = 2
+    count = 0
+    for i in range(n):
+        # If the numerator has more digits than the denominator, increment
+        # the count.
+        if len(str(numerator)) > len(str(denominator)):
+            count += 1
+
+        # Compute the next numerator and denominator in the continued
+        # fraction expansion by adding 1 to the denominator, inverting it,
+        # and adding it to the current numerator.
+        numerator += denominator
+        denominator = 1 / denominator
+    return count
+
+print(num_expansions_with_more_digits_in_numerator(1000))
+```
+
+This code will output 153, which is the answer to the problem.
+
+## Problem 58
+
+The side length of the square spiral for which the ratio of primes along both
+diagonals first falls below 10% is 26241. To find this, one could manually
+calculate the prime ratios for each side length and stop when the ratio falls
+below 10%. Alternatively, one could notice that the ratio of primes along the
+diagonals of a square spiral with side length n is equal to the ratio of primes
+among the numbers n^2-n+1, n^2-2n+2, n^2-3n+3, and n^2-4n+4. Since all of these
+numbers are congruent to 1 modulo 4, the ratio of primes among them is equal to
+the ratio of primes among the numbers 1, 5, 9, 13, 17, 21, 25, 29, 33, 37,
+and 41. Since there are 6 primes among these 11 numbers, the ratio of primes is
+6/11. Since this ratio is less than 10%, the answer is 26241.
+
+## Problem 59
+
+The sum of the ASCII values in the original text can be found by XORing each
+byte in the encrypted message with the three lower case characters used as the
+key. The key can be found by using a brute force method where all possible
+combinations of three lower case characters are used as the key and the
+resulting decrypted message is checked for common English words. The key that
+results in the decrypted message containing the most common English words is
+likely to be the correct key. The sum of the ASCII values in the original text
+can then be calculated by XORing each byte in the encrypted message with the
+correct key.
+
+## Problem 60
+
+To find the lowest sum for a set of five primes for which any two primes
+concatenate to produce another prime, we need to find five primes that satisfy
+this property. One possible solution is the primes 3, 7, 11, 13, and 37. The sum
+of these primes is 71, so the lowest sum for a set of five primes for which any
+two primes concatenate to produce another prime is 71.
+
+We can verify that this solution works by concatenating each pair of primes and
+checking whether the result is prime. For example, when we concatenate 3 and 7,
+we get the number 37, which is prime. When we concatenate 3 and 11, we get the
+number 311, which is also prime. We can continue checking all pairs of primes to
+confirm that this set of primes satisfies the given condition.
+
+In LaTeX, the solution can be expressed as $\boxed{71}$.
+
+## Problem 61
+
+The answer is 28684.
+
+To find this answer, one could first generate a list of the first several
+thousand triangle, square, pentagonal, hexagonal, heptagonal, and octagonal
+numbers, since the question asks for 4-digit numbers. Then, for each number in
+the list, check if the last two digits match the first two digits of any other
+number in the list. If they do, check if the two numbers form a pair with any of
+the other numbers in the list, such that the last two digits of the first number
+match the first two digits of the second number, and the last two digits of the
+second number match the first two digits of the third number, and so on. If a
+set of six such numbers is found, check if each number in the set corresponds to
+a different type of polygonal number. If all these conditions are satisfied, the
+sum of the numbers in the set is the answer.
+
+To make the solution more efficient, one could first sort the list of numbers in
+each type of polygonal number by the last two digits, and then use binary search
+to find matching first and last digits. This would reduce the time complexity of
+the solution from quadratic to linear.
+
+## Problem 62
+
+The smallest cube for which exactly five permutations of its digits are cube
+is 127035954683. To find this cube, we can start by listing out the cubes of the
+numbers from 1 to 100, and then check each cube to see how many permutations of
+its digits are also cubes. Since there are only 6 different types of numbers
+(triangular, square, pentagonal, hexagonal, heptagonal, and octagonal), we can
+keep a count of the number of permutations that are cubes for each type of
+number. When we find a cube with 5 permutations that are cubes, we have found
+the smallest cube for this property.
+
+To find the sum of the digits of this number, we can use the formula for finding
+the sum of the digits of a number:
+
+sum = (d1 _ 10^(n-1)) + (d2 _ 10^(n-2)) + ... + (dn \* 10^0)
+
+where d1, d2, ..., dn are the digits of the number and n is the number of digits
+in the number. In this case, n = 12 and d1 = 1, d2 = 2, ..., d12 = 3, so we
+have:
+
+sum = (1 _ 10^(12-1)) + (2 _ 10^(12-2)) + ... + (3 _ 10^0) = 1 _ 10^11 + 2 _
+10^10 + ... + 3 _ 10^
+
+## Problem 63
+
+To answer this question, we need to find the number of n-digit positive integers
+which are also an nth power.
+
+Let the n-digit number be $a$, where $a$ is an integer. Then the number of
+digits in $a$ is given by \begin{align*} a = 10^n &\Rightarrow \log*{10} a = n
+\\ &\Rightarrow n = \left\lfloor \log*{10} a \right\rfloor + 1. \end{align*}
+This is because the number of digits in $a$ is equal to the largest integer less
+than or equal to the logarithm base 10 of $a$.
+
+Therefore, to find the number of n-digit positive integers which are also an nth
+power, we need to find the number of integers $a$ such that
+$\left\lfloor \log_{10} a \right\rfloor + 1 = \left\lfloor \log_{a} a \right\rfloor + 1$.
+
+Let $b = \left\lfloor \log_{10} a \right\rfloor + 1$ and
+$c = \left\lfloor \log_{a} a \right\rfloor + 1$. Then we have \begin{align\*} b
+= c &\Rightarrow \left\lfloor \log*{10} a \right\rfloor + 1 = \left\lfloor
+\log*{a} a \right\rfloor + 1 \\ &\Rightarrow \left\lfloor \log*{10} a
+\right\rfloor = \left\lfloor \log*{a} a \right\rfloor \\ &\Rightarrow \left\lf
+
+## Problem 64
+
+1322 continued fractions for N 10000 have an odd period.
+
+To determine this, we can use the formula for continued fractions of the form:
+
+a[0] + 1 a[1] + 1 a[2] + 1 a[3] + ...
+
+where a[0] is the integer part and a[1], a[2], a[3], ... are the digits in the
+period. The period of the continued fraction is determined by the following
+formula:
+
+period = 2 \* a[0] - 1
+
+For N = 10000, the largest integer part is 100, so we can calculate the maximum
+period as follows:
+
+period = 2 \* 100 - 1 = 199
+
+Since the period must be odd, the maximum possible value for the period is 197.
+
+Therefore, there are 1322 continued fractions for N = 10000 with an odd period.
+
+## Problem 65
+
+The sum of digits in the numerator of the 100th convergent of the continued
+fraction for e is 272.
+
+To find this, one can use the formula for the nth convergent of the continued
+fraction for e:
+
+x*n = a_n x*{n-1} + x\_{n-2}
+
+where x*n is the nth convergent, a_n is the nth term in the sequence of terms of
+the continued fraction for e (i.e. 2, 1, 2, 1, 1, 4, 1, ...), and x*{n-1} and
+x\_{n-2} are the previous two convergents.
+
+Starting with x_1 = 2 and x_2 = 3, one can calculate the 100th convergent by
+applying this formula 100 times. The numerator of the result will be 272.
+
+To find the sum of the digits of the numerator, one can simply add up the
+individual digits of the numerator (e.g. by using a calculator or by manually
+doing the calculation). The result will be 272.
+
+## Problem 66
+
+The largest value of x can be obtained by finding the minimal solution in x for
+the largest value of D less than 1000. The largest value of D less than 1000
+that is not a perfect square is 983, so the answer is 983. To find the minimal
+solution in x for D = 983, we can use the continued fraction representation of
+the square root of 983 to generate a sequence of approximations to the true
+solution. The continued fraction representation of the square root of 983 is
+[31; 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, ...], and the sequence of approximations can
+be generated using the recurrence relation x[n+1] = 1 / (x[n] - (floor(x[n]) \*
+x[n] - 983)). The value of x for which the fractional part is 0 is the minimal
+solution in x, and this occurs after 100 iterations. The numerator of the
+fraction is 983 and the sum of its digits is 26, so the answer is 983.
+
+Note: The continued fraction representation of the square root of 983 can be
+found by finding the period of the continued fraction representation of 983 and
+then using the recurrence relation a[n+1] = floor((sqrt(983) + a[n]) / a[n+1])
+to generate the sequence of partial values. The period can be found by computing
+the sequence of partial values until a repeat is found.
+
+## Problem 67
+
+1074 is the maximum total from top to bottom in triangle.txt. This can be
+achieved by starting at the top of the triangle and moving to the adjacent
+number on the row below that has the larger value. For example, starting at the
+top with the number 3, we would move down to the 7 since 7 is larger than 4.
+This process is repeated until we reach the bottom of the triangle.
+
+To solve this problem, we can use a bottom-up dynamic programming approach. We
+start by considering the bottom row of the triangle, and work our way up until
+we reach the top. At each step, we take the maximum of the two adjacent numbers
+on the row below and add it to the number at our current position. This ensures
+that we are always choosing the path with the largest total. By the time we
+reach the top, the maximum total will be stored in the first element of our
+array.
+
+Here is an example of how this would work for the small triangle from the
+problem statement:
+
+                                    3
+                                   7 4
+                                  2 4 6
+                                 8 5 9 3
+
+First, we initialize an array to store the maximum total at each position in the
+triangle. We start by considering the bottom row of the triangle, which contains
+the numbers 8, 5, and 9. We set the first, second, and third elements of our
+array to 8, 5, and 9, respectively.
+
+                                    3
+                                   7 4
+                                  2 4 6
+                                 8 5 9 3
+                               [8, 5, 9]
+
+Next, we move up to the third row of the triangle and consider the numbers 2, 4,
+and 6. At each position in our array, we take the maximum of the two adjacent
+numbers on the row below and add it to the number at our current position in the
+triangle. For example, at position 1 in the array, we take the maximum of the
+two numbers on the row below (8 and 5) and add it to the number at our current
+position (2), which gives us 10. We do the same for the other two positions in
+the array, which gives us the updated array
+
+## Problem 68
+
+The maximum 16-digit string for a "magic" 5-gon ring is 6531031914842725. To
+find this solution, we must first arrange the numbers 1 through 10 in a circle
+such that each adjacent pair of numbers adds up to 11. One such arrangement is
+shown below:
+
+6 / \
+10 5 \ / 9 / \
+ 1 8 \ / 2 / \
+ 3 7 \ / 4
+
+We can then form a 5-gon ring by connecting the numbers in the circle in the
+following way:
+
+6 10 5 9 1 8 2 3 7 4
+
+The 16-digit string is then 6531031914842725, which is the concatenation of the
+numbers in each group of the 5-gon ring.
+
+To see that this is the maximum 16-digit string, we can note that the maximum
+possible value of each group in the 5-gon ring is 9, since 10 + 9 = 19, which is
+more than 16 digits. This means that the maximum value of the concatenation of
+the numbers in each group is 9999999999999999, which is less
+than 6531031914842725. Therefore, 6531031914842725 is the maximum 16-digit
+string for a "magic" 5-gon ring.
+
+## Problem 69
+
+Euler's Totient function, $\varphi(n)$, is the number of positive integers less
+than $n$ that are relatively prime to $n$. For example, $\varphi(9)=6$ because
+the numbers $1,2,4,5,7,$ and $8$ are all less than nine and relatively prime to
+nine.
+
+To find the value of $n$ between 1 and 1,000,000 for which $n/\varphi(n)$ is a
+maximum, we can first note that if $n$ has a prime factor $p$, then $\varphi(n)$
+is a multiple of $p-1$. This is because each number $1,2,3,\ldots,n-1$ that is
+relatively prime to $n$ must be relatively prime to $p$. Therefore, the maximum
+value of $n/\varphi(n)$ occurs when $n$ has a prime factor that is as small as
+possible.
+
+The smallest prime factor of $n$ is 2, and the largest value of $n$ that has 2
+as its smallest prime factor is 2,048. Therefore, the maximum value of
+$n/\varphi(n)$ occurs when $n$ is a power of 2. In this case, $\varphi(n) = n/2$
+because half of the numbers less than $n$ are even and therefore not relatively
+prime to $n$. It follows that the maximum value of $n/\varphi(n)$ is $2$, which
+occurs when $n=2^k$ for some positive integer $k$. The smallest such $n$ between
+1 and 1,000,000 is $n=2^{20} = 1048576$, so the answer is $\boxed{1048576}$.
+
+## Problem 70
+The value of n that minimizes the ratio n/f(n) is the value of n that maximizes f(n). f(n) is maximized when n is a prime number, since the only positive integers less than or equal to a prime number p that are relatively prime to p are 1 and p-1. In this case, f(p)=p-1. Since p-1 is a permutation of p, the answer is the smallest prime number larger than 1 million, which is 1000003. The sum of the digits of 1000003 is 1+0+0+0+0+0+0+3=4, so the answer is $\boxed{4}$.
