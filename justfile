@@ -9,7 +9,7 @@ default:
   just --list
 
 fmt:
-  isort . && yapf --in-place --recursive main.py && prettier --write README.md
+  isort . && yapf --in-place --recursive main.py && prettier --write .
 
 run:
   python3.9 main.py

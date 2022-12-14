@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+OUT='answers.json'
+
+echo '{' > $OUT
+
+for i in {1..800}; do
+  echo "Fetching answer to problem $i..."
+
+  result=$(euler -c "$i" <<< y)
+
+  if [[ $? -eq 0 ]]; then
+    number="$(echo "$result" | awk '{print $NF}')"
+    echo "\"$i\": \"${number::-1}\"," >> $OUT;
+  fi
+done
+
+echo '}' >> $OUT

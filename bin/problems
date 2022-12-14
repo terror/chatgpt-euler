@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+OUT='problems.json'
+
+echo '{' > $OUT
+
+for i in {1..800}; do
+  echo "Fetching text for problem $i..."
+
+  if euler -p "$i" > /dev/null; then
+    statement=$(euler -p "$i" | tail -n +2 | sed "s/\"/\'/g")
+    echo "\"$i\": \"$(echo $statement)\"," >> $OUT
+  fi
+done
+
+echo '}' >> $OUT
