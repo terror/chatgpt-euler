@@ -4,6 +4,7 @@ import re
 import subprocess
 import time
 import typing as t
+from argparse import ArgumentParser
 from dataclasses import dataclass
 
 from dotenv import load_dotenv
@@ -15,6 +16,19 @@ Then, below the numerical answer to the problem, explain in detail how
 you came up with that answer. Make sure to format all of your mathematical
 expressions using valid LaTeX code.
 '''
+
+@dataclass
+class Arguments:
+  problem: t.Union[int, None]
+
+  @staticmethod
+  def from_args():
+    parser = ArgumentParser()
+    parser.add_argument('-p', '--problem', help='Specific problem to run')
+    return Arguments(**vars(parser.parse_args()))
+
+  def run(self):
+    Runner(self).run()
 
 @dataclass
 class Env:
@@ -39,46 +53,59 @@ class Bot:
   def query(self, message):
     return self.client.get_chat_response(message)['message']
 
-def main(bot):
-  bot.refresh()
+class Runner:
+  def __init__(self, arguments):
+    self.arguments = arguments
 
-  with open('problems.json') as problem_file:
-    problems = json.load(problem_file)
+    self.bot = Bot(Chatbot(Env.load().as_dict()))
 
-  with open('answers.json') as answer_file:
-    answers = json.load(answer_file)
+    with open('problems.json') as problem_file:
+      self.problems = json.load(problem_file)
 
-  correct, handle = 0, open('results.md', 'a')
+    with open('answers.json') as answer_file:
+      self.answers = json.load(answer_file)
 
-  for problem, text in problems.items():
-    print(f'Fetching answer to problem {problem}...')
+  def run(self):
+    self.bot.refresh()
+
+    correct, handle = 0, open('results.md', 'a')
+
+    if self.arguments.problem:
+      output, _ = self.__problem(self.arguments.problem, self.problems[self.arguments.problem])
+      print(output)
+      handle.write(output)
+    else:
+      for problem, text in self.problems.items():
+        output, is_correct = self.__problem(problem, text)
+        correct += is_correct
+        print(output)
+        handle.write(output)
+        time.sleep(2)
+      print(f'Number of correct answers: {correct}')
+      print(f'Number of incorrect answers: {len(self.problems) - correct}')
+
+    handle.close()
+
+  def __problem(self, number, text):
+    print(f'Fetching answer to problem {number}...')
 
     found = 0
 
     while not found:
       try:
-        result = bot.query(text + '\n' + POSTFIX)
+        result = self.bot.query(text + '\n' + POSTFIX)
       except:
         continue
       found = 1
 
-    is_correct = answers[problem] == re.findall(
+    is_correct = self.answers[number] == re.findall(
       r"[-+]?(?:\d*\.*\d+)", result.split('\n')[0]
     )[-1]
 
-    correct += is_correct
-
-    output = f'## Problem {problem} {"✅" if is_correct else "❌"}\n> {text}\n\n{result}\n'
-
-    print(output)
-    handle.write(output)
-
-    time.sleep(2)
-
-  handle.close()
-
-  print(f'Number of correct answers: {correct}')
-  print(f'Number of incorrect answers: {len(problems) - correct}')
+    return (
+      f'## Problem {number} {"✅" if is_correct else "❌"}\n> {text}\n\n{result}\n',
+      is_correct
+    )
 
 if __name__ == '__main__':
-  main(Bot(Chatbot(Env.load().as_dict())))
+  Arguments.from_args().run()

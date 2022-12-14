@@ -1,16 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-OUT='problems.json'
+import json
+import subprocess
 
-echo '{' > $OUT
+problems = {}
 
-for i in {1..800}; do
-  echo "Fetching text for problem $i..."
+for i in range(1, 801):
+  print(f'Fetching text for problem {i}...')
+  result = subprocess.run(['euler', '-p', str(i)], stdout = subprocess.PIPE)
+  if result.returncode != 0: continue
+  problems[i] = '\n'.join(result.stdout.decode().split('\n')[1:])
 
-  if euler -p "$i" > /dev/null; then
-    statement=$(euler -p "$i" | tail -n +2 | sed "s/\"/\'/g")
-    echo "\"$i\": \"$(echo $statement)\"," >> $OUT
-  fi
-done
-
-echo '}' >> $OUT
+with open('problems.json', 'w+') as file:
+  file.write(json.dumps(problems, indent = 2))

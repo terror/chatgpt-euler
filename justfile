@@ -11,5 +11,5 @@ default:
 fmt:
   isort . && yapf --in-place --recursive main.py && prettier --write .
 
-run:
-  python3.9 main.py
+run *args:
+  python3.9 main.py {{args}}

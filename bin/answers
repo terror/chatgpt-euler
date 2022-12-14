@@ -11,7 +11,7 @@ for i in {1..800}; do
 
   if [[ $? -eq 0 ]]; then
     number="$(echo "$result" | awk '{print $NF}')"
-    echo "\"$i\": \"${number::-1}\"," >> $OUT;
+    echo "\"$i\": \"${number::-1}\"," >> $OUT
   fi
 done
 
