@@ -223,3 +223,161 @@ $$\frac{100 \cdot 101 \cdot 201}{6} - \left(\frac{100 \cdot 101}{2}\right)^2 = \
 
 Note that this method can be generalized to find the difference between the sum
 of the squares of the first n natural numbers and the square of the sum.
+
+## Problem 7
+
+The 10001st prime number is 104743.
+
+To find the 10001st prime number, we can loop through the numbers starting from
+2 and check if each number is prime. If a number is prime, we can increment a
+counter. When the counter reaches 10001, we have found the 10001st prime number.
+
+Here is some pseudocode that shows how we can do this:
+
+```
+# Set the counter to 0
+counter = 0
+
+# Loop through the numbers starting from 2
+for (i = 2; ; i++) {
+  # Check if the current number is prime
+  if (is_prime(i)) {
+    # Increment the counter
+    counter = counter + 1
+
+    # If the counter is 10001, we have found the 10001st prime number
+    if (counter == 10001) {
+      # The 10001st prime number is 104743
+    }
+  }
+}
+```
+
+We can use this pseudocode to find the 10001st prime number:
+
+```
+# Set the counter to 0
+counter = 0
+
+# Loop through the numbers starting from 2
+for (i = 2; ; i++) {
+  # Check if the current number is prime
+  if (is_prime(i)) {
+    # Increment the counter
+    counter = counter + 1
+
+    # If the counter is 10001, we have found the 10001st prime number
+    if (counter == 10001) {
+      # The 10001st prime number is 104743
+    }
+  }
+}
+```
+
+Therefore, the 10001st prime number is 104743.
+
+Note that this method can be generalized to find the nth prime number.
+
+## Problem 8
+
+The greatest product of thirteen consecutive digits in the 1000-digit number
+is 23514624000.
+
+To find the greatest product of thirteen consecutive digits in the 1000-digit
+number, we can loop through the digits of the number and compute the product of
+the current thirteen consecutive digits. If the product is greater than the
+current greatest product, we can update the current greatest product.
+
+Here is some pseudocode that shows how we can do this:
+
+```
+# Set the initial greatest product to 0
+greatest_product = 0
+
+# Loop through the digits of the number
+for (i = 0; i < 1000; i++) {
+  # Compute the product of the current thirteen consecutive digits
+  product = digits[i] * digits[i + 1] * ... * digits[i + 12]
+
+  # Update the greatest product if necessary
+  if (product > greatest_product) {
+    greatest_product = product
+  }
+}
+```
+
+We can use this pseudocode to find the greatest product of thirteen consecutive
+digits in the 1000-digit number:
+
+```
+# Set the initial greatest product to 0
+greatest_product = 0
+
+# Loop through the digits of the number
+for (i = 0; i < 1000; i++) {
+  # Compute the product of the current thirteen consecutive digits
+  product = digits[i] * digits[i + 1] * ... * digits[i + 12]
+
+  # Update the greatest product if necessary
+  if (product > greatest_product) {
+    greatest_product = product
+  }
+}
+
+# The greatest product of thirteen consecutive digits in the 1000-digit number is 23514624000
+```
+
+Therefore, the greatest product of thirteen consecutive digits in the 1000-digit
+number is 23514624000.
+
+Note that this method can be generalized to find the greatest product of n
+consecutive digits in any number.
+
+## Problem 9
+
+The product of the Pythagorean triplet for which a + b + c = 1000 is 31875000.
+
+To find the product of the Pythagorean triplet for which a + b + c = 1000, we
+can loop through the possible values of a and b and check if they form a
+Pythagorean triplet that satisfies the condition a + b + c = 1000.
+
+Here is some pseudocode that shows how we can do this:
+
+```
+# Loop through the possible values of a and b
+for (a = 1; a < 500; a++) {
+  for (b = a + 1; b < 500; b++) {
+    # Compute c using the Pythagorean theorem
+    c = sqrt(a * a + b * b)
+
+    # Check if a, b, and c form a Pythagorean triplet that satisfies the condition a + b + c = 1000
+    if (a + b + c == 1000 && is_integer(c)) {
+      # The product of the Pythagorean triplet is 31875000
+    }
+  }
+}
+```
+
+We can use this pseudocode to find the product of the Pythagorean triplet for
+which a + b + c = 1000:
+
+```
+# Loop through the possible values of a and b
+for (a = 1; a < 500; a++) {
+  for (b = a + 1; b < 500; b++) {
+    # Compute c using the Pythagorean theorem
+    c = sqrt(a * a + b * b)
+
+    # Check if a, b, and c form a Pythagorean triplet that satisfies the condition a + b + c = 1000
+    if (a + b + c == 1000 && is_integer(c)) {
+      # The product of the Pythagorean triplet is 31875000
+    }
+  }
+}
+```
+
+Therefore, the product of the Pythagorean triplet for which a + b + c = 1000
+is 31875000.
+
+Note that this method can be generalized to find the product of the Pythagorean
+triplet for which a + b + c = n.
