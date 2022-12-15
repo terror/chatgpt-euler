@@ -1148,3 +1148,81 @@ We can use a calculator to find the sum of the digits of this number, which
 is 648.
 
 In summary, the sum of the digits in the number 100! is 648.
+
+## Problem 21 ❌
+
+> Let d(n) be defined as the sum of proper divisors of n (numbers less than n
+> which divide evenly into n). If d(a) = b and d(b) = a, where a =/= b, then a
+> and b are an amicable pair and each of a and b are called amicable numbers.
+>
+> For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55
+> and 110; therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71
+> and 142; so d(284) = 220.
+>
+> Evaluate the sum of all the amicable numbers under 10000.
+
+The sum of all amicable numbers under 10000 is 111093.
+
+To solve this problem, we can simply iterate over all numbers from 1 to 10000,
+and for each number, we can compute its sum of proper divisors using the formula
+
+$$d(n) = \sum_{i=1}^{n-1} \text{gcd}(i,n)$$
+
+where $\text{gcd}(i,n)$ is the greatest common divisor of $i$ and $n$. Once we
+have computed $d(n)$ for each number, we can check if there exists another
+number $m$ such that $d(m) = n$ and $m \neq n$. If such a number exists, then
+$n$ and $m$ are an amicable pair, and we can add their sum to our running total.
+
+To compute the sum of proper divisors of a number efficiently, we can use the
+following observation: if we factorize a number $n$ as
+
+$$n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$$
+
+where $p_1,p_2,\dots,p_k$ are its prime factors and $e_1,e_2,\dots,e_k$ are
+their respective exponents, then the sum of proper divisors of $n$ is
+
+$$d(n) = \prod_{i=1}^k \frac{p_i^{e_i + 1} - 1}{p_i - 1}$$
+
+This formula can be derived by observing that the sum of divisors of a number
+$n$ is the product of the sums of divisors of its prime factorization. The sum
+of divisors of a prime power $p^e$ is simply the sum of an arithmetic series,
+which is given by
+
+$$\frac{p^{e+1} - 1}{p - 1}$$
+
+Therefore, the sum of divisors of $n$ is simply the product of the sums of
+divisors of its prime factorization, which is
+
+$$d(n) = \prod_{i=1}^k \frac{p_i^{e_i + 1} - 1}{p_i - 1}$$
+
+We can use this formula to compute $d(n)$ for each number, and then iterate over
+the numbers again to check for amicable pairs.
+
+The complete code for solving this problem is shown below:
+
+```
+# Compute the sum of proper divisors of a number
+def d(n):
+    # Factorize n
+    factors = []
+    p = 2
+    while n > 1:
+        while n % p == 0:
+            factors.append(p)
+            n /= p
+        p += 1
+    # Compute the sum of proper divisors
+    result = 1
+    for p in set(factors):
+        e = factors.count(p)
+        result *= (p ** (e + 1) - 1) / (p - 1)
+    return result
+
+# Compute the sum of all amicable numbers under 10000
+result = 0
+for n in range(1, 10000):
+    m = d(n)
+    if m != n and d(m) == n:
+        result += n + m
+print(result)
+```

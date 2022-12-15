@@ -58,8 +58,8 @@ class Bot:
     return self.client.get_chat_response(message)['message']
 
 class Runner:
-  def __init__(self, arguments):
-    self.arguments = arguments
+  def __init__(self, args):
+    self.args = args
 
     self.bot = Bot(Chatbot(Env.load().as_dict()))
 
@@ -72,22 +72,23 @@ class Runner:
   def run(self):
     correct, handle = 0, open('results.md', 'a')
 
-    if self.arguments.problem:
-      output, _ = self.__problem(self.arguments.problem, self.problems[self.arguments.problem])
+    if self.args.problem:
+      output, _ = self.__problem(self.args.problem, self.problems[self.args.problem])
       print(output)
       handle.write(output)
     else:
-      correct = self.__iterate()
+      correct = self.__iterate(self.args.start)
       print(f'Number of correct answers: {correct}')
-      print(f'Number of incorrect answers: {len(self.problems) - correct}')
+      print(
+        f'Number of incorrect answers: {len(self.problems) - self.args.start - correct}'
+      )
 
     handle.close()
 
-  def __iterate(self):
+  def __iterate(self, start):
     correct, handle = 0, open('results.md', 'a')
 
-    for problem in list(self.problems.keys()
-                        )[max(0, self.arguments.start - 1):]:
+    for problem in list(self.problems.keys())[max(0, start - 1):]:
       text = self.problems[problem]
       output, is_correct = self.__problem(problem, text)
       correct += is_correct
