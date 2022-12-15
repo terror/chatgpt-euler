@@ -20,11 +20,15 @@ expressions using valid LaTeX code.
 @dataclass
 class Arguments:
   problem: t.Union[int, None]
+  start: t.Union[int, None]
 
   @staticmethod
   def from_args():
     parser = ArgumentParser()
-    parser.add_argument('-p', '--problem', help='Specific problem to run')
+    parser.add_argument(
+      '-p', '--problem', type=int, help='Specific problem to run'
+    )
+    parser.add_argument('-s', '--start', type=int, help='Starting problem')
     return Arguments(**vars(parser.parse_args()))
 
   def run(self):
@@ -66,8 +70,6 @@ class Runner:
       self.answers = json.load(answer_file)
 
   def run(self):
-    self.bot.refresh()
-
     correct, handle = 0, open('results.md', 'a')
 
     if self.arguments.problem:
@@ -75,18 +77,31 @@ class Runner:
       print(output)
       handle.write(output)
     else:
-      for problem, text in self.problems.items():
-        output, is_correct = self.__problem(problem, text)
-        correct += is_correct
-        print(output)
-        handle.write(output)
-        time.sleep(2)
+      correct = self.__iterate()
       print(f'Number of correct answers: {correct}')
       print(f'Number of incorrect answers: {len(self.problems) - correct}')
 
     handle.close()
 
+  def __iterate(self):
+    correct, handle = 0, open('results.md', 'a')
+
+    for problem in list(self.problems.keys()
+                        )[max(0, self.arguments.start - 1):]:
+      text = self.problems[problem]
+      output, is_correct = self.__problem(problem, text)
+      correct += is_correct
+      print(output)
+      handle.write(output)
+      time.sleep(2)
+
+    handle.close()
+
+    return correct
+
   def __problem(self, number, text):
+    self.bot.refresh()
+
     print(f'Fetching answer to problem {number}...')
 
     found = 0
