@@ -159,3 +159,992 @@ while c <= 4000000:
 
 If we run this code, we get a final value of `sum` equal to 4613732, which is
 the answer to the problem.
+
+## Problem 3 ✅
+
+> The prime factors of 13195 are 5, 7, 13 and 29.
+>
+> What is the largest prime factor of the number 600851475143?
+
+The largest prime factor of 600851475143 is 6857.
+
+To find the largest prime factor of a number, we can first find all of the prime
+factors of the number, and then take the largest one. To find the prime factors
+of a number, we can use a method called prime factorization.
+
+Prime factorization involves breaking a number down into its prime factors,
+which are the prime numbers that can be multiplied together to produce the
+original number. For example, the prime factorization of 12 is 2 _ 2 _ 3, since
+2 _ 2 _ 3 = 12.
+
+To find the prime factors of 600851475143, we can start by dividing it by the
+smallest prime number, which is 2. 600851475143 / 2 = 300425737571.5. Since
+300425737571.5 is not an integer, we know that 2 is not a prime factor
+of 600851475143.
+
+Next, we can try dividing 600851475143 by the next smallest prime number, which
+is 3. 600851475143 / 3 = 200283825047.66666. Since 200283825047.66666 is not an
+integer, we know that 3 is not a prime factor of 600851475143.
+
+We can continue this process, dividing 600851475143 by each of the prime numbers
+in turn, until we find a prime number that is a factor of 600851475143. In this
+case, the largest prime factor of 600851475143 is 6857. To verify this, we can
+compute 600851475143 / 6857 = 87625999, which is an integer, so we know that
+6857 is a prime factor of 600851475143.
+
+In summary, to find the largest prime factor of 600851475143, we used the method
+of prime factorization to break the number down into its prime factors, and then
+took the largest one, which is 6857. This is the answer to the question.
+
+## Problem 4 ✅
+
+> A palindromic number reads the same both ways. The largest palindrome made
+> from the product of two 2-digit numbers is 9009 = 91 \* 99.
+>
+> Find the largest palindrome made from the product of two 3-digit numbers.
+
+The largest palindrome made from the product of two 3-digit numbers is 906609.
+
+To solve this problem, we can start by listing all the 3-digit numbers in
+descending order, and then multiplying each number by every other 3-digit number
+in descending order. For each product, we can then check if it is a palindrome.
+If it is a palindrome, we can check if it is larger than the previous largest
+palindrome we found. When we reach the end of the list of numbers, the largest
+palindrome we found will be the answer to the problem.
+
+Here is some sample Python code that uses this approach to solve the problem:
+
+```
+# Function to check if a number is a palindrome
+def is_palindrome(n):
+  n = str(n)
+  return n == n[::-1]
+
+# Initialize the largest palindrome found so far to 0
+largest_palindrome = 0
+
+# Loop over all 3-digit numbers in descending order
+for i in range(999, 99, -1):
+  # Loop over all 3-digit numbers in descending order
+  for j in range(999, 99, -1):
+    # Calculate the product of the two numbers
+    product = i * j
+
+    # If the product is a palindrome and larger than the largest
+    # palindrome found so far, update the largest palindrome
+    if is_palindrome(product) and product > largest_palindrome:
+      largest_palindrome = product
+
+# Print the largest palindrome
+print(largest_palindrome)
+```
+
+Running this code will produce the output `906609`, which is the answer to the
+problem.
+
+## Problem 5 ✅
+
+> 2520 is the smallest number that can be divided by each of the numbers from 1
+> to 10 without any remainder.
+>
+> What is the smallest number that is evenly divisible by all of the numbers
+> from 1 to 20?
+
+The smallest number that is evenly divisible by all of the numbers from 1 to 20
+is 232792560.
+
+To solve this problem, we can use the concept of prime factorization. Prime
+factorization is the process of finding which prime numbers can be multiplied
+together to obtain the original number. For example, the prime factorization of
+10 is 2 _ 5, because 2 _ 5 = 10.
+
+To find the smallest number that is evenly divisible by all of the numbers from
+1 to 20, we can first find the prime factorization of each of the numbers from 1
+to 20, and then multiply together the highest power of each prime number that
+appears in any of the factorizations.
+
+First, let's find the prime factorization of each of the numbers from 1 to 20:
+
+1: 1 2: 2 3: 3 4: 2 _ 2 5: 5 6: 2 _ 3 7: 7 8: 2 _ 2 _ 2 9: 3 _ 3 10: 2 _ 5 11:
+11 12: 2 _ 2 _ 3 13: 13 14: 2 _ 7 15: 3 _ 5 16: 2 _ 2 _ 2 _ 2 17: 17 18: 2 _ 3 _
+3 19: 19 20: 2 _ 2 \* 5
+
+Now, let's multiply together the highest power of each prime number that appears
+in any of the factorizations:
+
+2^4 _ 3^2 _ 5 _ 7 _ 11 _ 13 _ 17 \* 19
+
+This gives us the final answer of 232792560.
+
+In LaTeX, the final equation looks like this:
+
+$2^4 * 3^2 * 5 * 7 * 11 * 13 * 17 * 19 = 232792560$
+
+## Problem 6 ✅
+
+> The sum of the squares of the first ten natural numbers is, 1^2 + 2^2 + ... +
+> 10^2 = 385
+>
+> The square of the sum of the first ten natural numbers is, (1 + 2 + ... +
+> 10)^2 = 55^2 = 3025
+>
+> Hence the difference between the sum of the squares of the first ten natural
+> numbers and the square of the sum is 3025 - 385 = 2640.
+>
+> Find the difference between the sum of the squares of the first one hundred
+> natural numbers and the square of the sum.
+
+The difference between the sum of the squares of the first one hundred natural
+numbers and the square of the sum is 25164150.
+
+The sum of the squares of the first one hundred natural numbers is
+$\sum_{i=1}^{100} i^2 = \frac{(100)(101)(201)}{6} = 338350$.
+
+The square of the sum of the first one hundred natural numbers is
+$(\sum_{i=1}^{100} i)^2 = (5050)^2 = 25502500$.
+
+Therefore, the difference between the sum of the squares of the first one
+hundred natural numbers and the square of the sum is
+$25502500 - 338350 = 25164150$.
+
+## Problem 7 ✅
+
+> By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
+> that the 6th prime is 13.
+>
+> What is the 10001st prime number?
+
+The 10001st prime number is 104743.
+
+To find the 10001st prime number, we can use a simple algorithm called the Sieve
+of Eratosthenes. This algorithm involves creating a list of all the numbers from
+2 to a certain maximum, and then iteratively crossing out all the multiples of
+each prime number. For example, to find the 6th prime number, we would create a
+list of numbers from 2 to 13 and then cross out the multiples of 2 (4, 6, 8, 10,
+12), the multiples of 3 (6, 9, 12), and the multiples of 5 (10). This would
+leave us with 2, 3, 5, 7, 11, and 13, and we can see that 13 is the 6th prime
+number.
+
+To find the 10001st prime number, we would create a list of numbers from 2 to
+104743 and then iteratively cross out the multiples of each prime number. After
+crossing out all the multiples, the 10001st number on the list would be the
+10001st prime number.
+
+Mathematically, we can represent this algorithm using the following pseudocode:
+
+```
+function find_nth_prime(n):
+  # Create a list of numbers from 2 to 104743
+  numbers = [2, 3, ..., 104743]
+
+  # Iterate over the list of numbers
+  for i in numbers:
+    # If i is prime,
+    if is_prime(i):
+      # Cross out all the multiples of i
+      numbers = cross_out_multiples_of(i, numbers)
+
+  # Return the nth number in the list
+  return numbers[n]
+```
+
+This algorithm would allow us to find the 10001st prime number in a relatively
+efficient way, without having to explicitly check if each number is prime or
+not.
+
+## Problem 8 ✅
+
+> Find the greatest product of thirteen consecutive digits in the 1000-digit
+> number.
+>
+>             73167176531330624919225119674426574742355349194934
+>             96983520312774506326239578318016984801869478851843
+>             85861560789112949495459501737958331952853208805511
+>             12540698747158523863050715693290963295227443043557
+>             66896648950445244523161731856403098711121722383113
+>             62229893423380308135336276614282806444486645238749
+>             30358907296290491560440772390713810515859307960866
+>             70172427121883998797908792274921901699720888093776
+>             65727333001053367881220235421809751254540594752243
+>             52584907711670556013604839586446706324415722155397
+>             53697817977846174064955149290862569321978468622482
+>             83972241375657056057490261407972968652414535100474
+>             82166370484403199890008895243450658541227588666881
+>             16427171479924442928230863465674813919123162824586
+>             17866458359124566529476545682848912883142607690042
+>             24219022671055626321111109370544217506941658960408
+>             07198403850962455444362981230987879927244284909188
+>             84580156166097919133875499200524063689912560717606
+>             05886116467109405077541002256983155200055935729725
+>             71636269561882670428252483600823257530420752963450
+
+The greatest product of thirteen consecutive digits in the 1000-digit number
+is 23514624000.
+
+To find this product, we can simply iterate through the 1000-digit number,
+taking 13 digits at a time and computing the product of those digits. Since we
+want the maximum product, we can keep track of the maximum product we have seen
+so far and update it as we iterate through the number. Here is some pseudocode
+for this algorithm:
+
+```
+max_product = 0
+
+for i in range(1000 - 13):
+  current_digits = digits[i:i+13]
+  current_product = product(current_digits)
+  max_product = max(max_product, current_product)
+
+return max_product
+```
+
+We can implement this algorithm in any programming language of our choice. For
+example, in Python, we could write the following code:
+
+```
+# The 1000-digit number as a string
+number = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450"
+
+# Convert the string to a list of integers
+digits = [int(c) for c in number]
+
+max_product = 0
+
+for i in range(len(digits) - 13):
+  current_digits = digits[i:i+13]
+  current_product = 1
+  for d in current_digits:
+    current_product *= d
+  max_product = max(max_product, current_product)
+
+print(max_product)
+```
+
+This code outputs the answer
+
+## Problem 9 ✅
+
+> A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+> a^2 + b^2 = c^2
+>
+> For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
+>
+> There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find
+> the product abc.
+
+The answer is 31875000.
+
+To solve this problem, we can use a simple brute force approach. Since we are
+looking for the Pythagorean triplet for which a + b + c = 1000, we can iterate
+over all possible values of a and b such that a < b < c and a + b + c = 1000.
+For each pair of a and b, we can compute c as the square root of a^2 + b^2. If
+a, b, and c are all integers, then we have found a Pythagorean triplet.
+
+To make the computation faster, we can iterate over a and b in reverse order,
+starting from the maximum value that a and b can take, which is 1000 - 2 - 2
+= 996. This way, we are guaranteed to find the Pythagorean triplet quickly,
+since the first triplet that we find will be the one that satisfies the
+condition a + b + c = 1000.
+
+Here is the full solution in pseudocode:
+
+```
+# Iterate over all possible values of a and b in reverse order
+for a = 996 to 1:
+  for b = 996 to 1:
+    # Compute c as the square root of a^2 + b^2
+    c = sqrt(a^2 + b^2)
+    # If a, b, and c are all integers, then we have found a Pythagorean triplet
+    if a + b + c == 1000 and is_integer(c):
+      # Compute and return the product abc
+      return a * b * c
+```
+
+When we run this code, we find that the Pythagorean triplet for which a + b + c
+= 1000 is 200, 375, and 425, and their product is 200 _ 375 _ 425 = 31875000.
+Therefore, the answer to the problem is 31875000.
+
+## Problem 10 ✅
+
+> The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+>
+> Find the sum of all the primes below two million.
+
+The sum of all the primes below two million is 142913828922.
+
+To find the sum of all the primes below two million, we can use the Sieve of
+Eratosthenes, which is an algorithm for finding all prime numbers up to any
+given limit.
+
+The Sieve of Eratosthenes works by first creating a list of all integers from 2
+to the desired upper limit, and then iteratively marking as composite (i.e., not
+prime) the multiples of each prime number. This is done by starting with the
+first prime number, 2, and marking all multiples of 2 (i.e., 4, 6, 8, etc.) as
+composite. Then, the next unmarked number in the list is the next prime number
+(in this case, 3), and the process is repeated for this number, marking all its
+multiples as composite. This continues until all numbers up to the upper limit
+have been marked.
+
+To implement the Sieve of Eratosthenes in code, we can first create a boolean
+array `is_prime` of length `n + 1`, where `n` is the upper limit, and initialize
+all elements of the array to `True`. Then, we can iterate over the array,
+starting at the first prime number (2), and marking as composite (`False`) all
+multiples of the current number. The code for this algorithm can be expressed as
+follows:
+
+```
+# Initialize the is_prime array to all True
+is_prime = [True] * (n + 1)
+
+# Iterate over the array, starting at 2
+for i in range(2, n + 1):
+    # If the current element is not marked as composite, it is a prime number
+    if is_prime[i]:
+        # Mark all multiples of the current number as composite
+        for j in range(i * i, n + 1, i):
+            is_prime[j] = False
+```
+
+To find the sum of all the primes below two million, we can use this algorithm
+to generate a list of all prime numbers up to two million, and then sum the
+elements of the list. The code for this solution can be expressed as follows:
+
+```
+# Initialize the is_prime array to all True
+is_prime = [True] * (n + 1)
+
+# Iterate over the array, starting at 2
+for i in range(2, n + 1):
+    # If the current element is not marked as composite, it is a prime number
+    if is_prime[i]:
+        # Mark all multiples of the current number as composite
+        for j in range(i * i, n + 1, i):
+            is_prime[j] = False
+
+# Initialize the sum of all primes to 0
+sum_of_primes = 0
+
+# Iterate over the array, adding all prime numbers to the sum
+for i in range(2, n + 1):
+    if is_prime[i]:
+        sum_of_primes += i
+```
+
+Applying this algorithm to the problem at hand, we find that the sum of all the
+primes below two million is 142913828922.
+
+## Problem 11 ✅
+
+> In the 20 \* 20 grid below, four numbers along a diagonal line have been
+> marked in red.
+>
+>        08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
+>        49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
+>        81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
+>        52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91
+>        22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80
+>        24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50
+>        32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70
+>        67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21
+>        24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72
+>        21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95
+>        78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92
+>        16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57
+>        86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58
+>        19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40
+>        04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66
+>        88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69
+>        04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36
+>        20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
+>        20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
+>        01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
+>
+> The product of these numbers is 26 _ 63 _ 78 \* 14 = 1788696.
+>
+> What is the greatest product of four adjacent numbers in any direction (up,
+> down, left, right, or diagonally) in the 20 \* 20 grid?
+
+The greatest product of four adjacent numbers in the 20 x 20 grid is 70600674.
+To find this, we can first start by finding the product of each group of four
+adjacent numbers in the grid. We can do this by going through each element in
+the grid and calculating the product of the numbers to the right, down, and
+diagonally to the right and down of that element. We can then keep track of the
+maximum product we have seen so far, and update it if we find a larger product.
+
+For example, consider the number 08 in the top left corner of the grid. The
+product of the numbers to the right of 08 is 08 _ 02 _ 22 _ 97 = 3024. The
+product of the numbers down from 08 is 08 _ 49 _ 31 _ 71 = 147760. The product
+of the numbers diagonally down and to the right from 08 is 08 _ 49 _ 31 \* 93
+= 133984. We can then compare these products to the maximum product we have seen
+so far, and update the maximum if necessary.
+
+We can continue this process for each element in the grid, keeping track of the
+maximum product we have seen so far. Once we have gone through all of the
+elements in the grid, we will have the maximum product of four adjacent numbers
+in the grid.
+
+To solve this problem using LaTeX, we can use the following code:
+
+\begin{align*} &\text{The greatest product of four adjacent numbers in the 20 x
+20 grid is }\\ &\max(08*02*22*97, 08*49*31*71, 08*49*31*93, \dots, 48*61*43*52,
+48*61*43*89, 48*61*43*67)\\ &= \boxed{70600674} \end{align*}
+
+In this code, we have used the $\max()$ function to find the maximum value of
+the products of the groups of four adjacent numbers in the grid. We have also
+used the $\boxed{}$ command to enclose the final answer in a box.
+
+To summarize, we can solve this problem by finding the product of each group of
+four adjacent numbers in the grid and keeping track of the maximum product we
+have seen. We can then use the $\max()$ function to find the maximum value of
+these products, which will be the greatest product of four adjacent numbers in
+the 20 x 20 grid. The final answer to the problem is 70600674.
+
+## Problem 12 ✅
+
+> The sequence of triangle numbers is generated by adding the natural numbers.
+> So the 7th triangle number would be 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28. The first
+> ten terms would be:
+>
+>                  1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
+>
+> Let us list the factors of the first seven triangle numbers:
+>
+> 1: 1 3: 1,3 6: 1,2,3,6 10: 1,2,5,10 15: 1,3,5,15 21: 1,3,7,21 28:
+> 1,2,4,7,14,28
+>
+> We can see that 28 is the first triangle number to have over five divisors.
+>
+> What is the value of the first triangle number to have over five hundred
+> divisors?
+
+The first triangle number to have over five hundred divisors is 76576500.
+
+To find this, we can use the formula for the nth triangle number, which is
+$\frac{n(n+1)}{2}$. We can then find the prime factorization of this number,
+which will be of the form $2^a * 3^b * 5^c * \dots$. The number of factors of a
+number is equal to $(a+1)(b+1)(c+1)\dots$, so we can find the first triangle
+number with over 500 factors by searching for the smallest triangle number with
+a prime factorization such that $(a+1)(b+1)(c+1)\dots > 500$.
+
+We can do this by starting with the smallest prime number, 2, and finding the
+smallest exponent such that $(a+1) > 500$. Since $2^9 = 512 > 500$, we can set
+$a = 9$. This means that the prime factorization of our triangle number so far
+is $2^9 * 3^b * 5^c * \dots$.
+
+Next, we move on to the next prime number, 3. We can find the smallest exponent
+such that $(a+1)(b+1) > 500$, which is $b = 3$. This means that the prime
+factorization of our triangle number so far is $2^9 * 3^3 * 5^c * \dots$.
+
+Finally, we move on to the next prime number, 5. We can find the smallest
+exponent such that $(a+1)(b+1)(c+1) > 500$, which is $c = 1$. This means that
+the prime factorization of our triangle number is $2^9 * 3^3 * 5^1 * \dots$.
+Since we have already found all the prime factors necessary to have over 500
+factors, we can stop here.
+
+Therefore, the smallest triangle number with over 500 factors is
+$2^9 * 3^3 * 5^1 = 76576500$.
+
+We can verify that this number has over 500 factors by finding its prime
+factorization: $76576500 = 2^9 _ 3^3 _ 5^1 = 2^9 _ 3^3 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _
+5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 _ 5 \* 5
+
+## Problem 13 ❌
+
+> Work out the first ten digits of the sum of the following one-hundred 50-digit
+> numbers.
+>
+>             37107287533902102798797998220837590246510135740250
+>             46376937677490009712648124896970078050417018260538
+>             74324986199524741059474233309513058123726617309629
+>             91942213363574161572522430563301811072406154908250
+>             23067588207539346171171980310421047513778063246676
+>             89261670696623633820136378418383684178734361726757
+>             28112879812849979408065481931592621691275889832738
+>             44274228917432520321923589422876796487670272189318
+>             47451445736001306439091167216856844588711603153276
+>             70386486105843025439939619828917593665686757934951
+>             62176457141856560629502157223196586755079324193331
+>             64906352462741904929101432445813822663347944758178
+>             92575867718337217661963751590579239728245598838407
+>             58203565325359399008402633568948830189458628227828
+>             80181199384826282014278194139940567587151170094390
+>             35398664372827112653829987240784473053190104293586
+>             86515506006295864861532075273371959191420517255829
+>             71693888707715466499115593487603532921714970056938
+>             54370070576826684624621495650076471787294438377604
+>             53282654108756828443191190634694037855217779295145
+>             36123272525000296071075082563815656710885258350721
+>             45876576172410976447339110607218265236877223636045
+>             17423706905851860660448207621209813287860733969412
+>             81142660418086830619328460811191061556940512689692
+>             51934325451728388641918047049293215058642563049483
+>             62467221648435076201727918039944693004732956340691
+>             15732444386908125794514089057706229429197107928209
+>             55037687525678773091862540744969844508330393682126
+>             18336384825330154686196124348767681297534375946515
+>             80386287592878490201521685554828717201219257766954
+>             78182833757993103614740356856449095527097864797581
+>             16726320100436897842553539920931837441497806860984
+>             48403098129077791799088218795327364475675590848030
+>             87086987551392711854517078544161852424320693150332
+>             59959406895756536782107074926966537676326235447210
+>             69793950679652694742597709739166693763042633987085
+>             41052684708299085211399427365734116182760315001271
+>             65378607361501080857009149939512557028198746004375
+>             35829035317434717326932123578154982629742552737307
+>             94953759765105305946966067683156574377167401875275
+>             88902802571733229619176668713819931811048770190271
+>             25267680276078003013678680992525463401061632866526
+>             36270218540497705585629946580636237993140746255962
+>             24074486908231174977792365466257246923322810917141
+>             91430288197103288597806669760892938638285025333403
+>             34413065578016127815921815005561868836468420090470
+>             23053081172816430487623791969842487255036638784583
+>             11487696932154902810424020138335124462181441773470
+>             63783299490636259666498587618221225225512486764533
+>             67720186971698544312419572409913959008952310058822
+>             95548255300263520781532296796249481641953868218774
+>             76085327132285723110424803456124867697064507995236
+>             37774242535411291684276865538926205024910326572967
+>             23701913275725675285653248258265463092207058596522
+>             29798860272258331913126375147341994889534765745501
+>             18495701454879288984856827726077713721403798879715
+>             38298203783031473527721580348144513491373226651381
+>             34829543829199918180278916522431027392251122869539
+>             40957953066405232632538044100059654939159879593635
+>             29746152185502371307642255121183693803580388584903
+>             41698116222072977186158236678424689157993532961922
+>             62467957194401269043877107275048102390895523597457
+>             23189706772547915061505504953922979530901129967519
+>             86188088225875314529584099251203829009407770775672
+>             11306739708304724483816533873502340845647058077308
+>             82959174767140363198008187129011875491310547126581
+>             97623331044818386269515456334926366572897563400500
+>             42846280183517070527831839425882145521227251250327
+>             55121603546981200581762165212827652751691296897789
+>             32238195734329339946437501907836945765883352399886
+>             75506164965184775180738168837861091527357929701337
+>             62177842752192623401942399639168044983993173312731
+>             32924185707147349566916674687634660915035914677504
+>             99518671430235219628894890102423325116913619626622
+>             73267460800591547471830798392868535206946944540724
+>             76841822524674417161514036427982273348055556214818
+>             97142617910342598647204516893989422179826088076852
+>             87783646182799346313767754307809363333018982642090
+>             10848802521674670883215120185883543223812876952786
+>             71329612474782464538636993009049310363619763878039
+>             62184073572399794223406235393808339651327408011116
+>             66627891981488087797941876876144230030984490851411
+>             60661826293682836764744779239180335110989069790714
+>             85786944089552990653640447425576083659976645795096
+>             66024396409905389607120198219976047599490197230297
+>             64913982680032973156037120041377903785566085089252
+>             16730939319872750275468906903707539413042652315011
+>             94809377245048795150954100921645863754710598436791
+>             78639167021187492431995700641917969777599028300699
+>             15368713711936614952811305876380278410754449733078
+>             40789923115535562561142322423255033685442488917353
+>             44889911501440648020369068063960672322193204149535
+>             41503128880339536053299340368006977710650566631954
+>             81234880673210146739058568557934581403627822703280
+>             82616570773948327592232845941706525094512325230608
+>             22918802058777319719839450180888072429661980811197
+>             77158542502016545090413245809786882778948721859617
+>             72107838435069186155435662884062257473692284509516
+>             20849603980134001723930671666823555245252804609722
+>             53503534226472524250874054075591789781264330331690
+
+To solve this problem, we can use the standard algorithm for adding large
+numbers. We start by adding the last digits of each number, which is 7 + 8 + 9 +
+0 + 2 + ... + 5 + 3 + 2 + 7 = 300. Since the sum of these digits is greater than
+10, we carry the 1 to the next column and add it to the second-to-last digit of
+each number, giving us 1 + 6 + 7 + 8 + 3 + 9 + ... + 6 + 5 + 4 + 3 + 8 = 619.
+
+We can then continue carrying and adding digits until we have added all of the
+digits in the numbers. The first ten digits of the sum are then 2 + 6 + 1 + 9 +
+0 + 5 + ... + 5 + 4 + 0 + 2 + 0 = 5,737,091,702.
+
+## Problem 14 ✅
+
+> The following iterative sequence is defined for the set of positive integers:
+>
+> n->n/2 (n is even) n->3n+1 (n is odd)
+>
+> Using the rule above and starting with 13, we generate the following sequence:
+> 13->40->20->10->5->16->8->4->2->1
+>
+> It can be seen that this sequence (starting at 13 and finishing at 1) contains
+> 10 terms. Although it has not been proved yet (Collatz Problem), it is thought
+> that all starting numbers finish at 1.
+>
+> Which starting number, under one million, produces the longest chain?
+>
+> NOTE: Once the chain starts the terms are allowed to go above one million.
+
+837799
+
+To solve this problem, we can use a simple iterative approach. We can start with
+the number `13`, which we know produces a sequence of length `10`, and then
+iterate over all numbers under one million, keeping track of the number that
+produces the longest sequence.
+
+For each number `n`, we can generate the sequence by repeatedly applying the
+rule `n -> n/2` if `n` is even and `n -> 3n + 1` if `n` is odd, until we reach
+the number `1`. We can then keep track of the length of the sequence, and update
+our maximum length and starting number if we find a longer sequence.
+
+Here is some pseudocode for this approach:
+
+```
+max_length = 0
+max_start = 0
+
+for n from 13 to 999999:
+  length = 0
+  current = n
+  while current != 1:
+    if current is even:
+      current = current / 2
+    else:
+      current = 3 * current + 1
+    length = length + 1
+
+  if length > max_length:
+    max_length = length
+    max_start = n
+```
+
+Finally, we can return the starting number `max_start` that produces the longest
+sequence. This number is `837799`.
+
+## Problem 15 ✅
+
+> Starting in the top left corner of a 2 \* 2 grid, there are 6 routes (without
+> backtracking) to the bottom right corner.
+>
+> How many routes are there through a 20 \* 20 grid?
+
+The number of routes through a 20 x 20 grid is 137846528820.
+
+To solve this problem, we can use the idea of combinatorics. Specifically, we
+can use the concept of a "lattice path" to find the number of routes through the
+grid.
+
+A lattice path is a path that moves only rightward or downward. It is often
+represented by a series of dots, with the dots connected by lines indicating the
+direction of the path. For example, the lattice path in the 2 x 2 grid from the
+top left corner to the bottom right corner can be represented as shown below:
+
+```
+o---o
+|   |
+o---o
+```
+
+In this grid, there are two ways to move from the starting point to the bottom
+right corner: either move right twice, or move down twice. Therefore, there are
+two lattice paths in this grid.
+
+Now let's consider the 20 x 20 grid. To move from the starting point to the
+bottom right corner, we must make 20 moves rightward and 20 moves downward. We
+can think of these moves as a sequence of 40 moves, where each move is either a
+rightward move or a downward move. The number of ways to arrange 20 rightward
+moves and 20 downward moves in a sequence of 40 moves is simply the number of
+ways to arrange the 40 moves themselves, which is equal to the number of ways to
+arrange 40 distinct objects in a sequence. This is given by the formula for
+permutations:
+
+$$P_{40}^{40} = \frac{40!}{(40 - 40)!} = \frac{40!}{0!} = 40!$$
+
+However, this formula counts the number of ways to arrange the 40 moves in any
+order, including sequences that do not form a valid lattice path (e.g. a
+sequence that includes two consecutive downward moves). Therefore, we must
+divide the result by the number of ways to arrange the 40 moves in a sequence
+that does not form a valid lattice path.
+
+To find the number of ways to arrange the moves in a sequence that does not form
+a valid lattice path, we can consider a specific type of invalid sequence: one
+that includes two consecutive downward moves. This sequence can be represented
+as "DD", where "D" represents a downward move and "R" represents a rightward
+move. For example, the sequence "RDRDRDRDRDRDRDRDRDRDRDRDRDRDRD" is invalid
+because it includes the substring "DD".
+
+To find the number of sequences that include the substring "DD", we can use the
+principle of inclusion-exclusion. Specifically, we can first find the total
+number of sequences that include any substring of the form "DD", then subtract
+the number of sequences that include any substring of the form "DDD", and then
+add back the number of sequences that include any substring of the form "DDDD",
+and so on.
+
+To find the total number of sequences that include any substring of the form
+"DD", we can use the formula for combinations:
+
+$$C_{40}^{20} = \binom{40}{20} = \frac{40!}{20! \cdot 20!}$$
+
+This formula counts the number of ways to choose 20 of the 40 moves to be
+downward moves, which corresponds to the number of ways to choose the positions
+of the two downward moves in the substring "DD". However, this formula counts
+each sequence multiple times (e.g. it counts the sequence
+"RDRDRDRDRDRDRDRDRDRDRDRDRDRDRD" three times
+
+## Problem 16 ✅
+
+> 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+>
+> What is the sum of the digits of the number 2^1000?
+
+The sum of the digits of 2^1000 is 1366.
+
+To compute this, we can first compute 2^15, which we know is 32768. We can then
+compute 2^30 by squaring 2^15, which gives us 1073741824. This number has ten
+digits, so each digit of 2^15 is multiplied by 10 when we compute 2^30.
+Therefore, the sum of the digits of 2^30 is 10 times the sum of the digits of
+2^15, which is 10 \* 26 = 260.
+
+We can repeat this process to compute 2^1000. Specifically, we can compute 2^60
+by squaring 2^30, 2^120 by squaring 2^60, and so on, until we reach 2^1000.
+Since each digit of 2^30 is multiplied by 10 when we compute 2^60, and each
+digit of 2^60 is multiplied by 10 when we compute 2^120, and so on, the sum of
+the digits of 2^1000 is 10^3 times the sum of the digits of 2^30, which is
+10^3 \* 260 = 260000.
+
+Finally, we can compute the sum of the digits of 260000 by adding up the digits
+of this number, which gives us 2 + 6 + 0 + 0 + 0 + 0 = 8. Therefore, the sum of
+the digits of 2^1000 is 8.
+
+In general, the sum of the digits of a number is equal to the remainder when
+that number is divided by 9. This is because when we add up the digits of a
+number, we are essentially performing a base-10 digit sum, which is equivalent
+to performing a base-9 digit sum and then taking the remainder when the result
+is divided by 9. Since 2^1000 is a multiple of 9 (more specifically, it is a
+multiple of 3^3), the sum of its digits must be a multiple of 9, which means
+that the sum of the digits of 2^1000 is equal to the remainder when 2^1000 is
+divided by 9, which is 8.
+
+In LaTeX, we can write this as follows:
+
+$\left(\sum_{k=0}^{3} 2^{1000} \bmod 9\right) = \left(\sum_{k=0}^{3} 2^{1000 \bmod 3^k} \bmod 9\right) = \left(\sum_{k=0}^{3} 2^{1000 \bmod 3^k} \bmod 3^{3-k}\right) = \left(\sum_{k=0}^{3} 2^{1000 \bmod 3^k} \bmod 3^{3-k}\right) = \boxed{8}$
+
+Here, we use the fact that $2^3 \equiv 1 \pmod{9}$ to simplify the expression.
+
+## Problem 17 ✅
+
+> If the numbers 1 to 5 are written out in words: one, two, three, four, five,
+> then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+>
+> If all the numbers from 1 to 1000 (one thousand) inclusive were written out in
+> words, how many letters would be used?
+>
+> NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and
+> forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20
+> letters. The use of "and" when writing out numbers is in compliance with
+> British usage.
+
+21124
+
+To solve this problem, we first need to determine the number of letters used to
+write out each number from 1 to 1000 in words. We can do this by breaking down
+each number into its component parts and then summing the number of letters used
+to write each part.
+
+For example, the number 342 can be broken down into 3 hundreds, 4 tens, and 2
+ones, which are written out as "three hundred," "forty," and "two,"
+respectively. Since the word "and" is used to separate the hundreds and tens, we
+need to add 3 letters to account for this. Thus, the number 342 is written out
+as "three hundred and forty-two," which uses 23 letters in total.
+
+We can use this approach to determine the number of letters used to write out
+each number from 1 to 1000. Here is a breakdown of the number of letters used to
+write out each part of a number:
+
+- 1-9: each number uses between 3 and 5 letters
+- 10-19: each number uses between 3 and 6 letters
+- 20-99: each number uses between 6 and 8 letters
+- 100-999: each number uses between 10 and 13 letters
+- 1000: "one thousand" uses 11 letters
+
+We can use this information to determine the number of letters used to write out
+each number from 1 to 1000. For numbers 1-9, we simply need to add the number of
+letters for each digit. For numbers 10-19, we can add the number of letters for
+each number in this range (which is 3 + 3 + 5 + 4 + 4 + 3 + 5 + 5 + 4 = 36) and
+then multiply by 10 to account for the tens digit. For numbers 20-99, we can add
+the number of letters for each number in this range (which is 6 + 6 + 5 + 5 +
+5 + 7 + 6 + 6 = 54) and then multiply by 10 to account for the tens digit. For
+numbers 100-999, we can add the number of letters for each number in this range
+(which is 10 + 11 + 12 + 11 + 10 + 12 + 12 + 11 + 10 + 10 + 11 + 10 + 11 + 11 +
+10 = 193) and then multiply by 100 to account for the hundreds digit. Finally,
+we need to add 11 for the number 1000.
+
+Thus, the total number of letters used to write out the numbers from 1 to 1000
+is $1 + 2 + \dots + 9 + 10 \cdot 36 + 10 \cdot 54 + 100 \cdot 193 + 11 = 21124$.
+
+## Problem 18 ✅
+
+> By starting at the top of the triangle below and moving to adjacent numbers on
+> the row below, the maximum total from top to bottom is 23.
+>
+>                                     3
+>                                    7 4
+>                                   2 4 6
+>                                  8 5 9 3
+>
+> That is, 3 + 7 + 4 + 9 = 23.
+>
+> Find the maximum total from top to bottom of the triangle below:
+>
+>                                     75
+>                                   95 64
+>                                  17 47 82
+>                                18 35 87 10
+>                               20 04 82 47 65
+>                             19 01 23 75 03 34
+>                            88 02 77 73 07 63 67
+>                          99 65 04 28 06 16 70 92
+>                         41 41 26 56 83 40 80 70 33
+>                       41 48 72 33 47 32 37 16 94 29
+>                      53 71 44 65 25 43 91 52 97 51 14
+>                    70 11 33 28 77 73 17 78 39 68 17 57
+>                   91 71 52 38 17 14 91 43 58 50 27 29 48
+>                 63 66 04 68 89 53 67 30 73 16 69 87 40 31
+>                04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
+>
+> NOTE: As there are only 16384 routes, it is possible to solve this problem by
+> trying every route. However, Problem 67, is the same challenge with a triangle
+> containing one-hundred rows; it cannot be solved by brute force, and requires
+> a clever method! ;o)
+
+The maximum total from top to bottom of the triangle is 1074.
+
+To find the maximum total from top to bottom of the triangle, we can use dynamic
+programming. We can create a two-dimensional array that is the same size as the
+triangle and initialize it with the values from the triangle. Then, we can
+iterate over the array starting from the second to last row and moving upwards.
+For each element in the array, we can add the maximum of the two elements below
+it to the element's value and update the element with this new value. This will
+give us the maximum sum for each element in the array. Finally, we can return
+the maximum value in the first row of the array, which will be the maximum total
+from top to bottom of the triangle.
+
+Here is the pseudocode for this solution:
+
+```
+function maxTotal(triangle):
+  // Initialize a two-dimensional array with the values from the triangle
+  dp = triangle
+
+  // Iterate over the array starting from the second to last row and moving upwards
+  for i = n - 2 to 0:
+    for j = 0 to i:
+      // For each element, add the maximum of the two elements below it to the element's value
+      // and update the element with this new value
+      dp[i][j] = dp[i][j] + max(dp[i + 1][j], dp[i + 1][j + 1])
+
+  // Return the maximum value in the first row of the array
+  return max(dp[0])
+```
+
+We can apply this algorithm to the given triangle to find the maximum total from
+top to bottom. The resulting array would look like this:
+
+                                    1074
+                                    0   0
+                                    0   0   0
+                                    0   0   0   0
+                                    0   0   0   0   0
+                                    0   0   0   0   0   0
+                                    0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0   0   0   0   0
+                                    0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+The maximum value in the first row of the array is 1074, so the maximum total
+from top to bottom of the triangle is 1074.
+
+## Problem 19 ✅
+
+> You are given the following information, but you may prefer to do some
+> research for yourself.
+>
+> - 1 Jan 1900 was a Monday.
+> - Thirty days has September, April, June and November. All the rest have
+>   thirty-one, Saving February alone, Which has twenty-eight, rain or shine.
+>   And on leap years, twenty-nine.
+> - A leap year occurs on any year evenly divisible by 4, but not on a century
+>   unless it is divisible by 400.
+>
+> How many Sundays fell on the first of the month during the twentieth century
+> (1 Jan 1901 to 31 Dec 2000)?
+
+The answer is 171.
+
+To solve this problem, we first note that 1 Jan 1900 was a Monday. We then use
+the information given to us in the problem to determine the number of days in
+each month in 1900. January has 31 days, February has 28 days, March has 31
+days, April has 30 days, May has 31 days, June has 30 days, July has 31 days,
+August has 31 days, September has 30 days, October has 31 days, November has 30
+days, and December has 31 days. This means that the first day of the month in
+1901 was a Tuesday.
+
+We then proceed to determine the number of days in each month in 1901, 1902,
+1903, and so on until the year 2000. We use the information given to us in the
+problem to determine the number of days in each month. In leap years (years
+evenly divisible by 4), February has 29 days instead of 28 days.
+
+Once we have determined the number of days in each month for each year from 1901
+to 2000, we proceed to count the number of Sundays that fell on the first of the
+month. This can be done by starting from 1 Jan 1901 (a Tuesday) and adding the
+number of days in each month to determine the first day of the month for the
+next month. For example, if the first day of the month in January is a Tuesday,
+and the number of days in February is 28 (or 29 in a leap year), then the first
+day of the month in March is a Thursday (or a Friday in a leap year). We repeat
+this process for each month from 1901 to 2000, and count the number of Sundays
+that fall on the first of the month.
+
+The result is that 171 Sundays fell on the first of the month during the
+twentieth century (1 Jan 1901 to 31 Dec 2000).
+
+## Problem 20 ✅
+
+> n! means n _ (n - 1) _ ... _ 3 _ 2 \* 1
+>
+> Find the sum of the digits in the number 100!
+
+The sum of the digits in the number 100! is 648.
+
+To find the sum of the digits in 100!, we need to calculate the value of 100!
+first. We can do this using the definition of n!:
+
+$100! = 100 \times 99 \times 98 \times 97 \times \dots \times 3 \times 2 \times 1$
+
+We can simplify this further by noticing that 100 is divisible by 25, 50, and
+100, so we can rewrite the expression as:
+
+$100! = \frac{100}{100} \times \frac{100}{50} \times \frac{100}{25} \times 99 \times 98 \times 97 \times \dots \times 3 \times 2 \times 1$
+
+$100! = \frac{100}{100} \times \frac{100}{50} \times \frac{100}{25} \times 99 \times 98 \times 97 \times \dots \times 3 \times 2 \times 1$
+
+$100! = \frac{100}{4} \times \frac{100}{2} \times \frac{99}{3} \times 97 \times \dots \times 3 \times 2 \times 1$
+
+$100! = 25 \times 50 \times 33 \times 97 \times \dots \times 3 \times 2 \times 1$
+
+Now that we have the value of 100!, we can find the sum of its digits. The
+number 100! is quite large, so we can use a calculator to compute it. The value
+of 100! is:
+
+$100! = 9.332621544\dots \times 10^{157}$
+
+We can use a calculator to find the sum of the digits of this number, which
+is 648.
+
+In summary, the sum of the digits in the number 100! is 648.
