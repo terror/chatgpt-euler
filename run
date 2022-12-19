@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in {39..330}; do
+  python3.9 main.py --problem "$i"
+done

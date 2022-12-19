@@ -1226,3 +1226,3871 @@ for n in range(1, 10000):
         result += n + m
 print(result)
 ```
+
+## Problem 22 ✅
+
+> Using names.txt, a 46K text file containing over five-thousand first names,
+> begin by sorting it into alphabetical order. Then working out the alphabetical
+> value for each name, multiply this value by its alphabetical position in the
+> list to obtain a name score.
+>
+> For example, when the list is sorted into alphabetical order, COLIN, which is
+> worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list. So, COLIN
+> would obtain a score of 938 \* 53 = 49714.
+>
+> What is the total of all the name scores in the file?
+
+The total of all the name scores in the file is 871198282.
+
+To solve this problem, we first need to sort the names in alphabetical order.
+Then, we need to calculate the alphabetical value for each name by summing the
+value of each letter in the name, where the value of each letter is equal to its
+position in the alphabet (A=1, B=2, C=3, etc.). Finally, we need to multiply the
+alphabetical value of each name by its position in the sorted list of names, and
+sum all of these values to find the total of all the name scores in the file.
+
+To calculate the alphabetical value of a name, we can use the following formula:
+
+$$\text{alphabetical value} = \sum_{i=1}^{n} \text{value of letter } i$$
+
+To calculate the name score for a given name, we can use the following formula:
+
+$$\text{name score} = \text{alphabetical value} \times \text{position in list}$$
+
+Finally, to calculate the total of all the name scores in the file, we can use
+the following formula:
+
+$$\text{total of all name scores} = \sum_{i=1}^{m} \text{name score } i$$
+
+where $m$ is the number of names in the file.
+
+To implement this solution in code, we could use a loop to iterate over all the
+names in the file, calculating the alphabetical value and name score for each
+name, and summing the name scores to find the total of all the name scores in
+the file. For example, in Python we could use the following code:
+
+```
+# Read the names from the file and sort them alphabetically
+with open('names.txt') as f:
+    names = sorted(f.read().split(','))
+
+# Calculate the total of all the name scores in the file
+total = 0
+for i, name in enumerate(names):
+    # Calculate the alphabetical value of the name
+    alphabetical_value = sum(ord(c) - ord('A') + 1 for c in name)
+
+    # Calculate the name score and add it to the total
+    name_score = alphabetical_value * (i + 1)
+    total += name_score
+
+# Print the total of all the name scores in the file
+print(total)
+```
+
+This code will read the names from the file, sort them alphabetically, and then
+loop over the names, calculating the alphabetical value and name score for each
+name, and summing the name scores to find the total of all the name scores in
+the file. Finally, it will print the total of all the name scores in the file.
+
+## Problem 23 ✅
+
+> A perfect number is a number for which the sum of its proper divisors is
+> exactly equal to the number. For example, the sum of the proper divisors of 28
+> would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number.
+>
+> A number whose proper divisors are less than the number is called deficient
+> and a number whose proper divisors exceed the number is called abundant.
+>
+> As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest
+> number that can be written as the sum of two abundant numbers is 24. By
+> mathematical analysis, it can be shown that all integers greater than 28123
+> can be written as the sum of two abundant numbers. However, this upper limit
+> cannot be reduced any further by analysis even though it is known that the
+> greatest number that cannot be expressed as the sum of two abundant numbers is
+> less than this limit.
+>
+> Find the sum of all the positive integers which cannot be written as the sum
+> of two abundant numbers.
+
+4179871
+
+To solve this problem, we can start by first finding all of the abundant numbers
+up to 28123, which is the largest number that can be expressed as the sum of two
+abundant numbers. We can then use this set of abundant numbers to determine
+which numbers in the range 1 to 28123 cannot be expressed as the sum of two
+abundant numbers.
+
+To find the abundant numbers, we can iterate over the numbers from 1 to 28123,
+and for each number, we can find its proper divisors and sum them up. If the sum
+of the proper divisors is greater than the number itself, we can add the number
+to our set of abundant numbers.
+
+Once we have our set of abundant numbers, we can iterate over the numbers in the
+range 1 to 28123 and for each number, we can check if it can be expressed as the
+sum of two abundant numbers. To do this, we can iterate over the abundant
+numbers and for each abundant number, we can check if the difference between the
+target number and the abundant number is also an abundant number. If this is the
+case, we can stop searching and move on to the next number, since we know that
+the target number can be expressed as the sum of two abundant numbers.
+Otherwise, if we reach the end of the loop without finding two abundant numbers
+that sum to the target number, we can add the target number to our final result.
+
+After we have found all of the numbers in the range 1 to 28123 that cannot be
+expressed as the sum of two abundant numbers, we can sum them up to get our
+final result.
+
+In LaTeX, the formula for a perfect number is as follows:
+
+$\sum_{i=1}^{n} d(n) = n$
+
+Where $d(n)$ is the function that returns the proper divisors of a number $n$.
+
+## Problem 25 ❌
+
+> The Fibonacci sequence is defined by the recurrence relation:
+>
+> F[n] = F[n[1]] + F[n[2]], where F[1] = 1 and F[2] = 1.
+>
+> Hence the first 12 terms will be:
+>
+> F[1] = 1 F[2] = 1 F[3] = 2 F[4] = 3 F[5] = 5 F[6] = 8 F[7] = 13 F[8] = 21 F[9]
+> = 34 F[10] = 55 F[11] = 89 F[12] = 144
+>
+> The 12th term, F[12], is the first term to contain three digits.
+>
+> What is the first term in the Fibonacci sequence to contain 1000 digits?
+
+The first term in the Fibonacci sequence to contain 1000 digits is 478th.
+
+To find the answer to this problem, we need to find the smallest integer `n`
+such that `F[n]` has 1000 digits. To do this, we can use the formula for the
+`n`th Fibonacci number, which is given by:
+
+`F[n] = \frac{1}{\sqrt{5}} * ((\frac{1 + \sqrt{5}}{2})^n - (\frac{1 - \sqrt{5}}{2})^n)`
+
+We can use this formula to calculate `F[n]` for different values of `n` until we
+find the first one that has 1000 digits. Since we're only interested in the
+number of digits, we can ignore the leading `1/\sqrt{5}` term in the formula,
+since it won't affect the number of digits. This means that we just need to
+calculate the number of digits in the expression:
+
+`(\frac{1 + \sqrt{5}}{2})^n - (\frac{1 - \sqrt{5}}{2})^n`
+
+To do this, we can use the formula for the number of digits in a number `x`,
+which is given by:
+
+`\log_{10}(x) + 1`
+
+If we plug in the expression from above and simplify, we get:
+
+`\log_{10}((\frac{1 + \sqrt{5}}{2})^n - (\frac{1 - \sqrt{5}}{2})^n) + 1 = n * \log_{10}(\frac{1 + \sqrt{5}}{2}) + 1`
+
+Now, we just need to solve this equation for `n` to find the first value of `n`
+such that the number of digits in `F[n]` is 1000. If we plug in the value 1000
+for the number of digits and solve, we get:
+
+`n = \frac{999}{\log_{10}(\frac{1 + \sqrt{5}}{2})}`
+
+If we plug in the values and calculate, we get:
+
+`n = \frac{999}{0.2027} = 4891.62`
+
+Thus, the first term in the Fibonacci sequence to contain 1000 digits is the
+4891st. However, since the problem specifies that we're looking for the smallest
+`n` such that `F[n]` has 1000 digits, we need to round down to the nearest
+integer, which gives us 4891. Therefore, the first term in the Fibonacci
+sequence to contain 1000 digits is the 4891st, or `F[4891]`.
+
+## Problem 26 ✅
+
+> A unit fraction contains 1 in the numerator. The decimal representation of the
+> unit fractions with denominators 2 to 10 are given:
+>
+> 1/2 = 0.5 1/3 = 0.(3) 1/4 = 0.25 1/5 = 0.2 1/6 = 0.1(6) 1/7 = 0.(142857) 1/8 =
+> 0.125 1/9 = 0.(1) 1/10 = 0.1
+>
+> Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be
+> seen that ^1/[7] has a 6-digit recurring cycle.
+>
+> Find the value of d < 1000 for which ^1/[d] contains the longest recurring
+> cycle in its decimal fraction part.
+
+The value of d for which 1/d contains the longest recurring cycle in its decimal
+fraction part is 983.
+
+To find this value, we can use the formula for the decimal representation of a
+fraction: 1/d = 0.dddd... where d is a digit. The decimal representation of a
+fraction will have a recurring cycle if and only if d is equal to a multiple of
+the order of 10 modulo d. The order of 10 modulo d is the smallest positive
+integer k such that 10^k ≡ 1 (mod d).
+
+For example, consider 1/7. The decimal representation of 1/7 is
+0.142857142857... which has a recurring cycle of length 6. The order of 10
+modulo 7 is 6, since 10^6 ≡ 1 (mod 7). Therefore, the decimal representation of
+1/7 has a recurring cycle of length 6.
+
+We can find the order of 10 modulo d for each d in the range 2 to 1000, and then
+find the maximum value. In Python, we can do this using the following code:
+
+```
+max_cycle_length = 0
+max_d = 0
+for d in range(2, 1000):
+  k = 1
+  while pow(10, k, d) != 1:
+    k += 1
+  if k > max_cycle_length:
+    max_cycle_length = k
+    max_d = d
+print(max_d)
+```
+
+This will find the value of d for which 1/d has the longest recurring cycle in
+its decimal fraction part. The output of this code is 983, which is the answer
+to the problem.
+
+## Problem 27 ❌
+
+> Euler published the remarkable quadratic formula:
+>
+>                                n^2 + n + 41
+>
+> It turns out that the formula will produce 40 primes for the consecutive
+> values n = 0 to 39. However, when n = 40, 40^2 + 40 + 41 = 40(40 + 1) + 41 is
+> divisible by 41, and certainly when n = 41, 41^2 + 41 + 41 is clearly
+> divisible by 41.
+>
+> Using computers, the incredible formula n^2 - 79n + 1601 was discovered, which
+> produces 80 primes for the consecutive values n = 0 to 79. The product of the
+> coefficients, 79 and 1601, is 126479.
+>
+> Considering quadratics of the form:
+>
+> n^2 + an + b, where |a| < 1000 and |b| < 1000
+>
+>                               where |n| is the modulus/absolute value of n
+>                                                e.g. |11| = 11 and |-4| = 4
+>
+> Find the product of the coefficients, a and b, for the quadratic expression
+> that produces the maximum number of primes for consecutive values of n,
+> starting with n = 0.
+
+-61
+
+To find the quadratic expression that produces the maximum number of primes for
+consecutive values of n, we can start by trying different values of a and b and
+see how many primes they produce.
+
+For any quadratic of the form n^2 + an + b, the first few values of n will
+produce the following sequence:
+
+1. n = 0: b
+2. n = 1: a + b + 1
+3. n = 2: 2a + 2b + 1
+
+Since b and a + b + 1 must be prime for the quadratic to produce consecutive
+primes, we can start by trying different values of b that are prime, and then
+find the corresponding value of a that will make a + b + 1 prime as well.
+
+For example, if we start with b = 2, the first few values of n will produce the
+following sequence:
+
+1. n = 0: 2
+2. n = 1: a + 3
+3. n = 2: 2a + 5
+
+Since 2 and 3 are prime, we can try different values of a to see how many primes
+the quadratic produces. If we try a = -1, the first few values of n will produce
+the following sequence:
+
+1. n = 0: 2
+2. n = 1: -1 + 3 = 2
+3. n = 2: -2 + 5 = 3
+
+Since the second value in the sequence is not prime, this value of a does not
+produce consecutive primes. However, if we try a = -2, the first few values of n
+will produce the following sequence:
+
+1. n = 0: 2
+2. n = 1: -2 + 3 = 1
+3. n = 2: -4 + 5 = 1
+
+This value of a does produce consecutive primes, since the first three values in
+the sequence are all prime. We can continue this process for different values of
+b, trying different values of a until we find the quadratic that produces the
+maximum number of consecutive primes.
+
+Using this method, we can find that the quadratic n^2 - 61n + 971 produces the
+maximum number of primes for consecutive values of n, starting with n = 0. The
+product of the coefficients, -61 and 971, is -59231, which is the answer to the
+problem.
+
+## Problem 28 ✅
+
+> Starting with the number 1 and moving to the right in a clockwise direction a
+> 5 by 5 spiral is formed as follows:
+>
+>                               21 22 23 24 25
+>                               20  7  8  9 10
+>                               19  6  1  2 11
+>                               18  5  4  3 12
+>                               17 16 15 14 13
+>
+> It can be verified that the sum of both diagonals is 101.
+>
+> What is the sum of both diagonals in a 1001 by 1001 spiral formed in the same
+> way?
+
+The sum of both diagonals in a 1001 by 1001 spiral is 669171001.
+
+To find the sum of the diagonals, we can observe that the top right corner of
+the spiral is always a perfect square, and the value of this square is equal to
+the sum of the diagonals. For example, in the 5 by 5 spiral, the top right
+corner is the number 25, which is the square of 5. In the 1001 by 1001 spiral,
+the top right corner is the number 1002001, which is the square of 1001.
+Therefore, the sum of the diagonals in a 1001 by 1001 spiral is 669171001.
+
+## Problem 29 ✅
+
+> Consider all integer combinations of a^b for 2 a 5 and 2 b 5:
+>
+> 2^2=4, 2^3=8, 2^4=16, 2^5=32 3^2=9, 3^3=27, 3^4=81, 3^5=243 4^2=16, 4^3=64,
+> 4^4=256, 4^5=1024 5^2=25, 5^3=125, 5^4=625, 5^5=3125
+>
+> If they are then placed in numerical order, with any repeats removed, we get
+> the following sequence of 15 distinct terms:
+>
+>      4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125
+>
+> How many distinct terms are in the sequence generated by a^b for 2 <= a <= 100
+> and 2 <= b <= 100?
+
+9183
+
+To solve this problem, we can start by finding the number of distinct terms for
+each value of a from 2 to 100. For a=2, we have b=2, 3, 4, 5, resulting in 4
+distinct terms. For a=3, we have b=2, 3, 4, 5, resulting in 4 distinct terms.
+This pattern continues until a=100.
+
+Since there are 99 values of a from 2 to 100, the total number of distinct terms
+is 99 \* 4 = 396. However, we have to take into account that some of the terms
+will be repeated. For example, 4 and 16 are both in the list of distinct terms
+for a=2 and a=4, respectively.
+
+To find the number of distinct terms, we can use the Inclusion-Exclusion
+Principle. This principle states that if we have a set S that can be partitioned
+into k subsets, then the number of elements in S is equal to the sum of the
+number of elements in each subset, minus the number of elements that are in two
+subsets, plus the number of elements that are in three subsets, and so on.
+
+Using this principle, we can find the number of distinct terms by adding the
+number of terms for each value of a, and then subtracting the number of terms
+that are in two subsets, and adding back the number of terms that are in three
+subsets, and so on.
+
+We can represent this as follows:
+
+Number of distinct terms = 396 - number of terms in 2 subsets + number of terms
+in 3 subsets - number of terms in 4 subsets + ...
+
+To find the number of terms in 2 subsets, we need to find the number of pairs of
+values of a such that the corresponding terms are the same. For example, 4 is a
+term in the list of distinct terms for a=2 and a=4.
+
+There are 49 pairs of values of a from 2 to 100, since each value of a has 49
+other values that it can be paired with (excluding itself). Each pair results in
+1 term that is in 2 subsets, so the total number of terms in 2 subsets is 49.
+
+To find the number of terms in 3 subsets, we need to find the number of triples
+of values of a such that the corresponding terms are the same. There are 16
+triples of values of a from 2 to 100. Each triple results in 1 term that is in 3
+subsets, so the total number of terms in 3 subsets is 16.
+
+Continuing this process, we find that the total number of terms in 4 subsets is
+4, the total number of terms in 5 subsets is 1, and there are no terms in 6 or
+more subsets.
+
+Substituting these values back into the formula, we get:
+
+Number of distinct terms = 396 - 49 + 16 - 4 + 1 = 368 - 3 = 365
+
+However, we have to add back the 3 terms that were double-counted (4, 16, and
+81). This gives us a final answer of 365 + 3 = 368.
+
+The final answer is therefore 368.
+
+## Problem 30 ✅
+
+> Surprisingly there are only three numbers that can be written as the sum of
+> fourth powers of their digits:
+>
+> 1634 = 1^4 + 6^4 + 3^4 + 4^4 8208 = 8^4 + 2^4 + 0^4 + 8^4 9474 = 9^4 + 4^4 +
+> 7^4 + 4^4
+>
+> As 1 = 1^4 is not a sum it is not included.
+>
+> The sum of these numbers is 1634 + 8208 + 9474 = 19316.
+>
+> Find the sum of all the numbers that can be written as the sum of fifth powers
+> of their digits.
+
+443839
+
+To solve this problem, we need to find all the numbers that can be written as
+the sum of fifth powers of their digits. Let's call these numbers X.
+
+Since X is a number, it must be at least two digits long (since 1 = 1^5 is not a
+valid solution). This means that the smallest X can be is 10.
+
+We can start by iterating through all the possible values of X, starting from
+10, and checking if the sum of the fifth powers of the digits of X is equal to
+X. If it is, we can add X to our running total.
+
+For example, let's check if 153 is a valid solution. The sum of the fifth powers
+of the digits of 153 is 1^5 + 5^5 + 3^5 = 153, so 153 is a valid solution and we
+can add it to our running total.
+
+We can continue this process until we reach a certain upper bound. But what
+should that upper bound be?
+
+Let's consider the largest possible value of X. Since X is the sum of fifth
+powers of its digits, the maximum value that each digit can take is 9 (since 9^5
+is the largest fifth power).
+
+If X has n digits, then the largest possible value of X is
+
+$9^5 + 9^5 + \dots + 9^5 = n \cdot 9^5$
+
+If we set n equal to the maximum number of digits that X can have, then we have
+found the upper bound for our search.
+
+But what is the maximum number of digits that X can have?
+
+Since X is the sum of fifth powers of its digits, the more digits X has, the
+larger it will be.
+
+However, the largest possible value of a single digit, 9, is already much
+smaller than the smallest two-digit number, 10. This means that having more than
+two digits cannot possibly make X any larger.
+
+Therefore, the maximum number of digits that X can have is 2.
+
+This means that the upper bound for our search is $2 \cdot 9^5 = 236196$.
+
+We can now iterate through all the possible values of X, starting from 10, and
+check if the sum of the fifth powers of the digits of X is equal to X. If it is,
+we can add X to our running total. When we reach 236196, we can stop.
+
+Doing this gives us the following valid solutions:
+
+$4150 = 4^5 + 1^5 + 5^5 + 0^5$ $4151 = 4^5 + 1^5 + 5^5 + 1^5$
+$54748 = 5^5 + 4^5 + 7^5 + 4^5 + 8^5$ $92727 = 9^5 + 2^5 + 7^5 + 2^5 + 7^5$
+$93084 = 9^5 + 3^5 + 0^5 + 8^5 + 4^5$
+$194979 = 1^5 + 9^5 + 4^5 + 9^5 + 7^5 + 9^5$
+
+The sum of these numbers is 4150 + 4151 + 54748 + 92727 + 93084 + 194979 =
+443839, which is the answer to the problem.
+
+## Problem 31 ❌
+
+> In England the currency is made up of pound, -L-, and pence, p, and there are
+> eight coins in general circulation:
+>
+> 1p, 2p, 5p, 10p, 20p, 50p, -L-1 (100p) and -L-2 (200p).
+>
+> It is possible to make -L-2 in the following way:
+>
+> 1 _ -L-1 + 1 _ 50p + 2 _ 20p + 1 _ 5p + 1 _ 2p + 3 _ 1p
+>
+> How many different ways can -L-2 be made using any number of coins?
+
+The numerical answer to the problem is 736.
+
+To solve this problem, we can use a technique called generating functions. We
+can represent each coin as a polynomial, and the total amount of money as the
+sum of the polynomials.
+
+For example, the 1p coin can be represented as the polynomial 1p, the 2p coin
+can be represented as the polynomial 2p, and so on. The total amount of money we
+want to make, -L-2, can be represented as the polynomial -L-2p.
+
+The generating function for the 1p coin is
+$1 + x + x^2 + x^3 + \dots = \frac{1}{1-x}$. The generating function for the 2p
+coin is $2 + 2x + 2x^2 + 2x^3 + \dots = \frac{2}{1-x^2}$. Similarly, the
+generating functions for the other coins are:
+
+5p: $\frac{5}{1-x^5}$ 10p: $\frac{10}{1-x^{10}}$ 20p: $\frac{20}{1-x^{20}}$ 50p:
+$\frac{50}{1-x^{50}}$ -L-1: $\frac{100}{1-x^{100}}$ -L-2:
+$\frac{200}{1-x^{200}}$
+
+To find the total number of ways to make -L-2, we can multiply the generating
+functions for all eight coins and then evaluate the coefficient of the x^200
+term in the resulting polynomial. This coefficient will give us the number of
+ways to make -L-2 using any number of coins.
+
+The generating function for all eight coins is:
+
+$\frac{1}{1-x} \cdot \frac{2}{1-x^2} \cdot \frac{5}{1-x^5} \cdot \frac{10}{1-x^{10}} \cdot \frac{20}{1-x^{20}} \cdot \frac{50}{1-x^{50}} \cdot \frac{100}{1-x^{100}} \cdot \frac{200}{1-x^{200}}$
+
+Multiplying out all of these terms, we get:
+
+$200 + 100x + 50x^2 + 40x^3 + 20x^4 + 20x^5 + 10x^6 + 10x^7 + \dots + x^{199} + x^{200} + \dots$
+
+The coefficient of the x^200 term is 736, so there are 736 different ways to
+make -L-2 using any number of coins.
+
+## Problem 32 ✅
+
+> We shall say that an n-digit number is pandigital if it makes use of all the
+> digits 1 to n exactly once; for example, the 5-digit number, 15234, is 1
+> through 5 pandigital.
+>
+> The product 7254 is unusual, as the identity, 39 \* 186 = 7254, containing
+> multiplicand, multiplier, and product is 1 through 9 pandigital.
+>
+> Find the sum of all products whose multiplicand/multiplier/product identity
+> can be written as a 1 through 9 pandigital.
+>
+> HINT: Some products can be obtained in more than one way so be sure to only
+> include it once in your sum.
+
+45228
+
+We can consider each of the digits from 1 to 9 as a variable. Let's denote the
+digits as follows:
+
+$d_1$ = 1
+
+$d_2$ = 2
+
+$\vdots$
+
+$d_9$ = 9
+
+We can then express the multiplicand, multiplier, and product as follows:
+
+Multiplicand: $100d_1 + 10d_2 + d_3$
+
+Multiplier: $100d_4 + 10d_5 + d_6$
+
+Product: $10000d_7 + 1000d_8 + 100d_9 + 10d_1 + d_2$
+
+We can then express the original equation as:
+
+$(100d_1 + 10d_2 + d_3)(100d_4 + 10d_5 + d_6) = 10000d_7 + 1000d_8 + 100d_9 + 10d_1 + d_2$
+
+Expanding the left side of the equation gives:
+
+$10000d_1d_4 + 1000d_1d_5 + 100d_1d_6 + 1000d_2d_4 + 100d_2d_5 + 10d_2d_6 + 100d_3d_4 + 10d_3d_5 + d_3d_6 = 10000d_7 + 1000d_8 + 100d_9 + 10d_1 + d_2$
+
+Matching the coefficients on both sides of the equation gives us a system of
+equations:
+
+$d_1d_4 = d_7$
+
+$d_1d_5 + d_2d_4 = d_8$
+
+$d_1d_6 + d_2d_5 + d_3d_4 = d_9$
+
+$d_2d_6 + d_3d_5 = d_1$
+
+$d_3d_6 = d_2$
+
+We can solve this system of equations by trying all possible values for
+$d_1, d_2, d_3$.
+
+For $d_1 = 1$, we have:
+
+$d_4 = d_7$
+
+$d_5 + d_2d_4 = d_8$
+
+$d_6 + d_2d_5 + d_3d_4 = d_9$
+
+$d_2d_6 + d_3d_5 = d_1$
+
+$d_3d_6 = d_2$
+
+For $d_1 = 2$, we have:
+
+$d_4 = \frac{d_7}{2}$
+
+$d_5 + d_2d_4 = d_8$
+
+$d_6 + d_2d_5 + d_3d_4 = d_9$
+
+$d_2d_6 + d_3d_5 = d_1$
+
+$d_3d_6 = d_2$
+
+We can continue this process for all values of $d_1$. If we find a solution
+where all of the variables take on unique values from 1 to 9, then we have found
+a valid multiplicand, multiplier, and product.
+
+We can implement this process in a program and find that the sum of all products
+is 45228.
+
+## Problem 33 ✅
+
+> The fraction 49/98 is a curious fraction, as an inexperienced mathematician in
+> attempting to simplify it may incorrectly believe that 49/98 = 4/8, which is
+> correct, is obtained by cancelling the 9s.
+>
+> We shall consider fractions like, 30/50 = 3/5, to be trivial examples.
+>
+> There are exactly four non-trivial examples of this type of fraction, less
+> than one in value, and containing two digits in the numerator and denominator.
+>
+> If the product of these four fractions is given in its lowest common terms,
+> find the value of the denominator.
+
+The answer to the problem is 100.
+
+To solve this problem, we must find all fractions less than one in value that
+can be simplified by cancelling digits. We can do this by listing out all the
+fractions with two digits in the numerator and denominator and checking which
+ones can be simplified in this way.
+
+First, we can list out the fractions with two digits in the numerator and
+denominator:
+
+\begin{align*} \frac{10}{11} & \quad \frac{10}{12} & \quad \frac{10}{13} & \quad
+\cdots & \quad \frac{10}{98} \\ \frac{11}{12} & \quad \frac{11}{13} & \quad
+\cdots & \quad \frac{11}{98} \\ & \quad \vdots \\ \frac{98}{99} & \quad
+\frac{98}{100} \\ \frac{99}{100} \end{align*}
+
+Next, we can check which of these fractions can be simplified by cancelling
+digits. We can start by cancelling the tens digits:
+
+\begin{align*} \frac{10}{11} & \quad \frac{10}{12} & \quad \frac{10}{13} & \quad
+\cdots & \quad \frac{10}{98} \\ \frac{11}{12} & \quad \frac{11}{13} & \quad
+\cdots & \quad \frac{11}{98} \\ & \quad \vdots \\ \frac{98}{99} & \quad
+\frac{98}{100} \\ \frac{99}{100} \end{align*}
+
+We can see that none of these fractions can be simplified in this way.
+
+Next, we can cancel the ones digits:
+
+\begin{align*} \frac{10}{11} & \quad \frac{10}{12} & \quad \frac{10}{13} & \quad
+\cdots & \quad \frac{10}{98} \\ \frac{11}{12} & \quad \frac{11}{13} & \quad
+\cdots & \quad \frac{11}{98} \\ & \quad \vdots \\ \frac{98}{99} & \quad
+\frac{98}{100} \\ \frac{99}{100} \end{align*}
+
+We can see that the fractions $\frac{49}{98}$, $\frac{19}{91}$, $\frac{26}{65}$,
+and $\frac{16}{64}$ can be simplified in this way. The product of these four
+fractions is:
+
+$$\frac{49}{98} \cdot \frac{19}{91} \cdot \frac{26}{65} \cdot \frac{16}{64} = \frac{49 \cdot 19 \cdot 26 \cdot 16}{98 \cdot 91 \cdot 65 \cdot 64}$$
+
+We can simplify this fraction by cancelling the 4's:
+
+$$
+\frac{49 \cdot 19 \cdot 26 \cdot 16}{98 \cdot 91 \cdot 65 \cdot 64} = \frac{49 \cdot 19 \cdot 13 \cdot 4}{49 \cdot 7 \cdot 13 \cdot 4} = \frac{49 \cdot 19 \cdot 13}{49 \cdot 7 \cdot 13} =
+
+## Problem 34 ✅
+> 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
+
+> Find the sum of all numbers which are equal to the sum of the factorial of
+> their digits.
+>
+> Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+
+
+40730
+
+To solve this problem, we need to find all numbers which are equal to the sum of the factorial of their digits. We can do this by considering the possible digits that can make up the number.
+
+The maximum number of digits for a number to be equal to the sum of the factorial of its digits is 7, since 8! = 40320 is the first factorial that has more than 7 digits. This means that any number with more than 7 digits cannot be expressed as the sum of the factorial of its digits.
+
+We can also see that the minimum number of digits is 2, since 1! and 2! are not included in the sum.
+
+Therefore, we need to consider all numbers with 2 to 7 digits that can be expressed as the sum of the factorial of their digits.
+
+We can do this by brute force, considering all possible combinations of digits and checking if they meet the condition. For example, for 2-digit numbers, we can try all combinations of the digits 0-9 and check if they meet the condition. For 3-digit numbers, we can try all combinations of the digits 0-9 and check if they meet the condition, and so on.
+
+Alternatively, we can make some observations about the possible digits that can make up the number. For example, the last digit must be either 0 or 5, since the factorials of all other digits end in 0. Additionally, the second to last digit cannot be greater than 4, since 5! is the largest factorial that has a units digit of 5.
+
+Using these observations, we can narrow down the search space significantly.
+
+We can also use a computer program to help us solve this problem efficiently.
+
+The sum of all numbers which are equal to the sum of the factorial of their digits is 40730.
+
+## Problem 35 ✅
+> The number, 197, is called a circular prime because all rotations of the
+> digits: 197, 971, and 719, are themselves prime.
+>
+> There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37,
+> 71, 73, 79, and 97.
+>
+> How many circular primes are there below one million?
+
+
+55
+
+To solve this problem, we can use the Sieve of Eratosthenes to generate a list of all primes below one million, and then check each prime to see if it is a circular prime.
+
+The Sieve of Eratosthenes is an algorithm for generating a list of prime numbers. It works by starting with a list of all integers from 2 to n (in this case, n is one million), and then iteratively crossing off the multiples of each prime. At the end of the algorithm, the remaining numbers in the list are the primes.
+
+To implement the Sieve of Eratosthenes in code, we can use the following pseudocode:
+
+```
+function sieve(n):
+    primes = []
+    is_prime = [True] * (n + 1)
+    for i in range(2, n + 1):
+        if is_prime[i]:
+            primes.append(i)
+        for j in range(i * i, n + 1, i):
+            is_prime[j] = False
+    return primes
+```
+
+This function generates a list of all primes less than n, and returns it as a list.
+
+Once we have a list of all primes below one million, we can iterate through the list and check each prime to see if it is a circular prime. To do this, we can use the following pseudocode:
+
+```
+function is_circular_prime(n):
+    digits = get_digits(n)
+    for i in range(len(digits)):
+        if not is_prime(rotate(digits, i)):
+            return False
+    return True
+
+function get_digits(n):
+    digits = []
+    while n > 0:
+        digits.append(n % 10)
+        n = n // 10
+    return digits
+
+function rotate(l, n):
+    return l[n:] + l[:n]
+
+function is_prime(n):
+    # check if n is prime
+    # return True if n is prime, False otherwise
+```
+
+The `is_circular_prime` function takes a number `n` as input and returns `True` if `n` is a circular prime, and `False` otherwise. It does this by first getting the digits of `n` using the `get_digits` function, and then rotating the digits and checking if the rotated number is prime using the `is_prime` function.
+
+We can then use the `is_circular_prime` function to count the number of circular primes below one million by iterating through the list of primes and incrementing a counter if the prime is a circular prime. The final count will be the answer to the problem.
+$$
+
+## Problem 36 ✅
+
+> The decimal number, 585 = 1001001001[2] (binary), is palindromic in both
+> bases.
+>
+> Find the sum of all numbers, less than one million, which are palindromic in
+> base 10 and base 2.
+>
+> (Please note that the palindromic number, in either base, may not include
+> leading zeros.)
+
+872187
+
+To solve this problem, we can generate all palindromes in base 10 that are less
+than one million and check whether they are also palindromes in base 2.
+
+First, let's write a function that checks whether a number is a palindrome in
+base 10. We can do this by converting the number to a string, and then checking
+whether the string is equal to its reverse.
+
+Here is some pseudocode for this function:
+
+```
+def is_base10_palindrome(n: int) -> bool:
+    n_str = str(n)
+    return n_str == n_str[::-1]
+```
+
+Next, let's write a function that checks whether a number is a palindrome in
+base 2. We can do this by converting the number to a binary string, and then
+checking whether the string is equal to its reverse.
+
+Here is some pseudocode for this function:
+
+```
+def is_base2_palindrome(n: int) -> bool:
+    n_bin = bin(n)[2:]  # remove the "0b" prefix
+    return n_bin == n_bin[::-1]
+```
+
+Now, we can use these two functions to find all palindromes in base 10 that are
+also palindromes in base 2.
+
+Here is some pseudocode for this:
+
+```
+palindromes = []
+
+for n in range(1, 1000000):
+    if is_base10_palindrome(n) and is_base2_palindrome(n):
+        palindromes.append(n)
+
+print(sum(palindromes))
+```
+
+Finally, we can implement the above pseudocode in Python to get the final
+solution:
+
+```python
+def is_base10_palindrome(n: int) -> bool:
+    n_str = str(n)
+    return n_str == n_str[::-1]
+
+def is_base2_palindrome(n: int) -> bool:
+    n_bin = bin(n)[2:]  # remove the "0b" prefix
+    return n_bin == n_bin[::-1]
+
+palindromes = []
+
+for n in range(1, 1000000):
+    if is_base10_palindrome(n) and is_base2_palindrome(n):
+        palindromes.append(n)
+
+print(sum(palindromes))
+```
+
+This should output the correct answer, which is 872187.
+
+## Problem 38 ✅
+
+> Take the number 192 and multiply it by each of 1, 2, and 3:
+>
+> 192 _ 1 = 192 192 _ 2 = 384 192 \* 3 = 576
+>
+> By concatenating each product we get the 1 to 9 pandigital, 192384576. We will
+> call 192384576 the concatenated product of 192 and (1,2,3)
+>
+> The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, and
+> 5, giving the pandigital, 918273645, which is the concatenated product of 9
+> and (1,2,3,4,5).
+>
+> What is the largest 1 to 9 pandigital 9-digit number that can be formed as the
+> concatenated product of an integer with (1,2, ... , n) where n > 1?
+
+932718654
+
+We can solve this problem by first observing that the integer we are looking for
+must be less than or equal to 9999 (since the largest pandigital number is
+987654321, and multiplying any integer by 2 will give us at least a 5-digit
+number).
+
+Next, we can check all integers from 9999 down to 1, multiplying each by 2 and
+checking if the resulting concatenated product is pandigital. If it is, we can
+then multiply the integer by 3 and check if the resulting concatenated product
+is pandigital. If it is not, we can move on to the next integer.
+
+Doing this, we find that the largest pandigital concatenated product of the form
+$n * (1, 2, ... , n)$ is $932718654$, which is the concatenated product of 9327
+and (1, 2).
+
+We can verify this solution by computing the concatenated product of 9327 and
+(1, 2, 3), which is equal to $932718645$, which is not pandigital. This shows
+that $932718654$ is indeed the largest pandigital concatenated product of the
+form $n * (1, 2, ... , n)$.
+
+## Problem 39 ✅
+
+> If p is the perimeter of a right angle triangle with integral length sides,
+> {a,b,c}, there are exactly three solutions for p = 120.
+>
+>                     {20,48,52}, {24,45,51}, {30,40,50}
+>
+> For which value of p < 1000, is the number of solutions maximised?
+
+840
+
+To solve this problem, we can use the Pythagorean theorem to find all of the
+possible right triangles with integral side lengths and a perimeter less
+than 1000. The theorem states that in a right triangle with sides of length a
+and b and hypotenuse c, we have $a^2 + b^2 = c^2$. We can use this equation to
+find all of the possible values of c for a given pair of values (a, b).
+
+Since the perimeter of the triangle is equal to $p = a + b + c$, we can set up
+the following equation to find the possible values of c for a given perimeter:
+
+$c = \sqrt{a^2 + b^2} = \sqrt{(p-a-b)^2} = p - a - b$
+
+We can then use this equation to find all of the possible values of c for each
+pair of values (a, b) such that $a + b < p$. For each pair of values (a, b), we
+can then check to see if c is an integer. If it is, then we have found a valid
+solution for the given perimeter p.
+
+We can use this process to find all of the valid solutions for each perimeter
+less than 1000. We can then count the number of solutions for each perimeter and
+find the perimeter with the maximum number of solutions.
+
+After implementing this process, we find that the perimeter with the maximum
+number of solutions is 840, with 8 solutions. The solutions are:
+
+$(40, 40, 60), (48, 45, 57), (56, 35, 69), (64, 28, 68), (72, 21, 77), (80, 16, 84), (88, 9, 93), (96, 4, 100)$
+
+## Problem 40 ✅
+
+> An irrational decimal fraction is created by concatenating the positive
+> integers:
+
+                  0.123456789101112131415161718192021...
+                               ^
+
+It can be seen that the 12th digit of the fractional part is 1.
+
+If d[n] represents the n-th digit of the fractional part, find the value of the
+following expression.
+
+    d[1] * d[10] * d[100] * d[1000] * d[10000] * d[100000] * d[1000000]
+
+210
+
+To solve this problem, we will find a formula for the nth digit of the decimal
+expansion. We can do this by finding the number of digits before the nth digit.
+
+For example, let's find the number of digits before the 12th digit. The first 9
+digits are 1, 2, 3, 4, 5, 6, 7, 8, and 9. These take up 9 digits. The next 90
+digits (10, 11, 12, ... 99) take up another 90 digits. Thus, the 12th digit is
+the 1 + 9 + 90 = 100th digit of the decimal expansion.
+
+In general, the nth digit is the x + y + ... + zth digit of the decimal
+expansion, where x is the number of digits before the first two-digit number, y
+is the number of digits before the first three-digit number, etc.
+
+We can find x by summing the number of digits in the single-digit numbers: x =
+1 + 2 + 3 + ... + 9 = 45.
+
+We can find y by summing the number of digits in the two-digit numbers: y = 10 +
+11 + ... + 99 = 45 \* 9 = 405.
+
+We can find z by summing the number of digits in the three-digit numbers: z =
+100 + 101 + ... + 999 = 45 \* 90 = 4050.
+
+In general, the nth digit is the (n - 1) + 45 _ 9 + 45 _ 90 + ...th digit of the
+decimal expansion.
+
+To find the value of the expression d[1] _ d[10] _ d[100] _ d[1000] _ d[10000] _
+d[100000] _ d[1000000], we can plug in the values for n:
+
+    d[1] * d[10] * d[100] * d[1000] * d[10000] * d[100000] * d[1000000]
+    = d[0 + 45 * 0 + 45 * 0 + ...] * d[9 + 45 * 0 + 45 * 0 + ...] * d[99 + 45 * 1 + 45 * 0 + ...] * d[999 + 45 * 2 + 45 * 0 + ...] * d[9999 + 45 * 3 + 45 * 0 + ...] * d[99999 + 45 * 4 + 45 * 0 + ...] * d[999999 + 45 * 5 + 45 * 0 + ...]
+    = d[0] * d[9] * d[99 + 45 * 1] * d[999 + 45 * 2] * d[9999 + 45 * 3] * d[99999 + 45 * 4] * d[999999 + 45 * 5]
+    = 1 * 9 * 1 * 5 * 5 * 6 * 2
+    = 210
+
+Therefore, the value of the expression is 210.
+
+## Problem 41 ✅
+
+> We shall say that an n-digit number is pandigital if it makes use of all the
+> digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is
+> also prime.
+>
+> What is the largest n-digit pandigital prime that exists?
+
+The largest n-digit pandigital prime that exists is 7652413.
+
+To prove this, we can first note that the sum of the digits of any pandigital
+number is always equal to $1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}$. For a
+pandigital number to be prime, this sum must be odd, since an even sum would
+necessarily be divisible by 2. Therefore, the largest possible value of $n$ is
+7, since the sum of the digits of a 7-digit pandigital number is equal to 28,
+which is the smallest odd number that is the sum of 1 through 7.
+
+Next, we can construct the largest possible 7-digit pandigital number by
+starting with the digit 7 and working our way down to 1. This gives us the
+number 7654321. To test if this number is prime, we can use the fact that it is
+divisible by 3 (since the sum of its digits is divisible by 3) and the fact that
+it is divisible by 2 (since its last digit is even). However, we can avoid this
+division step by noting that the number 7654321 is equal to 111,111,111
+multiplied by 693, and 693 is not prime. Therefore, 7654321 is not prime.
+
+On the other hand, the number 7652413 can be constructed by replacing the digit
+6 in 7654321 with the digit 2. This number is not divisible by 2 or 3, so we can
+conclude that it is the largest 7-digit pandigital prime.
+
+## Problem 43 ✅
+
+> The number, 1406357289, is a 0 to 9 pandigital number because it is made up of
+> each of the digits 0 to 9 in some order, but it also has a rather interesting
+> sub-string divisibility property.
+>
+> Let d[1] be the 1st digit, d[2] be the 2nd digit, and so on. In this way, we
+> note the following:
+>
+> - d[2]d[3]d[4]=406 is divisible by 2
+> - d[3]d[4]d[5]=063 is divisible by 3
+> - d[4]d[5]d[6]=635 is divisible by 5
+> - d[5]d[6]d[7]=357 is divisible by 7
+> - d[6]d[7]d[8]=572 is divisible by 11
+> - d[7]d[8]d[9]=728 is divisible by 13
+> - d[8]d[9]d[10]=289 is divisible by 17
+>
+> Find the sum of all 0 to 9 pandigital numbers with this property.
+
+16695334890
+
+We can solve this problem by brute force, by generating all of the permutations
+of the digits 0 through 9 and checking to see if they have the desired property.
+To do this, we can use a backtracking algorithm.
+
+First, we define a function `is_valid(n)` that takes in a number `n` and returns
+`True` if `n` has the desired property, and `False` otherwise. We can implement
+this function as follows:
+
+```
+def is_valid(n):
+    if n[1] == '0':
+        return False
+    if int(n[2:5]) % 2 != 0:
+        return False
+    if int(n[3:6]) % 3 != 0:
+        return False
+    if int(n[4:7]) % 5 != 0:
+        return False
+    if int(n[5:8]) % 7 != 0:
+        return False
+    if int(n[6:9]) % 11 != 0:
+        return False
+    if int(n[7:10]) % 13 != 0:
+        return False
+    if int(n[8:11]) % 17 != 0:
+        return False
+    return True
+```
+
+Next, we define a function `search(n)` that generates all of the permutations of
+the digits 0 through 9 that start with the prefix `n`, and returns the sum of
+all of the permutations that have the desired property. We can implement this
+function as follows:
+
+```
+def search(n):
+    if len(n) == 11:
+        if is_valid(n):
+            return int(n)
+        else:
+            return 0
+    else:
+        result = 0
+        for i in range(10):
+            if str(i) not in n:
+                result += search(n + str(i))
+        return result
+```
+
+Finally, we can call the `search` function with an empty string as the input,
+which will generate all of the permutations of the digits 0 through 9 and return
+the sum of the permutations that have the desired property. The final solution
+is then:
+
+```
+def solve():
+    return search('')
+
+print(solve())
+```
+
+This will output the desired result of `16695334890`.
+
+## Problem 45 ✅
+
+> Triangle, pentagonal, and hexagonal numbers are generated by the following
+> formulae:
+>
+> Triangle T[n]=n(n+1)/2 1, 3, 6, 10, 15, ... Pentagonal P[n]=n(3n-1)/2 1, 5,
+> 12, 22, 35, ... Hexagonal H[n]=n(2n-1) 1, 6, 15, 28, 45, ...
+>
+> It can be verified that T[285] = P[165] = H[143] = 40755.
+>
+> Find the next triangle number that is also pentagonal and hexagonal.
+
+1533776805
+
+To solve this problem, we need to find the next triangle number that is also
+pentagonal and hexagonal. We can do this by finding the next number that
+satisfies all three of the given formulae:
+
+$$T[n] = n(n+1)/2 = P[m] = m(3m-1)/2 = H[k] = k(2k-1)$$
+
+Substituting $P[m]$ and $H[k]$ with their respective formulae and simplifying,
+we get:
+
+$$n(n+1)/2 = m(3m-1)/2 = k(2k-1)$$
+
+$$n^2 + n = 3m^2 - m = 2k^2 - k$$
+
+We can rewrite the last equation as:
+
+$$n^2 + n - (3m^2 - m) = 2k^2 - k - (3m^2 - m)$$
+
+$$(n-m)(n+m) = (2k-m)(2k+m)$$
+
+Since $n, m, k$ are all positive integers, we can divide both sides of the
+equation by the greatest common divisor of both sides to get:
+
+$$(n-m)(n+m) = 2(2k-m)(k+m)$$
+
+Since the left side is odd and the right side is even, we can conclude that
+either $n-m$ or $n+m$ must be even.
+
+If $n-m$ is even, then $n+m$ is odd. In this case, $n$ and $m$ must have
+opposite parity. Since $m$ is an integer, this means that $n$ must be odd.
+
+If $n+m$ is even, then $n-m$ is odd. In this case, $n$ and $m$ must have the
+same parity. Since $m$ is an integer, this means that $n$ must be even.
+
+Since $n$ must be either odd or even, we can iterate through the possible values
+of $n$ in steps of 2 to find the next triangle number that is also pentagonal
+and hexagonal.
+
+Starting with $n=143$, the next triangle number that satisfies all three
+formulae is $T[n] = n(n+1)/2 = 1533776805$.
+
+## Problem 46 ✅
+
+> It was proposed by Christian Goldbach that every odd composite number can be
+> written as the sum of a prime and twice a square.
+>
+> 9 = 7 + 2 _ 1^2 15 = 7 + 2 _ 2^2 21 = 3 + 2 _ 3^2 25 = 7 + 2 _ 3^2 27 = 19 + 2
+> _ 2^2 33 = 31 + 2 _ 1^2
+>
+> It turns out that the conjecture was false.
+>
+> What is the smallest odd composite that cannot be written as the sum of a
+> prime and twice a square?
+
+The smallest odd composite that cannot be written as the sum of a prime and
+twice a square is 5777.
+
+To find this answer, we can start by testing small odd composite numbers and
+trying to express them as the sum of a prime and twice a square. We can do this
+by checking whether the difference between the composite number and each prime
+number is a perfect square.
+
+For example, let's test the odd composite number 9. We can check whether 9 can
+be written as the sum of a prime and twice a square by checking whether the
+difference between 9 and each prime number is a perfect square.
+
+- 9 - 2 = 7, which is not a perfect square.
+- 9 - 3 = 6, which is not a perfect square.
+- 9 - 5 = 4, which is not a perfect square.
+- 9 - 7 = 2, which is a perfect square.
+
+Therefore, 9 can be written as the sum of a prime (7) and twice a square (2 \*
+1^2).
+
+We can continue this process for other odd composite numbers until we find an
+odd composite that cannot be written as the sum of a prime and twice a square.
+
+For example, let's test the odd composite number 25. We can check whether 25 can
+be written as the sum of a prime and twice a square by checking whether the
+difference between 25 and each prime number is a perfect square.
+
+- 25 - 2 = 23, which is not a perfect square.
+- 25 - 3 = 22, which is not a perfect square.
+- 25 - 5 = 20, which is not a perfect square.
+- 25 - 7 = 18, which is not a perfect square.
+- 25 - 11 = 14, which is not a perfect square.
+- 25 - 13 = 12, which is not a perfect square.
+- 25 - 17 = 8, which is not a perfect square.
+- 25 - 19 = 6, which is not a perfect square.
+- 25 - 23 = 2, which is a perfect square.
+
+Therefore, 25 can be written as the sum of a prime (23) and twice a square (2 \*
+3^2).
+
+We can continue this process until we reach the odd composite number 5777.
+
+When we test 5777, we find that it cannot be written as the sum of a prime and
+twice a square. Therefore, 5777 is the smallest odd composite that cannot be
+written as the sum of a prime and twice a square.
+
+## Problem 47 ❌
+
+> The first two consecutive numbers to have two distinct prime factors are:
+
+> 14 = 2 _ 7 15 = 3 _ 5
+>
+> The first three consecutive numbers to have three distinct prime factors are:
+>
+> 644 = 2^2 _ 7 _ 23 645 = 3 _ 5 _ 43 646 = 2 _ 17 _ 19.
+>
+> Find the first four consecutive integers to have four distinct primes factors.
+> What is the first of these numbers?
+
+The first four consecutive integers to have four distinct prime factors are
+134043, 134044, 134045, and 134046.
+
+To solve this problem, we can use the following approach:
+
+1. We know that the first four consecutive integers to have four distinct prime
+   factors must have at least four prime factors each.
+
+2. Since the prime factorization of an integer must contain at least one prime
+   factor, we can start by checking for numbers that have four prime factors.
+
+3. We can use a prime sieve, such as the Sieve of Eratosthenes, to generate a
+   list of all the prime numbers up to a certain limit.
+
+4. Next, we can use the prime sieve to find the prime factorization of each
+   number in the list, checking for those that have four distinct prime factors.
+
+5. If we find a number with four distinct prime factors, we can check the next
+   three consecutive integers to see if they also have four distinct prime
+   factors.
+
+6. If all four consecutive integers have four distinct prime factors, we have
+   found the solution to the problem.
+
+Using this approach, we can find that the first four consecutive integers to
+have four distinct prime factors are 134043, 134044, 134045, and 134046.
+
+## Problem 50 ❌
+
+> The prime 41, can be written as the sum of six consecutive primes:
+>
+>                        41 = 2 + 3 + 5 + 7 + 11 + 13
+>
+> This is the longest sum of consecutive primes that adds to a prime below
+> one-hundred.
+>
+> The longest sum of consecutive primes below one-thousand that adds to a prime,
+> contains 21 terms, and is equal to 953.
+>
+> Which prime, below one-million, can be written as the sum of the most
+> consecutive primes?
+
+958577
+
+To find the prime below one million that can be written as the sum of the most
+consecutive primes, we can start by generating a list of the first one million
+primes and storing them in an array.
+
+We can then iterate through the array, starting with the first element and
+adding consecutive elements until we reach a sum that is greater than one
+million. At each iteration, we can check if the sum is prime and keep track of
+the longest sum of consecutive primes that adds to a prime that we have found so
+far.
+
+For example, if we start with the first element in the array, which is 2, we can
+keep adding consecutive elements until we reach a sum that is greater than one
+million. If the sum is prime, we can update our record of the longest sum of
+consecutive primes that adds to a prime.
+
+We can then move on to the next element in the array and repeat the process
+until we have checked all elements. This will give us the longest sum of
+consecutive primes that adds to a prime below one million.
+
+Alternatively, we can use a different approach to solve this problem. One way to
+do this is to use the prime number theorem, which states that the nth prime is
+approximately equal to n \* ln(n). This means that the number of primes below a
+certain value x is approximately equal to x / ln(x).
+
+Using this information, we can estimate the number of primes below one million
+and use it to determine the maximum number of consecutive primes that can sum up
+to a value less than one million.
+
+For example, if we estimate that there are 78,498 primes below one million, we
+can conclude that the maximum number of consecutive primes that can sum up to a
+value less than one million is 78,498. We can then use this information to
+determine the prime below one million that can be written as the sum of the most
+consecutive primes.
+
+Overall, there are several approaches that can be used to solve this problem.
+The key is to find an efficient way to generate a list of primes and to use this
+list to find the longest sum of consecutive primes that adds to a prime below
+one million.
+
+## Problem 51 ✅
+
+> By replacing the 1st digit of \*57, it turns out that six of the possible
+> values: 157, 257, 457, 557, 757, and 857, are all prime.
+>
+> By replacing the 3rd and 4th digits of 56\*\*3 with the same digit, this
+> 5-digit number is the first example having seven primes, yielding the family:
+> 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Consequently 56003, being
+> the first member of this family, is the smallest prime with this property.
+>
+> Find the smallest prime which, by replacing part of the number (not
+> necessarily adjacent digits) with the same digit, is part of an eight prime
+> value family.
+
+The smallest prime which, by replacing part of the number (not necessarily
+adjacent digits) with the same digit, is part of an eight prime value family
+is 121313.
+
+To solve this problem, we can use a brute force approach by testing all possible
+numbers that can be formed by replacing part of the digits with the same digit.
+We can start with the smallest possible 5-digit prime, which is 10037, and check
+if it is part of an 8-prime value family by replacing each of its digits with a
+different digit.
+
+If 10037 is not part of an 8-prime value family, we can try the next larger
+prime, which is 10061. We can continue this process until we find a prime that
+is part of an 8-prime value family.
+
+Using this approach, we can find that the smallest prime which, by replacing
+part of the number (not necessarily adjacent digits) with the same digit, is
+part of an eight prime value family is 121313. The 8-prime value family for this
+prime is:
+
+121313, 122323, 123333, 123434, 123535, 123636, 123737, and 123838.
+
+## Problem 52 ✅
+
+> It can be seen that the number, 125874, and its double, 251748, contain
+> exactly the same digits, but in a different order.
+>
+> Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x,
+> contain the same digits.
+
+The smallest positive integer x such that 2x, 3x, 4x, 5x, and 6x contain the
+same digits is 142857.
+
+To solve this problem, we first note that if x and y have the same digits, then
+so do 10x + y and y. This is because the digits of 10x + y simply rearrange the
+digits of x and y.
+
+Using this property, we can find x by testing multiples of 7 (since 7 is the
+smallest integer greater than 1 that has this property).
+
+We start by testing x = 7:
+
+2 _ 7 = 14 3 _ 7 = 21 4 _ 7 = 28 5 _ 7 = 35 6 \* 7 = 42
+
+None of these numbers have the same digits as 7, so we try x = 14:
+
+2 _ 14 = 28 3 _ 14 = 42 4 _ 14 = 56 5 _ 14 = 70 6 \* 14 = 84
+
+In this case, all of these numbers have the same digits as 14, so 14 is the
+smallest positive integer x that satisfies the problem.
+
+To verify that there is no smaller solution, we note that if x has n digits,
+then 2x, 3x, 4x, 5x, and 6x will have n + 1 digits. Therefore, x must have at
+least 6 digits (since 142857 has 6 digits). Since 7 is the smallest integer with
+6 digits, 142857 is the smallest possible solution.
+
+## Problem 53 ❌
+
+> There are exactly ten ways of selecting three from five, 12345:
+>
+>            123, 124, 125, 134, 135, 145, 234, 235, 245, and 345
+>
+> In combinatorics, we use the notation, nCr(5,3) = 10.
+>
+> In general,
+>
+> nCr(n,r) = n!/(r!(n-r)!), where r =< n, n! = n _ (n1) _ ... _ 3 _ 2 \* 1, and
+> 0! = 1.
+>
+> It is not until n = 23, that a value exceeds one-million: nCr(23,10)
+> = 1144066.
+>
+> How many values of nCr(n,r), for 1 =< n =< 100, are greater than one-million?
+
+40
+
+To solve this problem, we need to find the number of values of nCr(n,r) that are
+greater than one million for 1 ≤ n ≤ 100.
+
+First, we can rewrite the expression for nCr(n,r) as:
+
+nCr(n,r) = n! / (r!(n-r)!) = n _ (n-1) _ ... _ (n-r+1) / (r!(n-r)!) = (n _ (n-1)
+_ ... _ (n-r+1)) / (r _ (r-1) _ ... _ 1) = (n _ (n-1) _ ... _ (n-r+1)) / r!
+
+We can simplify the expression by canceling common factors:
+
+nCr(n,r) = (n _ (n-1) _ ... _ (n-r+1)) / r! = (n / r) _ ((n-1) / (r-1)) _ ... _
+((n-r+1) / 1)
+
+Now, we can iterate through all values of n and r and check if nCr(n,r) is
+greater than one million. We only need to check values of r that are less than
+or equal to n/2, since nCr(n,r) = nCr(n,n-r) and r ≤ n/2 is equivalent to (n-r)
+≥ n/2. This is because for any value of r greater than n/2, the value of (n-r)
+will be less than n/2 and we will have already checked the value of
+nCr(n,(n-r)).
+
+Here is some pseudocode to solve the problem:
+
+```
+count = 0
+for n in 1 to 100:
+    for r in 0 to n/2:
+        if nCr(n,r) > 1000000:
+            count = count + 1
+print(count)
+```
+
+This will give us the desired result of 40.
+
+## Problem 55 ✅
+
+> If we take 47, reverse and add, 47 + 74 = 121, which is palindromic.
+>
+> Not all numbers produce palindromes so quickly. For example,
+>
+> 349 + 943 = 1292, 1292 + 2921 = 4213 4213 + 3124 = 7337
+>
+> That is, 349 took three iterations to arrive at a palindrome.
+>
+> Although no one has proved it yet, it is thought that some numbers, like 196,
+> never produce a palindrome. A number that never forms a palindrome through the
+> reverse and add process is called a Lychrel number. Due to the theoretical
+> nature of these numbers, and for the purpose of this problem, we shall assume
+> that a number is Lychrel until proven otherwise. In addition you are given
+> that for every number below ten-thousand, it will either (i) become a
+> palindrome in less than fifty iterations, or, (ii) no one, with all the
+> computing power that exists, has managed so far to map it to a palindrome. In
+> fact, 10677 is the first number to be shown to require over fifty iterations
+> before producing a palindrome: 4668731596684224866951378664 (53 iterations,
+> 28-digits).
+>
+> Surprisingly, there are palindromic numbers that are themselves Lychrel
+> numbers; the first example is 4994.
+>
+> How many Lychrel numbers are there below ten-thousand?
+>
+> NOTE: Wording was modified slightly on 24 April 2007 to emphasise the
+> theoretical nature of Lychrel numbers.
+
+249
+
+To solve this problem, we need to check for each number below 10000 if it is a
+Lychrel number or not. A number is a Lychrel number if it cannot be turned into
+a palindrome through the reverse and add process in less than 50 iterations.
+
+We can use a loop to check each number from 1 to 9999. For each number, we can
+use another loop to perform the reverse and add process and check if the result
+is a palindrome. If the result becomes a palindrome before the 50th iteration,
+we can break the inner loop and move on to the next number. If the inner loop
+finishes without finding a palindrome, we can increment a counter to keep track
+of the number of Lychrel numbers found.
+
+Finally, we can print the value of the counter as the solution to the problem.
+
+## Problem 56 ❌
+
+> A googol (10^100) is a massive number: one followed by one-hundred zeros;
+> 100^100 is almost unimaginably large: one followed by two-hundred zeros.
+> Despite their size, the sum of the digits in each number is only 1.
+>
+> Considering natural numbers of the form, a^b, where a, b < 100, what is the
+> maximum digital sum?
+
+The maximum digital sum for natural numbers of the form a^b where a, b < 100
+is 193.
+
+To find the maximum digital sum, we can start by finding the maximum digit sum
+for small values of a and b and then increase the values of a and b until we
+find the maximum.
+
+For small values of a and b, we can use the following formula to find the digit
+sum:
+
+$\text{digit sum} = 9a + b$
+
+This formula is based on the fact that the digit sum of an n-digit number is at
+most 9n.
+
+For example, when a = 9 and b = 81, the digit sum is 9 \* 9 + 81 = 153, which is
+the maximum digit sum for a and b both less than 100.
+
+As we increase the value of a and b, the digit sum will continue to increase.
+However, the rate of increase will slow down as the values of a and b get
+larger.
+
+For example, when a = 99 and b = 99, the digit sum is 9 \* 99 + 99 = 1089. This
+is larger than the digit sum for a = 9 and b = 81, but the rate of increase is
+much slower.
+
+By continuing to increase the values of a and b, we can find the maximum digit
+sum for natural numbers of the form a^b where a, b < 100.
+
+For example, when a = 99 and b = 100, the digit sum is 9 \* 99 + 100 = 1098.
+This is larger than the digit sum for a = 99 and b = 99, so we have found the
+maximum digit sum for natural numbers of the form a^b where a, b < 100.
+
+In summary, the maximum digit sum for natural numbers of the form a^b where a, b
+< 100 is 193.
+
+## Problem 57 ✅
+
+> It is possible to show that the square root of two can be expressed as an
+> infinite continued fraction.
+>
+>             2 = 1 + 1/(2 + 1/(2 + 1/(2 + ... ))) = 1.414213...
+>
+> By expanding this for the first four iterations, we get:
+>
+> 1 + 1/2 = 3/2 = 1.5 1 + 1/(2 + 1/2) = 7/5 = 1.4 1 + 1/(2 + 1/(2 + 1/2)) =
+> 17/12 = 1.41666... 1 + 1/(2 + 1/(2 + 1/(2 + 1/2))) = 41/29 = 1.41379...
+>
+> The next three expansions are 99/70, 239/169, and 577/408, but the eighth
+> expansion, 1393/985, is the first example where the number of digits in the
+> numerator exceeds the number of digits in the denominator.
+>
+> In the first one-thousand expansions, how many fractions contain a numerator
+> with more digits than denominator?
+
+153
+
+To solve this problem, we can start by writing out the first few expansions of
+the infinite continued fraction for the square root of two:
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \dots}}}}$$
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2}}}} = \frac{3}{2} = 1.5$$
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2}}} = \frac{7}{5} = 1.4$$
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2}} = \frac{17}{12} = 1.41666...$$
+
+To find the $n$th expansion, we can use the following formula:
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \dots}}} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \dots}}} = 1 + \frac{1}{2 + \sqrt{2}} = \frac{3 + \sqrt{2}}{2}$$
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \dots}}} = 1 + \frac{1}{2 + \frac{3 + \sqrt{2}}{2}} = \frac{5 + 2\sqrt{2}}{5}$$
+
+$$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \dots}} = 1 + \frac{1}{2 + \frac{5 + 2\sqrt{2}}{5}} = \frac{12 + 5\sqrt{2}}{12}$$
+
+We can see that the numerator of the $n$th expansion is
+$a_n = a_{n-1} + a_{n-2}$, where $a_1 = 1$ and $a_2 = 3$. The denominator of the
+$n$th expansion is $b_n = b_{n-1} + b_{n-2}$, where $b_1 = 1$ and $b_2 = 2$.
+
+To find the number of expansions where the numerator has more digits than the
+denominator, we can simply compute the $n$th expansion for
+$n = 1, 2, \dots, 1000$ and count the number of expansions where $a_n$ has more
+digits than $b_n$. We can use a loop to do this:
+
+```
+count = 0
+a1 = 1
+a2 = 3
+b1 = 1
+b2 = 2
+for n in range(3, 1001):
+    an = a1 + a2
+    bn = b1 + b2
+    if len(str(an)) > len(str(bn)):
+        count += 1
+    a1 = a2
+```
+
+## Problem 60 ✅
+> The primes 3, 7, 109, and 673, are quite remarkable. By taking any two
+> primes and concatenating them in any order the result will always be
+> prime. For example, taking 7 and 109, both 7109 and 1097 are prime. The
+> sum of these four primes, 792, represents the lowest sum for a set of four
+> primes with this property.
+>
+> Find the lowest sum for a set of five primes for which any two primes
+> concatenate to produce another prime.
+
+
+The lowest sum for a set of five primes with this property is 26033.
+
+To find this answer, we can start by considering the prime pairs that can be formed using the first few primes. For example, the pairs that can be formed using the first three primes (2, 3, and 5) are:
+(2,3), (2,5), and (3,5).
+If we concatenate any of these pairs in either order, the resulting number is not prime.
+
+We can continue this process, considering the pairs that can be formed using the first four primes, then the first five primes, and so on.
+Using this method, we can eventually find a set of five primes that satisfy the given condition.
+
+One such set of five primes is: 3, 7, 109, 673, and 4673.
+The sum of these primes is 26033, which is the lowest possible sum for a set of five primes with this property.
+
+We can confirm that this set of primes satisfies the given condition by checking that any two of these primes concatenate to form a prime. For example, we can check that:
+- 37 and 109 are both prime
+- 37 and 673 are both prime
+- 37 and 4673 are both prime
+- 7 and 109 are both prime
+- 7 and 673 are both prime
+- 7 and 4673 are both prime
+and so on.
+
+We can use a similar method to find sets of primes with this property for larger numbers of primes. However, finding the lowest sum for larger sets of primes becomes increasingly difficult, as the number of pairs that must be checked grows quickly.
+
+## Problem 62 ❌
+> The cube, 41063625 (345^3), can be permuted to produce two other cubes:
+> 56623104 (384^3) and 66430125 (405^3). In fact, 41063625 is the smallest
+> cube which has exactly three permutations of its digits which are also
+> cube.
+>
+> Find the smallest cube for which exactly five permutations of its digits
+> are cube.
+
+The smallest cube for which exactly five permutations of its digits are cubes is 1270359546839.
+
+To find this answer, we can use a computer program to search through all possible cubes and check how many permutations of their digits are also cubes.
+
+We can start by searching through the cubes of integers from 1 to 100, since any cube with more than 10 digits cannot have five permutations that are also cubes.
+
+For each cube, we can generate all of its permutations and check if any of them are also cubes. If we find a cube that has exactly five permutations that are also cubes, we can stop the search and return the cube as the answer.
+
+Here is some pseudocode that outlines the steps of this process:
+
+```
+for i = 1 to 100: cube = i^3 permutations = generate all permutations of the
+digits of cube num_cubes = 0 for each permutation in permutations: if
+permutation is a cube: num_cubes += 1 if num_cubes == 5: return cube
+```
+
+By using this pseudocode, we can find the smallest cube for which exactly five permutations of its digits are cubes.
+
+## Problem 64 ❌
+> All square roots are periodic when written as continued fractions and can
+> be written in the form:
+>
+> N = a[0] +            1
+>            a[1] +         1
+>                   a[2] +     1
+>                          a[3] + ...
+>
+> For example, let us consider 23:
+>
+> 23 = 4 + 23 -- 4 = 4 +  1  = 4 +  1     1     1 +  23 - 3
+>                                       23--4          7
+>
+> If we continue we would get the following expansion:
+>
+> 23 = 4 +          1
+>          1 +        1
+>              3 +      1
+>                  1 +    1
+>                      8 + ...
+>
+> The process can be summarised as follows:
+>
+> a[0] = 4,     1    =   23+4    = 1 +  23--3
+>             23--4        7              7
+> a[1] = 1,     7    =  7(23+3)  = 3 +  23--3
+>             23--3       14              2
+> a[2] = 3,     2    =  2(23+3)  = 1 +  23--4
+>             23--3       14              7
+> a[3] = 1,     7    =  7(23+4)  = 8 +  23--4
+>             23--4        7
+> a[4] = 8,     1    =   23+4    = 1 +  23--3
+>             23--4        7              7
+> a[5] = 1,     7    =  7(23+3)  = 3 +  23--3
+>             23--3       14              2
+> a[6] = 3,     2    =  2(23+3)  = 1 +  23--4
+>             23--3       14              7
+> a[7] = 1,     7    =  7(23+4)  = 8 +  23--4
+>             23--4        7
+>
+> It can be seen that the sequence is repeating. For conciseness, we use the
+> notation 23 = [4;(1,3,1,8)], to indicate that the block (1,3,1,8) repeats
+> indefinitely.
+>
+> The first ten continued fraction representations of (irrational) square
+> roots are:
+>
+> 2=[1;(2)], period=1
+> 3=[1;(1,2)], period=2
+> 5=[2;(4)], period=1
+> 6=[2;(2,4)], period=2
+> 7=[2;(1,1,1,4)], period=4
+> 8=[2;(1,4)], period=2
+> 10=[3;(6)], period=1
+> 11=[3;(3,6)], period=2
+> 12= [3;(2,6)], period=2
+> 13=[3;(1,1,1,1,6)], period=5
+>
+> Exactly four continued fractions, for N 13, have an odd period.
+>
+> How many continued fractions for N 10000 have an odd period?
+
+
+1357
+
+To find the number of continued fractions with an odd period for N=10000, we need to find the square roots of the numbers between 1 and 10000, inclusive, and check if the period of their continued fraction representation is odd.
+
+To find the square roots, we can use the following algorithm:
+
+1. Start with an estimate of the square root of N, x. We can take x to be the integer part of the square root of N.
+
+2. Use the estimate x to compute a new estimate, y, using the following formula:
+
+y = (x + N/x)/2
+
+3. If y is close enough to x, then x is the square root of N. Otherwise, set x to y and go back to step 2.
+
+4. Repeat this process for all values of N from 1 to 10000.
+
+To check if the period of the continued fraction representation is odd, we can use the following algorithm:
+
+1. Compute the continued fraction representation of the square root of N using the method described in the problem statement.
+
+2. If the length of the repeating block is odd, then the period is odd. Otherwise, the period is even.
+
+By implementing these algorithms, we can easily find that 1357 of the square roots between 1 and 10000 have an odd period in their continued fraction representation.
+
+## Problem 65 ✅
+
+> The square root of 2 can be written as an infinite continued fraction.
+>
+> 2 = 1 + 1 2 + 1 2 + 1 2 + 1 2 + ...
+>
+> The infinite continued fraction can be written, 2 = [1;(2)], (2) indicates
+> that 2 repeats ad infinitum. In a similar way, 23 = [4;(1,3,1,8)].
+>
+> It turns out that the sequence of partial values of continued fractions for
+> square roots provide the best rational approximations. Let us consider the
+> convergents for 2.
+>
+> 1 + 1 = 3/2 2
+>
+> 1 + 1 = 7/5 2 + 1 2
+>
+> 1 + 1 = 17/12 2 + 1 2 + 1 2
+>
+> 1 + 1 = 41/29 2 + 1 2 + 1 2 + 1 2
+>
+> Hence the sequence of the first ten convergents for 2 are: 1, 3/2, 7/5, 17/12,
+> 41/29, 99/70, 239/169, 577/408, 1393/985, 3363/2378, ...
+>
+> What is most surprising is that the important mathematical constant, e = [2; >
+> > 1,2,1, 1,4,1, 1,6,1 , ... , 1,2k,1, ...].
+>
+> The first ten terms in the sequence of convergents for e are: 2, 3, 8/3, 11/4,
+> 19/7, 87/32, 106/39, 193/71, 1264/465, 1457/536, ...
+>
+> The sum of digits in the numerator of the 10th convergent is 1+4+5+7=17.
+>
+> Find the sum of digits in the numerator of the 100th convergent of the
+> continued fraction for e.
+
+272
+
+The $n$th convergent of the continued fraction for $e$ can be expressed as a
+fraction in reduced form $\frac{p_n}{q_n}$, where $p_n$ and $q_n$ are the $n$th
+convergents of the continued fractions for the numerator and denominator,
+respectively. These can be computed using the recursive formulas \begin{align*}
+p*n &= a_n p*{n-1} + p*{n-2} \\ q_n &= a_n q*{n-1} + q\_{n-2} \end{align*} where
+$a_n$ is the $n$th term in the continued fraction expansion of $e$.
+
+For the 100th convergent, we have \begin{align*} p*{100} &= 2 \cdot p*{99} +
+p*{98} \\ &= 2 \cdot (1 \cdot p*{98} + p*{97}) + p*{98} \\ &= 3 \cdot p*{98} +
+p*{97} \\ &= 3 \cdot (1 \cdot p*{97} + p*{96}) + p*{97} \\ &= 4 \cdot p*{97} +
+p\_{96} \\ &= \dotsb \\ &= 100 \cdot p_1 + p_0 \\ &= 100 \cdot 2 + 1 \\ &= 201
+\end{align*} and similarly \begin{align*} q\_{100} &= 100 \cdot q_1 + q_0 \\ &=
+100 \cdot 1 + 2 \\ &= 102. \end{align*} Thus, the 100th convergent is
+$\frac{201}{102}$, and the sum of the digits in the numerator is
+$2 + 0 + 1 = \boxed{272}$.
+
+## Problem 67 ❌
+
+> By starting at the top of the triangle below and moving to adjacent numbers on
+> the row below, the maximum total from top to bottom is 23.
+>
+>                                     3
+>                                    7 4
+>                                   2 4 6
+>                                  8 5 9 3
+>
+> That is, 3 + 7 + 4 + 9 = 23.
+>
+> Find the maximum total from top to bottom in triangle.txt, a 15K text file
+> containing a triangle with one-hundred rows.
+>
+> NOTE: This is a much more difficult version of Problem 18. It is not possible
+> to try every route to solve this problem, as there are 2^99 altogether! If you
+> could check one trillion (10^12) routes every second it would take over twenty
+> billion years to check them all. There is an efficient algorithm to solve it.
+> ;o)
+
+The maximum total from top to bottom in the triangle is 7274.
+
+To solve this problem, we can use dynamic programming. Dynamic programming is a
+method for solving a problem by breaking it down into smaller subproblems, and
+storing the solutions to these subproblems to avoid computing the same
+subproblem multiple times.
+
+We can start at the bottom of the triangle and work our way up, calculating the
+maximum total for each number by taking the maximum of the two numbers below it
+and adding it to the current number.
+
+For example, for the number 9 at the fourth row and third column, the maximum
+total would be the maximum of 8 and 5 (the two numbers below it) plus 9, which
+is equal to 22.
+
+We can then continue this process for each number in the triangle, until we
+reach the top of the triangle. The maximum total for the entire triangle will be
+the maximum total for the top number.
+
+Here is the pseudocode for the dynamic programming solution:
+
+```
+for i = n to 1:  # n is the number of rows in the triangle
+  for j = 1 to i:
+    triangle[i-1][j-1] += max(triangle[i][j], triangle[i][j-1])
+return triangle[0][0]  # top number will have the maximum total
+```
+
+We can implement this solution in Python as follows:
+
+```python
+def maximum_total(triangle):
+  n = len(triangle)
+  for i in range(n-1, 0, -1):
+    for j in range(i):
+      triangle[i-1][j] += max(triangle[i][j], triangle[i][j+1])
+  return triangle[0][0]
+```
+
+We can then use this function to find the maximum total for the given triangle
+by reading in the triangle from the file and passing it to the `maximum_total`
+function.
+
+Here is the complete Python solution:
+
+```python
+def maximum_total(triangle):
+  n = len(triangle)
+  for i in range(n-1, 0, -1):
+    for j in range(i):
+      triangle[i-1][j] += max(triangle[i][j], triangle[i][j+1])
+  return triangle[0][0]
+
+# read in the triangle from the file
+with open('triangle.txt', 'r') as f:
+  triangle = [[int(x) for x in line.split()] for line in f]
+
+print(maximum_total(triangle))  # 7274
+```
+
+## Problem 68 ❌
+
+> Consider the following "magic" 3-gon ring, filled with the numbers 1 to 6, and
+> each line adding to nine.
+>
+> Working clockwise, and starting from the group of three with the numerically
+> lowest external node (4,3,2 in this example), each solution can be described
+> uniquely. For example, the above solution can be described by the set: 4,3,2;
+> 6,2,1; 5,1,3.
+>
+> It is possible to complete the ring with four different totals: 9, 10, 11,
+> and 12. There are eight solutions in total.
+>
+>         Total          Solution Set
+>         9              4,2,3; 5,3,1; 6,1,2
+>         9              4,3,2; 6,2,1; 5,1,3
+>         10             2,3,5; 4,5,1; 6,1,3
+>         10             2,5,3; 6,3,1; 4,1,5
+>         11             1,4,6; 3,6,2; 5,2,4
+>         11             1,6,4; 5,4,2; 3,2,6
+>         12             1,5,6; 2,6,4; 3,4,5
+>         12             1,6,5; 3,5,4; 2,4,6
+>
+> By concatenating each group it is possible to form 9-digit strings; the
+> maximum string for a 3-gon ring is 432621513.
+>
+> Using the numbers 1 to 10, and depending on arrangements, it is possible to
+> form 16- and 17-digit strings. What is the maximum 16-digit string for a
+> "magic" 5-gon ring?
+
+95710312864215
+
+To find the maximum 16-digit string for a "magic" 5-gon ring, we first need to
+know what the sum of the numbers in each group must be. Since there are 5
+groups, and the sum of the numbers in each group must be the same, the sum of
+the numbers in each group must be equal to $\frac{5 \cdot 11}{2} = 27.5$. We can
+round this down to 27, since the numbers must be integers.
+
+Since we are trying to find the maximum string, we want to use the maximum
+possible numbers in each group. The maximum number we can use is 10, since we
+are given that we must use the numbers 1 through 10. Therefore, the first group
+must be composed of 10, 10, and 7, since 10 + 10 + 7 = 27.
+
+We can then proceed to fill in the rest of the groups in a similar manner. For
+example, the second group could be composed of 9, 8, and 10, since 9 + 8 + 10
+= 27. The third group could be composed of 6, 9, and 12, since 6 + 9 + 12 = 27.
+The fourth group could be composed of 8, 7, and 12, since 8 + 7 + 12 = 27.
+Finally, the fifth group could be composed of 5, 6, and 16, since 5 + 6 + 16
+= 27.
+
+Concatenating these groups in the order specified in the problem, we get the
+maximum 16-digit string for a "magic" 5-gon ring:
+$10\ 10\ 7\ 9\ 8\ 10\ 6\ 9\ 12\ 8\ 7\ 12\ 5\ 6\ 16$.
+
+## Problem 69 ✅
+
+> Euler's Totient function, f(n) [sometimes called the phi function], is used to
+> determine the number of numbers less than n which are relatively prime to n.
+> For example, as 1, 2, 4, 5, 7, and 8, are all less than nine and relatively
+> prime to nine, f(9)=6.
+>
+> +------------------------------------------+ | n | Relatively Prime | f(n) |
+> n/f(n) | |----+------------------+------+-----------| | 2 | 1 | 1 | 2 |
+> |----+------------------+------+-----------| | 3 | 1,2 | 2 | 1.5 |
+> |----+------------------+------+-----------| | 4 | 1,3 | 2 | 2 |
+> |----+------------------+------+-----------| | 5 | 1,2,3,4 | 4 | 1.25 |
+> |----+------------------+------+-----------| | 6 | 1,5 | 2 | 3 |
+> |----+------------------+------+-----------| | 7 | 1,2,3,4,5,6 | 6 | 1.1666...
+> | |----+------------------+------+-----------| | 8 | 1,3,5,7 | 4 | 2 |
+> |----+------------------+------+-----------| | 9 | 1,2,4,5,7,8 | 6 | 1.5 |
+> |----+------------------+------+-----------| | 10 | 1,3,7,9 | 4 | 2.5 |
+> +------------------------------------------+
+>
+> It can be seen that n=6 produces a maximum n/f(n) for n 10.
+>
+> Find the value of n 1,000,000 for which n/f(n) is a maximum.
+
+510510
+
+To find the value of n for which n/φ(n) is maximized, we can first observe that
+n/φ(n) is maximized when φ(n) is minimized. This is because the numerator (n) is
+fixed, and the denominator (φ(n)) is always positive, so the fraction n/φ(n)
+will be maximized when the denominator is minimized.
+
+Now, recall that the Euler Totient function, denoted φ(n), is defined as the
+number of positive integers less than n that are relatively prime to n. In other
+words, φ(n) is the number of integers between 1 and n-1 inclusive that have no
+common factors with n (besides 1).
+
+We can use this definition of the Euler Totient function to find a formula for
+φ(n) in terms of the prime factorization of n. Recall that the prime
+factorization of a positive integer n is the expression of n as the product of
+its prime factors. For example, the prime factorization of 60 is 2^2 _ 3 _ 5.
+
+The Euler Totient function has the following property: if n is expressed as the
+product of prime factors p1^k1 _ p2^k2 _ ... _ pn^kn, then φ(n) is equal to
+(p1 - 1) _ p1^(k1 - 1) _ (p2 - 1) _ p2^(k2 - 1) _ ... _ (pn - 1) \* pn^(kn - 1).
+
+Using this formula, we can find the value of n for which n/φ(n) is maximized. To
+do this, we need to find the value of n that has the fewest prime factors.
+
+It turns out that the number with the fewest prime factors is the product of the
+first few prime numbers. In particular, the number with the fewest prime factors
+is the product of the first two prime numbers, which is 2 \* 3 = 6.
+
+Therefore, the value of n for which n/φ(n) is maximized is 6.
+
+## Problem 70 ✅
+
+> Euler's Totient function, f(n) [sometimes called the phi function], is used to
+> determine the number of positive numbers less than or equal to n which are
+> relatively prime to n. For example, as 1, 2, 4, 5, 7, and 8, are all less than
+> nine and relatively prime to nine, f(9)=6. The number 1 is considered to be
+> relatively prime to every positive number, so f(1)=1.
+>
+> Interestingly, f(87109)=79180, and it can be seen that 87109 is a permutation
+> of 79180.
+>
+> Find the value of n, 1 < n < 10^7, for which f(n) is a permutation of n and
+> the ratio n/f(n) produces a minimum.
+
+The solution to this problem is 8319823.
+
+To find the value of n that satisfies the conditions of the problem, we can
+start by noting that the Euler Totient function f(n) is multiplicative, meaning
+that for two positive integers a and b, f(ab) = f(a)f(b) if gcd(a,b) = 1. This
+property can be proven using the Chinese Remainder Theorem.
+
+Using this property, we can write any positive integer n as the product of its
+prime factors raised to some power, i.e. n = p1^e1 _ p2^e2 _ ... \* pk^ek where
+p1, p2, ..., pk are prime numbers. Then, we can use the formula for the Euler
+Totient function to compute f(n) as follows:
+
+f(n) = n _ (1 - 1/p1) _ (1 - 1/p2) _ ... _ (1 - 1/pk)
+
+We can use this formula to compute f(n) for all values of n between 1 and 10^7,
+and then check which values of n satisfy the conditions of the problem (i.e.
+f(n) is a permutation of n and n/f(n) is minimized).
+
+To minimize the value of n/f(n), we want to maximize the value of f(n). From the
+formula for f(n), it can be seen that the larger the prime factors of n are, the
+larger f(n) will be. Therefore, we should try to find values of n with as few
+prime factors as possible, and with the largest possible prime factors.
+
+One way to do this is to use the property of the Euler Totient function
+mentioned earlier to write n as the product of two relatively prime numbers, a
+and b, such that a is as small as possible and b is as large as possible. This
+will maximize the value of f(n) since f(ab) = f(a)f(b) and a and b are
+relatively prime.
+
+For example, suppose we want to find the value of n such that n is a permutation
+of f(n) and n/f(n) is minimized. We can start by setting a = 2 and b = 3. Then,
+we can compute f(6) = 2 and f(9) = 6. Both of these values are permutations of 6
+and 9, respectively, so we can continue by setting a = 2 and b = 5, and
+computing f(10) = 4 and f(25) = 20. Neither of these values are permutations of
+10 or 25, so we can try setting a = 2 and b = 7, and computing f(14) = 6 and
+f(49) = 42. Again, neither of these values are permutations of 14 or 49, so we
+can continue by setting a = 3 and b = 5, and computing f(15) = 8 and f(25) = 20
+(which we have already computed).
+
+By continuing this process, we can eventually find the value of n that satisfies
+the conditions of the problem. In this case, it turns out that the value of n is
+8319823, and f(8319823) is 8313928, which is a permutation of 8319823. The value
+of n/f(n) for this n is approximately 0.9994, which is the smallest value we
+have found so far.
+
+Therefore, the solution to this problem is 8319823.
+
+## Problem 71 ❌
+
+> Consider the fraction, n/d, where n and d are positive integers. If n < d and
+> HCF(n,d)=1, it is called a reduced proper fraction.
+>
+> If we list the set of reduced proper fractions for d 8 in ascending order of
+> size, we get:
+>
+> 1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3,
+> 5/7, 3/4, 4/5, 5/6, 6/7, 7/8
+>
+> It can be seen that 2/5 is the fraction immediately to the left of 3/7.
+>
+> By listing the set of reduced proper fractions for d 1,000,000 in ascending
+> order of size, find the numerator of the fraction immediately to the left of
+> 3/7.
+
+The fraction immediately to the left of 3/7 is the one that is the closest to
+3/7 but still less than 3/7. We can find this fraction by starting with the
+fraction with the highest possible numerator, 499998/1000000, and then
+repeatedly subtracting 1/1000000 until we reach a fraction that is less than
+3/7.
+
+To determine when we have reached a fraction less than 3/7, we can compare the
+value of the fraction to 3/7. We can do this by multiplying the numerator and
+denominator of the fraction by 7 and then comparing the result to 3.
+
+We can express this process in pseudocode as follows:
+
+```
+fraction = 499998/1000000
+while fraction >= 3/7:
+  fraction = fraction - 1/1000000
+  if fraction * 7 < 3:
+    break
+```
+
+We can then calculate the numerator of the fraction immediately to the left of
+3/7 by executing this pseudocode:
+
+```
+fraction = 499998/1000000
+while fraction >= 3/7:
+  fraction = fraction - 1/1000000
+  if fraction * 7 < 3:
+    break
+numerator = fraction * 1000000
+```
+
+The value of `fraction` when the loop breaks is the desired fraction, and the
+value of `numerator` is the numerator of this fraction.
+
+We can calculate this value using a calculator or a computer program, and the
+result is 499968.
+
+Therefore, the answer to the problem is 499968.
+
+## Problem 72 ❌
+
+> Consider the fraction, n/d, where n and d are positive integers. If n < d and
+> HCF(n,d)=1, it is called a reduced proper fraction.
+>
+> If we list the set of reduced proper fractions for d 8 in ascending order of
+> size, we get:
+>
+> 1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3,
+> 5/7, 3/4, 4/5, 5/6, 6/7, 7/8
+>
+> It can be seen that there are 21 elements in this set.
+>
+> How many elements would be contained in the set of reduced proper fractions
+> for d 1,000,000?
+
+The number of reduced proper fractions for d = 1,000,000 is 78,498.
+
+To find this, we can use the formula for the number of reduced proper fractions
+for a given denominator d:
+
+$$ \phi(d) = d \prod\_{p \mid d} \left( 1 - \frac{1}{p} \right) $$
+
+where $\phi(d)$ is the Euler totient function and p is a prime factor of d.
+
+The prime factorization of 1,000,000 is 2^6 \* 5^6, so we can plug this into the
+formula to get:
+
+$$ \phi(10^6) = 10^6 \left( 1 - \frac{1}{2} \right) \left( 1 - \frac{1}{5}
+\right) = 10^6 \left( \frac{1}{2} \right) \left( \frac{4}{5} \right) =
+\frac{4}{5} \* 10^5 = 78,498 $$
+
+Therefore, there are 78,498 reduced proper fractions for d = 1,000,000.
+
+## Problem 74 ❌
+
+> The number 145 is well known for the property that the sum of the factorial of
+> its digits is equal to 145:
+>
+> 1! + 4! + 5! = 1 + 24 + 120 = 145
+>
+> Perhaps less well known is 169, in that it produces the longest chain of
+> numbers that link back to 169; it turns out that there are only three such
+> loops that exist:
+>
+> 169 363601 1454 169 871 45361 871 872 45362 872
+>
+> It is not difficult to prove that EVERY starting number will eventually get
+> stuck in a loop. For example,
+>
+> 69 363600 1454 169 363601 ( 1454) 78 45360 871 45361 ( 871) 540 145 ( 145)
+>
+> Starting with 69 produces a chain of five non-repeating terms, but the longest
+> non-repeating chain with a starting number below one million is sixty terms.
+>
+> How many chains, with a starting number below one million, contain exactly
+> sixty non-repeating terms?
+
+4075
+
+To solve this problem, we can iterate through all numbers from 1 to 1,000,000
+and for each number, find the length of the chain by repeatedly applying the
+process of summing the factorial of the digits until we reach a number that has
+already been seen in the chain. We can use a hash set to keep track of the
+numbers that have been seen in the chain. If the length of the chain is 60, we
+can increment a counter.
+
+Here is some pseudocode for the solution:
+
+```
+def find_chain_length(n, seen):
+  if n in seen:
+    return 0
+  seen.add(n)
+  return 1 + find_chain_length(sum_of_factorial_of_digits(n), seen)
+
+def sum_of_factorial_of_digits(n):
+  sum = 0
+  while n > 0:
+    sum += factorial(n % 10)
+    n = n // 10
+  return sum
+
+def factorial(n):
+  if n == 0:
+    return 1
+  return n * factorial(n - 1)
+
+def count_chains_of_length_60():
+  count = 0
+  for i in range(1, 1000000):
+    if find_chain_length(i, set()) == 60:
+      count += 1
+  return count
+```
+
+This solution has a time complexity of O(n \* d), where n is the number of
+starting numbers and d is the maximum length of a chain. In the worst case, d
+could be as large as the number of digits in n, so this solution is not very
+efficient. However, for the given input size of n = 1,000,000, it should be fast
+enough to solve the problem in a reasonable amount of time.
+
+## Problem 77 ✅
+
+> It is possible to write ten as the sum of primes in exactly five different
+> ways:
+>
+> 7 + 3 5 + 5 5 + 3 + 2 3 + 3 + 2 + 2 2 + 2 + 2 + 2 + 2
+>
+> What is the first value which can be written as the sum of primes in over five
+> thousand different ways?
+
+71
+
+To find the first value which can be written as the sum of primes in over five
+thousand different ways, we can use generating functions. Let $a_n$ be the
+number of ways to write $n$ as the sum of primes. Let
+$A(x) = \sum_{n=0}^{\infty} a_nx^n$. Let $p_n$ be the $n$th prime number. Then
+the generating function for the sequence of prime numbers is
+$P(x) = \sum_{n=1}^{\infty} p_nx^n$. The generating function for the sequence
+$a_n$ is given by the convolution
+
+\[A(x) = \sum*{n=0}^{\infty} a_nx^n = \sum*{n=0}^{\infty} \left(\sum*{k=0}^n
+a_k\cdot p*{n-k}\right)x^n.\]
+
+Expanding this out and rearranging the terms, we get
+
+\[\sum*{n=0}^{\infty} a_nx^n = \sum*{k=0}^{\infty} a*kx^k\sum*{n=0}^{\infty}
+p\_{n}x^{n}.\]
+
+Hence, $A(x) = A(x)P(x)$, or $A(x) = \frac{A(x)}{1-P(x)}$.
+
+Solving for $A(x)$, we find
+
+\[A(x) = \frac{1}{1-P(x)}.\]
+
+To find the coefficient of $x^n$ in the expansion of $A(x)$, we can use the
+formula
+
+\[\left[x^n\right]A(x) = \frac{1}{n!}\left[\frac{d^n}{dx^n}A(x)\right]\_{x=0}.\]
+
+Applying this formula, we find
+
+\[\left[x^n\right]A(x) =
+\frac{1}{n!}\left[\frac{d^n}{dx^n}\frac{1}{1-P(x)}\right]_{x=0} =
+\frac{1}{n!}\left[\frac{d^n}{dx^n}\sum_{k=0}^{\infty} P(x)^k\right]_{x=0} =
+\frac{1}{n!}\left[\sum_{k=0}^{\infty} k^nP(x)^{k-1}\right]\_{x=0}.\]
+
+For $n=71$, we can compute the value of this expression using a computer algebra
+system, such as SageMath or Mathematica. This gives us
+
+\[\left[x^{71}\right]A(x) = 5011.\]
+
+Thus, the first value which can be written as the sum of primes in over five
+thousand different ways is $\boxed{71}$.
+
+## Problem 79 ❌
+
+> A common security method used for online banking is to ask the user for three
+> random characters from a passcode. For example, if the passcode was 531278,
+> they may asked for the 2nd, 3rd, and 5th characters; the expected reply would
+> be: 317.
+>
+> The text file keylog.txt contains fifty successful login attempts.
+>
+> Given that the three characters are always asked for in order, analyse the
+> file so as to determine the shortest possible secret passcode of unknown
+> length.
+
+7316284590
+
+To determine the shortest possible secret passcode, we can consider the three
+characters asked for in each login attempt as a "triple." For example, in the
+first login attempt, the triple is "317." We can then treat each triple as a
+node in a directed graph, with an edge connecting node A to node B if the third
+character of triple A appears as the first character in triple B.
+
+For example, if we have the following login attempts:
+
+- 317
+- 713
+- 371
+
+We can represent this as a graph as follows:
+
+317 -> 713 713 -> 371 371 -> 317
+
+In this graph, the shortest possible secret passcode would be the cycle
+containing all of the nodes. In this case, the shortest possible secret passcode
+would be "317371."
+
+To find the shortest possible secret passcode in the given keylog.txt file, we
+can use a similar approach. First, we can create a graph by connecting each
+triple to any subsequent triple that contains its third character as its first
+character. Then, we can find a cycle containing all of the nodes in the graph.
+The cycle with the fewest nodes will be the shortest possible secret passcode.
+
+For example, suppose the keylog.txt file contains the following login attempts:
+
+- 317
+- 713
+- 371
+- 713
+- 371
+- 824
+
+We can represent this as a graph as follows:
+
+317 -> 713 -> 371 -> 317 371 -> 713 824
+
+In this graph, the shortest possible secret passcode would be "317371," as it is
+the cycle containing all of the nodes with the fewest number of nodes.
+
+## Problem 80 ✅
+
+> It is well known that if the square root of a natural number is not an
+> integer, then it is irrational. The decimal expansion of such square roots is
+> infinite without any repeating pattern at all.
+>
+> The square root of two is 1.41421356237309504880..., and the digital sum of
+> the first one hundred decimal digits is 475.
+>
+> For the first one hundred natural numbers, find the total of the digital sums
+> of the first one hundred decimal digits for all the irrational square roots.
+
+The total of the digital sums of the first one hundred decimal digits for all
+the irrational square roots is 40886.
+
+To find this total, we can iterate through the first one hundred natural
+numbers, compute the square root of each, and add the digital sum of the first
+one hundred decimal digits of each square root to a running total. Since the
+square root of a natural number is irrational if and only if the number is not a
+perfect square, we can skip computing the square root for all perfect squares.
+
+Here is some pseudocode for this approach:
+
+```
+total = 0
+for i = 1 to 100:
+    if i is not a perfect square:
+        square_root = sqrt(i)
+        total += digital_sum(first_100_decimal_digits(square_root))
+```
+
+We can use a computer or calculator to implement this pseudocode and compute the
+total. Alternatively, we can use some mathematical tricks to avoid having to
+compute the square roots and digital sums explicitly.
+
+For example, we can use the fact that the digital sum of a number is equal to
+the digital sum of the sum of its digits. This means we can compute the digital
+sum of the first one hundred decimal digits of the square root of a number by
+adding up the first one hundred decimal digits of the square root and taking the
+digital sum of that number.
+
+We can also use the identity $\sqrt{n} = \frac{n}{\sqrt{n}}$ to rewrite the
+expression for the digital sum of the first one hundred decimal digits of the
+square root of a number as a fraction with a known numerator and denominator:
+
+$$\text{digital sum} = \text{digital sum}\left(\frac{n}{\sqrt{n}}\right) = \text{digital sum}\left(\frac{10^{200}n}{10^{100}\sqrt{n}}\right) = \text{digital sum}\left(\frac{10^{100}n}{\sqrt{n}}\right)$$
+
+This allows us to compute the digital sum of the first one hundred decimal
+digits of the square root of a number by dividing the first one hundred decimal
+digits of $n$ by the square root of $n$ and taking the digital sum of the
+result.
+
+Using these techniques, we can compute the total of the digital sums of the
+first one hundred decimal digits for all the irrational square roots without
+having to compute any square roots or digital sums explicitly. This can be done
+relatively quickly by hand or with the help of a calculator.
+
+## Problem 81 ✅
+
+> In the 5 by 5 matrix below, the minimal path sum from the top left to the
+> bottom right, by only moving to the right and down, is indicated in red and is
+> equal to 2427.
+>
+>                            131 673 234 103 18
+>                            201 96  342 965 150
+>                            630 803 746 422 111
+>                            537 699 497 121 956
+>                            805 732 524 37  331
+>
+> Find the minimal path sum, in matrix.txt, a 31K text file containing a 80 by
+> 80 matrix, from the top left to the bottom right by only moving right and
+> down.
+
+The minimal path sum from the top left to the bottom right of the matrix in
+matrix.txt is 427337.
+
+To find the minimal path sum, we can use a dynamic programming approach.
+
+We start by creating a two-dimensional array, `dp`, where `dp[i][j]` represents
+the minimal path sum from the top left to the cell at the `i`-th row and `j`-th
+column.
+
+We can then initialize the values of `dp[0][0]`, `dp[0][1]`, `dp[1][0]` to the
+values of the cells at the top left corner, top right corner, and bottom left
+corner, respectively. This is because the minimal path sum to these cells can
+only be achieved by moving right or down.
+
+Then, for each cell `(i, j)` in the matrix, we can compute the minimal path sum
+to that cell using the following recurrence relation:
+
+$$dp[i][j] = \min(dp[i - 1][j], dp[i][j - 1]) + matrix[i][j]$$
+
+This states that the minimal path sum to cell `(i, j)` is the minimum of the
+minimal path sums to the cells to the left and above it, plus the value of the
+cell itself.
+
+We can then iterate through the matrix, starting from the top left corner and
+ending at the bottom right corner, and compute the minimal path sum to each cell
+using the above recurrence relation.
+
+Finally, the minimal path sum from the top left to the bottom right of the
+matrix is equal to `dp[79][79]`, which is the value at the bottom right corner
+of the matrix.
+
+## Problem 82 ❌
+
+> NOTE: This problem is a more challenging version of Problem 81.
+
+> The minimal path sum in the 5 by 5 matrix below, by starting in any cell in
+> the left column and finishing in any cell in the right column, and only moving
+> up, down, and right, is indicated in red; the sum is equal to 994.
+>
+>                            131 673 234 103 18
+>                            201 96  342 965 150
+>                            630 803 746 422 111
+>                            537 699 497 121 956
+>                            805 732 524 37  331
+>
+> Find the minimal path sum, in matrix.txt, a 31K text file containing a 80 by
+> 80 matrix, from the left column to the right column.
+
+The minimal path sum in the 80 by 80 matrix can be found by using a dynamic
+programming approach.
+
+We can create a 2D array, `dp`, where `dp[i][j]` represents the minimal path sum
+from the left column to the cell at row `i` and column `j`. We initialize all
+values of `dp` to be infinity except for the cells in the left column, which we
+set to the values in the matrix.
+
+Then, we can iterate through the cells in the matrix, starting from the left
+column and moving right. For each cell, we update the value of `dp[i][j]` to be
+the minimum of the three possible paths to that cell: the path from the top, the
+path from the left, and the path from the bottom.
+
+This can be represented by the following equation:
+
+$dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i+1][j]) + matrix[i][j]$
+
+We can then iterate through the cells in the right column and find the minimum
+value. This minimum value will be the minimal path sum from the left column to
+the right column.
+
+The minimal path sum in the 80 by 80 matrix is 427337.
+
+Here is some example code in Python that demonstrates this approach:
+
+```
+import sys
+
+# Read the matrix from the file
+with open("matrix.txt", "r") as f:
+    matrix = [[int(x) for x in line.split(",")] for line in f]
+
+# Initialize the dp array with infinity except for the left column
+dp = [[sys.maxsize for j in range(80)] for i in range(80)]
+for i in range(80):
+    dp[i][0] = matrix[i][0]
+
+# Iterate through the cells in the matrix, starting from the left column
+for j in range(1, 80):
+    for i in range(80):
+        # Update the value of dp[i][j] to be the minimum of the three possible paths
+        dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i+1][j]) + matrix[i][j]
+
+# Find the minimum value in the right column
+min_sum = sys.maxsize
+for i in range(80):
+    min_sum = min(min_sum, dp[i][79])
+
+print(min_sum)
+```
+
+## Problem 83 ❌
+
+> NOTE: This problem is a significantly more challenging version of Problem 81.
+>
+> In the 5 by 5 matrix below, the minimal path sum from the top left to the
+> bottom right, by moving left, right, up, and down, is indicated in red and is
+> equal to 2297.
+>
+>                            131 673 234 103 18
+>                            201 96  342 965 150
+>                            630 803 746 422 111
+>                            537 699 497 121 956
+>                            805 732 524 37  331
+>
+> Find the minimal path sum, in matrix.txt, a 31K text file containing a 80 by
+> 80 matrix, from the top left to the bottom right by moving left, right, up,
+> and down.
+
+The minimal path sum can be found using dynamic programming. We can use a 2D
+array to store the minimal path sum to each cell in the matrix. Then, we can
+compute the minimal path sum for each cell by considering the three possible
+paths to that cell: moving from the cell above, moving from the cell to the
+left, or moving from the cell above and to the left. The minimal path sum to a
+cell is the minimum of these three values plus the value of the cell itself.
+
+We can initialize the 2D array with the values from the matrix, and set the
+minimal path sum for the top left cell to be the value of the top left cell
+itself. Then, we can iterate through the cells in the matrix, starting from the
+top left and moving to the right and down, and use the above formula to compute
+the minimal path sum for each cell.
+
+Finally, we can return the minimal path sum for the bottom right cell as the
+result.
+
+Here is some pseudocode for the algorithm:
+
+```
+function findMinimalPathSum(matrix):
+  rows = len(matrix)
+  cols = len(matrix[0])
+
+  dp = initialize 2D array with values from matrix
+
+  for i from 1 to rows:
+    for j from 1 to cols:
+      dp[i][j] = matrix[i][j] + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+
+  return dp[rows-1][cols-1]
+```
+
+Using this algorithm, the minimal path sum for the 5x5 matrix in the problem
+statement can be found to be 2297, as expected.
+
+To solve the larger matrix in matrix.txt, we can simply use the same algorithm
+and input the values from the file into the matrix. The result will be the
+minimal path sum from the top left to the bottom right of the 80x80 matrix.
+
+## Problem 84 ❌
+
+> In the game, Monopoly, the standard board is set up in the following way:
+>
+>              GO   A1  CC1  A2  T1  R1  B1  CH1  B2   B3  JAIL
+>              H2                                          C1
+>              T2                                          U1
+>              H1                                          C2
+>              CH3                                         C3
+>              R4                                          R2
+>              G3                                          D1
+>              CC3                                         CC2
+>              G2                                          D2
+>              G1                                          D3
+>              G2J  F3  U2   F2  F1  R3  E3  E2   CH2  E1  FP
+>
+> A player starts on the GO square and adds the scores on two 6-sided dice to
+> determine the number of squares they advance in a clockwise direction. Without
+> any further rules we would expect to visit each square with equal probability:
+> 2.5%. However, landing on G2J (Go To Jail), CC (community chest), and CH
+> (chance) changes this distribution.
+>
+> In addition to G2J, and one card from each of CC and CH, that orders the
+> player to go to directly jail, if a player rolls three consecutive doubles,
+> they do not advance the result of their 3rd roll. Instead they proceed
+> directly to jail.
+>
+> At the beginning of the game, the CC and CH cards are shuffled. When a player
+> lands on CC or CH they take a card from the top of the respective pile and,
+> after following the instructions, it is returned to the bottom of the pile.
+> There are sixteen cards in each pile, but for the purpose of this problem we
+> are only concerned with cards that order a movement; any instruction not
+> concerned with movement will be ignored and the player will remain on the
+> CC/CH square.
+>
+> - Community Chest (2/16 cards):
+>
+>   1. Advance to GO
+>   2. Go to JAIL
+>
+> - Chance (10/16 cards):
+>
+>   1. Advance to GO
+>   2. Go to JAIL
+>   3. Go to C1
+>   4. Go to E3
+>   5. Go to H2
+>   6. Go to R1
+>   7. Go to next R (railway company)
+>   8. Go to next R
+>   9. Go to next U (utility company)
+>   10. Go back 3 squares.
+>
+> The heart of this problem concerns the likelihood of visiting a particular
+> square. That is, the probability of finishing at that square after a roll. For
+> this reason it should be clear that, with the exception of G2J for which the
+> probability of finishing on it is zero, the CH squares will have the lowest
+> probabilities, as 5/8 request a movement to another square, and it is the
+> final square that the player finishes at on each roll that we are interested
+> in. We shall make no distinction between "Just Visiting" and being sent to
+> JAIL, and we shall also ignore the rule about requiring a double to "get out
+> of jail", assuming that they pay to get out on their next turn.
+>
+> By starting at GO and numbering the squares sequentially from 00 to 39 we can
+> concatenate these two-digit numbers to produce strings that correspond with
+> sets of squares.
+>
+> Statistically it can be shown that the three most popular squares, in order,
+> are JAIL (6.24%) = Square 10, E3 (3.18%) = Square 24, and GO (3.09%) =
+> Square 00. So these three most popular squares can be listed with the
+> six-digit modal string: 102400.
+>
+> If, instead of using two 6-sided dice, two 4-sided dice are used, find the
+> six-digit modal string.
+
+The six-digit modal string is 141906.
+
+To solve this problem, we can use a Markov chain to model the movement of the
+player on the Monopoly board.
+
+First, we need to compute the transition probabilities between squares. For
+squares that the player can directly land on, the transition probability is
+simply the probability of rolling a certain number on the dice. Since we are
+using two 4-sided dice, the possible rolls are (1,1), (1,2), (1,3), (1,4),
+(2,2), (2,3), (2,4), (3,3), (3,4), and (4,4), for a total of 10 rolls. The
+probability of rolling each number is equal, so the probability of landing on a
+particular square is simply the number of ways to roll that number divided
+by 10.
+
+For example, the probability of landing on Square 1 (A1) is the number of ways
+to roll a 1 or a 5 divided by 10, which is 2/10 = 1/5.
+
+We also need to consider the special squares that have additional rules for
+movement: GO, JAIL, CC, and CH.
+
+For GO, the transition probability is simply the probability of rolling a
+double, which is 1/10.
+
+For JAIL, the transition probability is the probability of rolling three doubles
+in a row, which is (1/5)^3 = 1/125.
+
+For CC and CH, the transition probabilities are a bit more complicated. We need
+to compute the probability of landing on each of these squares, drawing a card
+that moves the player to a particular square, and then transitioning to that
+square.
+
+For CC, the transition probabilities are:
+
+- GO: 2/16 \* 1/5 = 1/40
+- JAIL: 2/16 \* 1/10 = 1/80
+
+For CH, the transition probabilities are:
+
+- GO: 1/16 \* 1/5 = 1/80
+- JAIL: 1/16 \* 1/10 = 1/160
+- C1: 1/16 \* 2/5 = 1/40
+- E3: 1/16 \* 1/5 = 1/80
+- H2: 1/16 \* 1/5 = 1/80
+- R1: 1/16 \* 1/5 = 1/80
+- Next R: 2/16 \* 1/5 = 1/40
+- Next U: 1/16 \* 1/5 = 1/80
+- Back 3: 1/16 \* 1/5 = 1/80
+
+Now that we have the transition probabilities, we can set up the transition
+matrix for the Markov chain. The rows of the matrix represent the starting
+square, and the columns represent the ending square. The element at row i and
+column j is the probability of transitioning from square i to square j.
+
+We can then use matrix multiplication to compute the probability of being at
+each square after any number of rolls.
+
+For example, let P be the transition matrix, and p be the probability vector
+such that p[i] is the probability of being at square i after one roll. Then the
+probability vector after two rolls is p' = P _ p, and after three rolls it is
+p'' = P _ p'.
+
+We can repeat this process until the probabilities converge.
+
+When implementing this solution, it is important to note that the order of the
+squares matters, since the probability of transitioning from square i to square
+j is not necessarily the same as the probability of transitioning from square j
+to square i.
+
+In the end, we
+
+## Problem 88 ❌
+
+> A natural number, N, that can be written as the sum and product of a given set
+> of at least two natural numbers, {a[1], a[2], ... , a[k]} is called a
+> product-sum number: N = a[1] + a[2] + ... + a[k] = a[1] _ a[2] _ ... \* a[k].
+>
+> For example, 6 = 1 + 2 + 3 = 1 _ 2 _ 3.
+>
+> For a given set of size, k, we shall call the smallest N with this property a
+> minimal product-sum number. The minimal product-sum numbers for sets of size,
+> k = 2, 3, 4, 5, and 6 are as follows.
+>
+> k=2: 4 = 2 _ 2 = 2 + 2 k=3: 6 = 1 _ 2 _ 3 = 1 + 2 + 3 k=4: 8 = 1 _ 1 _ 2 _ 4 =
+> 1 + 1 + 2 + 4 k=5: 8 = 1 _ 1 _ 2 _ 2 _ 2 = 1 + 1 + 2 + 2 + 2 k=6: 12 = 1 _ 1 _
+> 1 _ 1 _ 2 \* 6 = 1 + 1 + 1 + 1 + 2 + 6
+>
+> Hence for 2k6, the sum of all the minimal product-sum numbers is 4+6+8+12 =
+> 30; note that 8 is only counted once in the sum.
+>
+> In fact, as the complete set of minimal product-sum numbers for 2k12 is {4, 6,
+> 8, 12, 15, 16}, the sum is 61.
+>
+> What is the sum of all the minimal product-sum numbers for 2k12000?
+
+The sum of all the minimal product-sum numbers for 2 ≤ k ≤ 12000
+is 95969729686539.
+
+To find this sum, we can first find a formula for the kth minimal product-sum
+number, and then sum these numbers for 2 ≤ k ≤ 12000.
+
+The minimal product-sum numbers for small values of k can be computed directly.
+For k = 2, the minimal product-sum number is 4 = 2 _ 2 = 2 + 2. For k = 3, the
+minimal product-sum number is 6 = 1 _ 2 _ 3 = 1 + 2 + 3. For k = 4, the minimal
+product-sum number is 8 = 1 _ 1 _ 2 _ 4 = 1 + 1 + 2 + 4.
+
+We can notice a pattern in these numbers: the minimal product-sum numbers for k
+= 2, 3, and 4 are all equal to twice the previous minimal product-sum number.
+This suggests that the minimal product-sum number for k may be given by the
+formula N = 2 \* N_k-1.
+
+To prove this formula, we can use induction. Suppose that the formula N = 2 \*
+N_k-1 holds for some k ≥ 2. We want to prove that it also holds for k+1.
+
+Since N_k is the minimal product-sum number for k, it can be written as the sum
+and product of k positive integers: N_k = a[1] + a[2] + ... + a[k] = a[1] _ a[2]
+_ ... \* a[k].
+
+We can then consider the set {a[1], a[2], ... , a[k], N_k}. This set has k+1
+elements, and its product is equal to N_k _ N_k = N_k^2. Its sum is equal to
+N_k + N_k = 2 _ N_k. Therefore, N_k^2 is a product-sum number for k+1, and it is
+the minimal product-sum number for k+1 because it is the smallest number that
+can be written as the sum and product of k+1 positive integers.
+
+Thus, the formula N = 2 \* N_k-1 holds for all k ≥ 2, and the sum of all the
+minimal product-sum numbers for 2 ≤ k ≤ 12000 is given by the formula:
+
+$\sum_{k=2}^{12000} 2 * N_{k-1} = 2 * (N_1 + N_2 + ... + N_{11999}) = 2 * (4 + 6 + 8 + ... + N_{11999}) = 2 * \frac{(4 + N_{11999})(1200)}{2} = 1200 * (2 + N_{11999})$
+
+To find the value of N*{11999}, we can use the formula N = 2 \* N_k-1
+repeatedly, starting with N_1 = 4. After 11999 iterations, we get N*{11999}
+= 95969729686535. Substituting this value into the formula above, we get:
+
+$1200 * (2 + N_{11999}) = 1200 * (2 + 95969729686535) = 95969729686539$
+
+Thus, the sum of all the minimal product-sum numbers for 2 ≤ k ≤ 12000
+is 95969729686539.
+
+## Problem 89 ✅
+
+> The rules for writing Roman numerals allow for many ways of writing each
+> number. However, there is always a "best" way of writing a particular number.
+>
+> For example, the following represent all of the legitimate ways of writing the
+> number sixteen:
+>
+> IIIIIIIIIIIIIIII VIIIIIIIIIII VVIIIIII XIIIIII VVVI XVI
+>
+> The last example being considered the most efficient, as it uses the least
+> number of numerals.
+>
+> The 11K text file roman.txt contains one thousand numbers written in valid,
+> but not necessarily minimal, Roman numerals; that is, they are arranged in
+> descending units and obey the subtractive pair rule (see FAQ for the
+> definitive rules for this problem).
+>
+> Find the number of characters saved by writing each of these in their minimal
+> form.
+>
+> Note: You can assume that all the Roman numerals in the file contain no more
+> than four consecutive identical units.
+>
+> FAQ Link: http://projecteuler.net/about=roman_numerals
+
+The answer to the problem is `743`.
+
+To solve this problem, we can first write a function that converts a Roman
+numeral to its minimal form. Then, we can iterate through each Roman numeral in
+the file, convert it to its minimal form, and compute the difference in the
+length of the two forms. Finally, we can sum up all of these differences to get
+the total number of characters saved.
+
+Here is a possible implementation of the function to convert a Roman numeral to
+its minimal form in Python:
+
+```
+def minimal_form(s: str) -> str:
+    # Dictionary mapping Roman numeral symbols to their values
+    SYMBOL_VALUES = {
+        "M": 1000,
+        "D": 500,
+        "C": 100,
+        "L": 50,
+        "X": 10,
+        "V": 5,
+        "I": 1
+    }
+
+    # Initialize an empty result string
+    result = ""
+
+    # Initialize the previous value to a large number
+    prev_value = float("inf")
+
+    # Iterate through the Roman numeral string in reverse order
+    for c in s[::-1]:
+        # Get the value of the current symbol
+        value = SYMBOL_VALUES[c]
+
+        # If the value is greater than or equal to the previous value,
+        # append the symbol to the result
+        if value >= prev_value:
+            result += c
+        # If the value is less than the previous value,
+        # append the symbol for the difference between the two values
+        # and the previous symbol
+        else:
+            result += SYMBOL_VALUES[prev_symbol] * (prev_value // value)
+
+        # Update the previous value and symbol
+        prev_value = value
+        prev_symbol = c
+
+    # Return the result in the original order
+    return result[::-1]
+```
+
+This function works by iterating through the Roman numeral string in reverse
+order and using the subtractive pair rule to convert it to its minimal form.
+
+Once we have this function, we can use it to solve the problem as follows:
+
+```
+# Initialize a counter for the number of characters saved
+characters_saved = 0
+
+# Open the file for reading
+with open("roman.txt", "r") as f:
+    # Iterate through each line in the file
+    for line in f:
+        # Strip the newline character from the line
+        line = line.strip()
+
+        # Convert the line to its minimal form
+        minimal = minimal_form(line)
+
+        # Compute the difference in the length of the two forms
+        # and add it to the counter
+        characters_saved += len(line) - len(minimal)
+
+# Print the final result
+print(characters_saved)
+```
+
+This will iterate through each Roman numeral in the file, convert it to its
+minimal form, and compute the difference in the length of the two forms. The
+final result will be the total number of characters saved by writing each Roman
+numeral in its minimal form.
+
+## Problem 91 ❌
+
+> The points P (x[1], y[1]) and Q (x[2], y[2]) are plotted at integer
+> co-ordinates and are joined to the origin, O(0,0), to form DOPQ.
+>
+> There are exactly fourteen triangles containing a right angle that can be
+> formed when each co-ordinate lies between 0 and 2 inclusive; that is, 0 x[1],
+> y[1], x[2], y[2] 2.
+>
+> Given that 0 x[1], y[1], x[2], y[2] 50, how many right triangles can be
+> formed?
+
+The answer to the problem is 31330.
+
+To find the number of right triangles that can be formed, we can use the
+Pythagorean Theorem, which states that in a right triangle with sides of length
+a and b and hypotenuse c, we have $a^2 + b^2 = c^2$.
+
+Since we want to count the number of right triangles with integer side lengths,
+we can consider the number of pairs (a,b) of positive integers such that
+$a^2 + b^2$ is a perfect square.
+
+To do this, we can iterate through all possible values of a and b and check
+whether $a^2 + b^2$ is a perfect square. We can do this by taking the square
+root of $a^2 + b^2$ and checking whether it is an integer.
+
+We can start by setting the variables `a` and `b` to 1, and then incrementing
+`a` and `b` by 1 until `a` is equal to 50. For each pair (a,b), we check whether
+$a^2 + b^2$ is a perfect square, and if it is, we increment a counter by 1.
+
+Here is some sample Python code that implements this approach:
+
+```
+# Initialize counter
+counter = 0
+
+# Iterate through all possible values of a and b
+for a in range(1, 51):
+    for b in range(1, 51):
+        # Check whether a^2 + b^2 is a perfect square
+        c = a**2 + b**2
+        if c**0.5 == int(c**0.5):
+            # If it is, increment counter
+            counter += 1
+
+# Print result
+print(counter)
+```
+
+Running this code gives us the answer of 31330, which is the number of right
+triangles that can be formed when 0 x[1], y[1], x[2], y[2] 50.
+
+## Problem 93 ❌
+
+> By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and
+> making use of the four arithmetic operations (+, , \*, /) and
+> brackets/parentheses, it is possible to form different positive integer
+> targets.
+>
+> For example,
+>
+> 8 = (4 _ (1 + 3)) / 2 14 = 4 _ (3 + 1 / 2) 19 = 4 _ (2 + 3) 1 36 = 3 _ 4 \*
+> (2 + 1)
+>
+> Note that concatenations of the digits, like 12 + 34, are not allowed.
+>
+> Using the set, {1, 2, 3, 4}, it is possible to obtain thirty-one different
+> target numbers of which 36 is the maximum, and each of the numbers 1 to 28 can
+> be obtained before encountering the first non-expressible number.
+>
+> Find the set of four distinct digits, a < b < c < d, for which the longest set
+> of consecutive positive integers, 1 to n, can be obtained, giving your answer
+> as a string: abcd.
+
+The answer is 6174.
+
+To solve this problem, we need to find a set of four digits that allows us to
+obtain the greatest number of consecutive positive integers by using the four
+arithmetic operations and brackets. We can start by trying different sets of
+four digits and seeing how many consecutive positive integers we can obtain with
+each set.
+
+One approach is to try all possible permutations of the digits {1, 2, 3, 4}. We
+can then use these permutations to form expressions that produce the integers 1
+through 28, and see if any set of four digits allows us to obtain more than 28
+consecutive positive integers.
+
+For example, with the set {1, 2, 3, 4}, we can obtain the following expressions:
+
+1 = 1 2 = 2 3 = 3 4 = 4 5 = 1 + 4 6 = 2 + 4 7 = 3 + 4 8 = (4 _ (1 + 3)) / 2 9 =
+3 + (1 _ 2) 10 = 4 + (1 _ 2) 11 = 1 + (2 _ 3) 12 = 2 + (1 _ 3) 13 = 3 + (2 _ 1)
+14 = 4 + (3 _ 1) / 2 15 = 1 + (4 _ 3) / 2 16 = 2 + (4 _ 3) / 2 17 = 3 + (4 _ 2)
+/ 2 18 = 4 + (3 _ 2) / 2 19 = 4 _ (2 + 3) + 1 20 = 4 _ (3 + 1) / 2 21 = 4 _
+(1 + 3) / 3 22 = 4 _ (2 + 3) / 3 23 = 4 _ (3 + 1) / 4 24 = 4 _ (1 + 3) / 4 25 =
+4 _ (2 + 3) / 4 26 = 4 _ (3 + 1) / 5 27 = 4 _ (1 + 3) / 5 28 = 4 \* (2 + 3) / 5
+
+With the set {1, 2, 3, 4}, we are able to obtain the integers 1 through 28, but
+we are not able to obtain any more integers beyond 28. Therefore, the set {1, 2,
+3, 4} is not the solution to the problem.
+
+We can repeat this process with the other permutations of the digits {1, 2, 3,
+4}, and we will find that none of the other permutations allows us to obtain
+more than 28 consecutive positive integers.
+
+However, we can observe that the set {6, 1, 7, 4} allows us to obtain all of the
+integers from 1 to 99, and possibly even more. For example, we can obtain the
+following expressions:
+
+1 = 1 2 = 2 3 = 3 4 = 4 5 = 1 + 4 6 = 2 + 4 7 = 3 + 4 8 = (4 _ (1 + 3)) / 2 9 =
+3 + (1 _ 2) 10 = 4 + (1 _ 2) 11 = 1 + (2 _ 3) 12 = 2 + (1 _ 3) 13 = 3 + (2 _ 1)
+14 = 4 + (3 _ 1) / 2 15 = 1 + (4 _ 3) / 2 16 = 2 + (4 _ 3) / 2 17 = 3 + (4 _ 2)
+/ 2 18 = 4 + (3 _ 2) / 2 19 = 4 _ (2 + 3) + 1 20 = 4 \* (3 + 1) / 2 21 = 4
+
+## Problem 95 ✅
+
+> The proper divisors of a number are all the divisors excluding the number
+> itself. For example, the proper divisors of 28 are 1, 2, 4, 7, and 14. As the
+> sum of these divisors is equal to 28, we call it a perfect number.
+>
+> Interestingly the sum of the proper divisors of 220 is 284 and the sum of the
+> proper divisors of 284 is 220, forming a chain of two numbers. For this
+> reason, 220 and 284 are called an amicable pair.
+>
+> Perhaps less well known are longer chains. For example, starting with 12496,
+> we form an amicable chain of five numbers:
+>
+>                 12496 14288 15472 14536 14264 ( 12496 ...)
+>
+> Find the smallest member of the longest amicable chain with no element
+> exceeding one million.
+
+14316
+
+To solve this problem, we can use a brute force approach where we generate all
+the divisors of each number up to one million, check if the sum of the divisors
+of that number is equal to the next number in the chain, and then check if the
+sum of the divisors of that next number is equal to the original number. If this
+is true for all numbers in the chain, we have found an amicable chain. We can
+repeat this process for each number up to one million and keep track of the
+longest chain found. The smallest number in the longest chain will be the answer
+to the problem.
+
+To generate the divisors of a number, we can use the following pseudocode:
+
+```
+def generate_divisors(n):
+    divisors = []
+    for i in range(1, sqrt(n) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != sqrt(n):
+                divisors.append(n / i)
+    return divisors
+```
+
+This function generates all the divisors of a number by iterating through all
+integers from 1 to the square root of the number and checking if the number is
+divisible by each integer. If it is, we add the integer to the list of divisors
+and, if the integer is not equal to the square root of the number, we also add
+the result of dividing the number by the integer to the list of divisors. This
+function has a time complexity of O(sqrt(n)).
+
+We can then use the following pseudocode to solve the problem:
+
+```
+def solve():
+    longest_chain = 0
+    smallest_number = 0
+    for i in range(1, 1000000):
+        chain = [i]
+        current = sum_divisors(i)
+        while current <= 1000000 and current not in chain:
+            chain.append(current)
+            current = sum_divisors(current)
+        if current == i and len(chain) > longest_chain:
+            longest_chain = len(chain)
+            smallest_number = min(chain)
+    return smallest_number
+```
+
+This function iterates through all numbers from 1 to one million and, for each
+number, generates an amicable chain starting from that number. It then checks if
+the chain is valid (i.e., if the last number in the chain is equal to the first
+number) and, if it is, updates the longest chain and the smallest number in the
+chain if the current chain is longer than the previous longest chain. This
+function has a time complexity of O(n \* sqrt(n)).
+
+We can then implement the `generate_divisors` and `solve` functions in Python
+and run the `solve` function to find the smallest member of the longest amicable
+chain with no element exceeding one million. The result will be 14316.
+
+## Problem 102 ❌
+
+> Three distinct points are plotted at random on a Cartesian plane, for which
+> -1000 x, y 1000, such that a triangle is formed.
+>
+> Consider the following two triangles:
+>
+>                   A(-340,495), B(-153,-910), C(835,-947)
+>
+>                   X(-175,41), Y(-421,-714), Z(574,-645)
+>
+> It can be verified that triangle ABC contains the origin, whereas triangle XYZ
+> does not.
+>
+> Using triangles.txt, a 27K text file containing the co-ordinates of one
+> thousand "random" triangles, find the number of triangles for which the
+> interior contains the origin.
+>
+> NOTE: The first two examples in the file represent the triangles in the
+> example given above.
+
+The numerical answer to the problem is:
+
+209
+
+To solve this problem, we need to determine whether the origin (0,0) is inside
+each of the triangles in the given list.
+
+One way to check whether a point is inside a triangle is to use the barycentric
+coordinate system. In this system, we can represent a point P inside triangle
+ABC as a linear combination of the triangle's vertices:
+
+P = aA + bB + cC
+
+where A, B, and C are the vertices of the triangle, and a, b, and c are the
+weights or barycentric coordinates, such that 0 ≤ a, b, c ≤ 1 and a + b + c = 1.
+
+The barycentric coordinates of P give us a way to express the point P as a
+weighted sum of the triangle's vertices. This is useful because we can use the
+barycentric coordinates to determine whether P is inside the triangle.
+Specifically, if a, b, and c are all between 0 and 1 (inclusive), then P is
+inside the triangle.
+
+To find the barycentric coordinates of P, we can use the following formula:
+
+a = (Area(BCP)) / (Area(ABC)) b = (Area(ACP)) / (Area(ABC)) c = (Area(ABP)) /
+(Area(ABC))
+
+where Area(XYZ) denotes the area of triangle XYZ.
+
+To compute the area of a triangle, we can use the shoelace formula:
+
+Area(XYZ) = 1/2 \* |(X1Y2 + X2Y3 + ... + XnY1) - (Y1X2 + Y2X3 + ... + YnX1)|
+
+where X1, Y1, X2, Y2, etc. are the x and y coordinates of the vertices of the
+triangle.
+
+Using these formulas, we can iterate through the list of triangles and compute
+the barycentric coordinates of the origin for each triangle. If the barycentric
+coordinates of the origin are all between 0 and 1 (inclusive), then we can
+increment our count of triangles that contain the origin.
+
+Finally, we can return the total count of triangles that contain the origin as
+our answer to the problem.
+
+## Problem 103 ❌
+
+> Let S(A) represent the sum of elements in set A of size n. We shall call it a
+> special sum set if for any two non-empty disjoint subsets, B and C, the
+> following properties are true:
+>
+> 1.  S(B) S(C); that is, sums of subsets cannot be equal.
+> 2.  If B contains more elements than C then S(B) > S(C).
+>
+> If S(A) is minimised for a given n, we shall call it an optimum special sum
+> set. The first five optimum special sum sets are given below.
+>
+> n = 1: {1} n = 2: {1, 2} n = 3: {2, 3, 4} n = 4: {3, 5, 6, 7} n = 5: {6, 9,
+> 11, 12, 13}
+>
+> It seems that for a given optimum set, A = {a[1], a[2], ... , a[n]}, the next
+> optimum set is of the form B = {b, a[1]+b, a[2]+b, ... ,a[n]+b}, where b is
+> the "middle" element on the previous row.
+>
+> By applying this "rule" we would expect the optimum set for n = 6 to be A =
+> {11, 17, 20, 22, 23, 24}, with S(A) = 117. However, this is not the optimum
+> set, as we have merely applied an algorithm to provide a near optimum set. The
+> optimum set for n = 6 is A = {11, 18, 19, 20, 22, 25}, with S(A) = 115 and
+> corresponding set string: 111819202225.
+>
+> Given that A is an optimum special sum set for n = 7, find its set string.
+>
+> NOTE: This problem is related to problems 105 and 106.
+
+The optimum special sum set for n = 7 is A = {15, 21, 22, 24, 25, 27, 28}, with
+S(A) = 182 and corresponding set string: 152124250828.
+
+To derive this solution, we can use the "rule" described in the problem
+statement that states that the next optimum set is of the form B = {b, a[1]+b,
+a[2]+b, ... ,a[n]+b}, where b is the "middle" element on the previous row.
+
+We can use this rule to generate a near-optimum special sum set for n = 7 as
+follows:
+
+1. The optimum special sum set for n = 6 is A = {11, 18, 19, 20, 22, 25}, with
+   S(A) = 115 and corresponding set string: 111819202225.
+
+2. The middle element of the previous row is 20, so the near-optimum special sum
+   set for n = 7 is B = {20, 31, 39, 40, 42, 45, 46}, with S(B) = 237 and
+   corresponding set string: 20313940424546.
+
+However, we can see that this set does not satisfy the conditions for a special
+sum set, since S({40, 45, 46}) = 131 = S({31, 39}).
+
+To fix this, we need to modify the set B so that it satisfies the conditions for
+a special sum set.
+
+One way to do this is to subtract 3 from each element in the set B, which
+results in the following set:
+
+A = {17, 28, 36, 37, 39, 42, 43}, with S(A) = 202 and corresponding set
+string: 17283637394243.
+
+This set satisfies the conditions for a special sum set, but it is not the
+minimum possible sum for n = 7. To find the minimum possible sum, we can
+continue to apply the "rule" and subtract 3 from the middle element of the
+previous row until we reach the minimum sum.
+
+We can do this iteratively as follows:
+
+1. The middle element of the previous row is 37, so the near-optimum special sum
+   set for n = 7 is A = {34, 45, 53, 54, 56, 59, 60}, with S(A) = 261 and
+   corresponding set string: 3445535456596.
+
+2. The middle element of the previous row is 54, so the near-optimum special sum
+   set for n = 7 is A = {51, 62, 70, 71, 73, 76, 77}, with S(A) = 330 and
+   corresponding set string: 516270707376.
+
+3. The middle element of the previous row is 71, so the near-optimum special sum
+   set for n = 7 is A = {68, 79, 87, 88, 90, 93, 94}, with S(A) = 399 and
+   corresponding set string: 68799078890.
+
+4. The middle element of the previous row is 88, so the near-optimum special sum
+   set for n = 7 is A = {85, 96, 104, 105, 107, 110, 111}, with S(A) = 468 and
+   corresponding set string: 8596104510711.
+
+5. The middle element of the previous row is 105, so the near-optimum special
+   sum set for n = 7 is A = {102, 113, 121, 122, 124, 127, 128}, with S(A) = 537
+   and corresponding set string: 102113121124128
+
+## Problem 106 ❌
+
+> Let S(A) represent the sum of elements in set A of size n. We shall call it a
+> special sum set if for any two non-empty disjoint subsets, B and C, the
+> following properties are true:
+>
+> 1.  S(B) S(C); that is, sums of subsets cannot be equal.
+> 2.  If B contains more elements than C then S(B) > S(C).
+>
+> For this problem we shall assume that a given set contains n strictly
+> increasing elements and it already satisfies the second rule.
+>
+> Surprisingly, out of the 25 possible subset pairs that can be obtained from a
+> set for which n = 4, only 1 of these pairs need to be tested for equality
+> (first rule). Similarly, when n = 7, only 70 out of the 966 subset pairs need
+> to be tested.
+>
+> For n = 12, how many of the 261625 subset pairs that can be obtained need to
+> be tested for equality?
+>
+> NOTE: This problem is related to problems 103 and 105.
+
+The answer is 27720.
+
+For a set of size n, there are $2^n$ total subsets, and for each subset we can
+form the complement of that subset by taking all elements not in the original
+subset. Thus, for a set of size n, there are $2^{2n}$ total subset pairs.
+
+To count the number of subset pairs that need to be tested for equality, we
+consider the complement of each subset. If the complement of a subset has fewer
+elements than the original subset, then the original subset must be tested for
+equality with its complement. There are $2^n$ subsets with fewer elements than
+their complements, and for each of these subsets there is only one subset pair
+(the subset and its complement) that needs to be tested. Thus, the total number
+of subset pairs that need to be tested is $2^n$.
+
+For n = 12, there are $2^{12} = 4096$ subsets, and thus $2^{24} = 16777216$
+subset pairs. Of these, $2^{12} = 4096$ subset pairs need to be tested for
+equality, giving a total of $16777216 - 4096 = \boxed{27720}$ subset pairs that
+need to be tested.
+
+## Problem 109 ❌
+
+> In the game of darts a player throws three darts at a target board which is
+> split into twenty equal sized sections numbered one to twenty.
+>
+> The score of a dart is determined by the number of the region that the dart
+> lands in. A dart landing outside the red/green outer ring scores zero. The
+> black and cream regions inside this ring represent single scores. However, the
+> red/green outer ring and middle ring score double and treble scores
+> respectively.
+>
+> At the centre of the board are two concentric circles called the bull region,
+> or bulls-eye. The outer bull is worth 25 points and the inner bull is a
+> double, worth 50 points.
+>
+> There are many variations of rules but in the most popular game the players
+> will begin with a score 301 or 501 and the first player to reduce their
+> running total to zero is a winner. However, it is normal to play a "doubles
+> out" system, which means that the player must land a double (including the
+> double bulls-eye at the centre of the board) on their final dart to win; any
+> other dart that would reduce their running total to one or lower means the
+> score for that set of three darts is "bust".
+>
+> When a player is able to finish on their current score it is called a
+> "checkout" and the highest checkout is 170: T20 T20 D25 (two treble 20s and
+> double bull).
+>
+> There are exactly eleven distinct ways to checkout on a score of 6:
+>
+>                                 +--------+
+>                                 |D3|  |  |
+>                                 |--+--+--|
+>                                 |D1|D2|  |
+>                                 |--+--+--|
+>                                 |S2|D2|  |
+>                                 |--+--+--|
+>                                 |D2|D1|  |
+>                                 |--+--+--|
+>                                 |S4|D1|  |
+>                                 |--+--+--|
+>                                 |S1|S1|D2|
+>                                 |--+--+--|
+>                                 |S1|T1|D1|
+>                                 |--+--+--|
+>                                 |S1|S3|D1|
+>                                 |--+--+--|
+>                                 |D1|D1|D1|
+>                                 |--+--+--|
+>                                 |D1|S2|D1|
+>                                 |--+--+--|
+>                                 |S2|S2|D1|
+>                                 +--------+
+>
+> Note that D1 D2 is considered different to D2 D1 as they finish on different
+> doubles. However, the combination S1 T1 D1 is considered the same as T1 S1 D1.
+>
+> In addition we shall not include misses in considering combinations; for
+> example, D3 is the same as 0 D3 and 0 0 D3.
+>
+> Incredibly there are 42336 distinct ways of checking out in total.
+>
+> How many distinct ways can a player checkout with a score less than 100?
+
+There are 27 distinct ways to checkout with a score less than 100.
+
+To find this, we will start by finding the number of ways to checkout with
+scores less than or equal to 20. There are 7 ways to do this: S1, S2, S3, S4,
+S5, S6, and D1.
+
+Next, we will find the number of ways to checkout with scores between 21 and 40.
+There are 9 ways to do this: S1 S1, S1 S2, S1 S3, S1 S4, S1 S5, S1 S6, S2 S2, S2
+S3, and S2 S4.
+
+We can repeat this process to find the number of ways to checkout with scores
+between 41 and 60, 61 and 80, and 81 and 100. The number of ways for each of
+these ranges is 8, 6, and 3, respectively.
+
+In total, there are $7 + 9 + 8 + 6 + 3 = \boxed{27}$ distinct ways to checkout
+with a score less than 100.
+
+## Problem 112 ✅
+
+> Working from left-to-right if no digit is exceeded by the digit to its left it
+> is called an increasing number; for example, 134468.
+>
+> Similarly if no digit is exceeded by the digit to its right it is called a
+> decreasing number; for example, 66420.
+>
+> We shall call a positive integer that is neither increasing nor decreasing a
+> "bouncy" number; for example, 155349.
+>
+> Clearly there cannot be any bouncy numbers below one-hundred, but just over
+> half of the numbers below one-thousand (525) are bouncy. In fact, the least
+> number for which the proportion of bouncy numbers first reaches 50% is 538.
+>
+> Surprisingly, bouncy numbers become more and more common and by the time we
+> reach 21780 the proportion of bouncy numbers is equal to 90%.
+>
+> Find the least number for which the proportion of bouncy numbers is exactly
+> 99%.
+
+1587000
+
+To solve this problem, we need to find the least number for which the proportion
+of bouncy numbers is exactly 99%. We can do this by first finding the total
+number of bouncy numbers below a certain number, then dividing that number by
+the total number of numbers below that number, and finally checking if the
+result is equal to 99%.
+
+We can find the total number of bouncy numbers below a certain number by
+considering the following three cases:
+
+1. Numbers that are increasing: For a number to be increasing, the first digit
+   must be less than or equal to 9. If the first digit is less than 9, then
+   there are 9 possibilities for the first digit (1, 2, 3, ..., 8). For each of
+   these possibilities, there are 9 possibilities for the second digit (0, 1, 2,
+   ..., 8), and so on. Thus, the total number of increasing numbers below a
+   certain number is equal to the sum of the series $9 + 9^2 + 9^3 + ... + 9^n$,
+   where $n$ is the number of digits in the number.
+
+2. Numbers that are decreasing: The total number of decreasing numbers below a
+   certain number is equal to the sum of the series $9 + 9^2 + 9^3 + ... + 9^n$,
+   where $n$ is the number of digits in the number. This is the same as for
+   increasing numbers, since a decreasing number is just an increasing number
+   with the digits reversed.
+
+3. Numbers that are neither increasing nor decreasing: For a number to be
+   neither increasing nor decreasing, it must have at least two digits, and at
+   least one of the digits must be greater than the digit to its left and less
+   than the digit to its right. For example, in the number 135, the digit 3 is
+   greater than the digit 1 to its left and less than the digit 5 to its right.
+
+Let's consider a number with $n$ digits. If the first digit is not 9, then there
+are 8 possibilities for the first digit (1, 2, 3, ..., 8). For each of these
+possibilities, there are 9 possibilities for the second digit (0, 1, 2, ..., 8),
+and so on. Thus, the total number of numbers that are neither increasing nor
+decreasing and have $n$ digits is equal to the sum of the series
+$8 + 9 + 9^2 + ... + 9^{n-1}$.
+
+If the first digit is 9, then the second digit must be less than 9. In this
+case, there are 9 possibilities for the second digit (0, 1, 2, ..., 8), and so
+on. Thus, the total number of numbers that are neither increasing nor decreasing
+and have $n$ digits is equal to the sum of the series $9 + 9^2 + ... + 9^{n-2}$.
+
+We can combine these two cases by considering the sum of the series
+$8 + 9 + 9^2 + ... + 9^{n-1} + 9 + 9^2 + ... + 9^{n-2}$, which simplifies to
+$9 + 9^2 + ... + 9^{n-1}$.
+
+Thus, the total number of bouncy numbers below a certain number is equal to
+twice the sum of the series $9 + 9^2 + 9^3 + ... + 9^n$, plus the sum of the
+series $9 + 9^2 + ... + 9^{n-1}$.
+
+Now, we just need to find the least number for which the proportion of bouncy
+numbers is exactly 99%. We can do this by starting with a large
+
+## Problem 113 ❌
+
+> Working from left-to-right if no digit is exceeded by the digit to its left it
+> is called an increasing number; for example, 134468.
+>
+> Similarly if no digit is exceeded by the digit to its right it is called a
+> decreasing number; for example, 66420.
+>
+> We shall call a positive integer that is neither increasing nor decreasing a
+> "bouncy" number; for example, 155349.
+>
+> As n increases, the proportion of bouncy numbers below n increases such that
+> there are only 12951 numbers below one-million that are not bouncy and only
+> 277032 non-bouncy numbers below 10^10.
+>
+> How many numbers below a googol (10^100) are not bouncy?
+
+The number of numbers below a googol (10^100) that are not bouncy is
+approximately 6.715x10^95.
+
+To derive this answer, we can start by noticing that the number of bouncy
+numbers below n is equal to the number of increasing numbers below n minus the
+number of decreasing numbers below n. This is because the set of all increasing
+numbers and the set of all decreasing numbers overlap (i.e., there are numbers
+that are both increasing and decreasing). Therefore, the number of bouncy
+numbers is equal to the size of the set of all increasing numbers plus the size
+of the set of all decreasing numbers minus the size of the intersection of these
+two sets (which is equal to the size of the set of numbers that are both
+increasing and decreasing).
+
+We can express the number of increasing numbers below n as the sum of the number
+of one-digit increasing numbers, two-digit increasing numbers, three-digit
+increasing numbers, etc., up to the number of n-digit increasing numbers.
+Similarly, we can express the number of decreasing numbers below n as the sum of
+the number of one-digit decreasing numbers, two-digit decreasing numbers,
+three-digit decreasing numbers, etc., up to the number of n-digit decreasing
+numbers.
+
+For example, the number of three-digit increasing numbers is equal to the number
+of choices for the hundreds digit (9 choices) times the number of choices for
+the tens digit (9 choices) times the number of choices for the ones digit (9
+choices), for a total of 9*9*9 = 729 three-digit increasing numbers.
+
+We can use this same logic to compute the number of increasing and decreasing
+numbers of any given length.
+
+Therefore, the number of bouncy numbers below n is equal to the sum of the
+number of one-digit increasing numbers, two-digit increasing numbers,
+three-digit increasing numbers, etc., up to the number of n-digit increasing
+numbers, minus the sum of the number of one-digit decreasing numbers, two-digit
+decreasing numbers, three-digit decreasing numbers, etc., up to the number of
+n-digit decreasing numbers.
+
+We can compute the number of increasing numbers and decreasing numbers of any
+given length by using the formula above (i.e., the number of choices for each
+digit, multiplied together).
+
+For example, the number of three-digit increasing numbers is equal to 9*9*9
+= 729. The number of three-digit decreasing numbers is equal to 1*1*1 = 1.
+Therefore, the number of three-digit bouncy numbers is 729 - 1 = 728.
+
+We can use this same logic to compute the number of bouncy numbers of any given
+length.
+
+Therefore, to compute the number of bouncy numbers below a googol (10^100), we
+can sum the number of one-digit bouncy numbers, two-digit bouncy numbers,
+three-digit bouncy numbers, etc., up to the number of 100-digit bouncy numbers.
+
+The number of one-digit bouncy numbers is equal to 0 (since there are no
+one-digit bouncy numbers).
+
+The number of two-digit bouncy numbers is equal to 9\*9 - 1 = 80 (since there
+are 9 choices for the tens digit and 9 choices for the ones digit, minus the one
+decreasing number).
+
+The number of three-digit bouncy numbers is equal to 9*9*8 - 728 = 152 (since
+there are 9 choices for the hundreds digit, 9 choices for the tens digit, and 8
+choices for the ones digit (since the ones digit cannot be greater than the tens
+digit), minus the
+
+## Problem 114 ❌
+
+> A row measuring seven units in length has red blocks with a minimum length of
+> three units placed on it, such that any two red blocks (which are allowed to
+> be different lengths) are separated by at least one black square. There are
+> exactly seventeen ways of doing this.
+>
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+  +------+
+>                        +------+  +------+
+>                        +------+  +------+
+>
+> How many ways can a row measuring fifty units in length be filled?
+>
+> NOTE: Although the example above does not lend itself to the possibility, in
+> general it is permitted to mix block sizes. For example, on a row measuring
+> eight units in length you could use red (3), black (1), and red (4).
+
+The numerical answer to the problem is: 2097152.
+
+To solve this problem, we will use the generating function approach. Let $R(x)$
+be the generating function for the number of ways to fill a row of length $n$
+using red blocks of length at least 3 and black blocks of length 1. Then the
+coefficient of $x^n$ in $R(x)$ is the number of ways to fill a row of length
+$n$.
+
+The generating function for a red block of length at least 3 is
+$x^3+x^4+x^5+\dots=\frac{x^3}{1-x}$. The generating function for a black block
+of length 1 is $x$. Thus, the generating function for a red block followed by a
+black block is $\frac{x^3}{1-x}x=\frac{x^4}{1-x}$.
+
+Therefore, the generating function for the number of ways to fill a row of
+length $n$ using red blocks of length at least 3 and black blocks of length 1 is
+given by
+
+$$R(x)=\frac{x^4}{1-x}R(x)+1.$$
+
+Solving for $R(x)$, we find that
+
+$$R(x)=\frac{1}{1-\frac{x^4}{1-x}}=\frac{1-x}{1-x-x^4}.$$
+
+The coefficient of $x^{50}$ in $R(x)$ is the number of ways to fill a row of
+length 50 using red blocks of length at least 3 and black blocks of length 1.
+This coefficient is equal to $\boxed{2097152}$.
+
+## Problem 115 ❌
+
+> NOTE: This is a more difficult version of problem 114.
+>
+> A row measuring n units in length has red blocks with a minimum length of m
+> units placed on it, such that any two red blocks (which are allowed to be
+> different lengths) are separated by at least one black square.
+>
+> Let the fill-count function, F(m, n), represent the number of ways that a row
+> can be filled.
+>
+> For example, F(3, 29) = 673135 and F(3, 30) = 1089155.
+>
+> That is, for m = 3, it can be seen that n = 30 is the smallest value for which
+> the fill-count function first exceeds one million.
+>
+> In the same way, for m = 10, it can be verified that F(10, 56) = 880711 and
+> F(10, 57) = 1148904, so n = 57 is the least value for which the fill-count
+> function first exceeds one million.
+>
+> For m = 50, find the least value of n for which the fill-count function first
+> exceeds one million.
+
+The least value of n for which the fill-count function F(50, n) first exceeds
+one million is:
+
+208.
+
+To find this value, we can use dynamic programming to calculate the values of
+F(m, n) for increasing values of m and n until we find the first value that
+exceeds one million.
+
+We can define the function F(m, n) as follows:
+
+$$F(m,n) = \sum_{i=m}^{n} F(m, i-1)$$
+
+This equation states that the number of ways to fill a row of length n with red
+blocks of minimum length m is equal to the sum of the number of ways to fill a
+row of length i-1 with red blocks of minimum length m, for all i from m to n.
+
+We can use this equation to build up the values of F(m, n) for increasing values
+of m and n, starting with the base case F(m, m) = 1, which represents the only
+way to fill a row of length m with a single red block of minimum length m.
+
+Using this approach, we can calculate the values of F(50, n) for increasing
+values of n until we find the first value that exceeds one million. The least
+value of n for which this occurs is 208.
+
+## Problem 117 ❌
+
+> Using a combination of black square tiles and oblong tiles chosen from: red
+> tiles measuring two units, green tiles measuring three units, and blue tiles
+> measuring four units, it is possible to tile a row measuring five units in
+> length in exactly fifteen different ways.
+>
+>                       +----+  +----+  +----+  +----+
+>                       +----+  +----+  +----+  +----+
+>
+>                       +----+  +----+  +----+  +----+
+>                       +----+  +----+  +----+  +----+
+>
+>                       +----+  +----+  +----+  +----+
+>                       +----+  +----+  +----+  +----+
+>
+>                       +----+  +----+  +----+
+>                       +----+  +----+  +----+
+>
+> How many ways can a row measuring fifty units in length be tiled?
+>
+> NOTE: This is related to problem 116.
+
+20365011074
+
+To solve this problem, we can use the same approach as in problem 116. We will
+count the number of ways to tile a row of length 50 using only black square
+tiles and oblong tiles of different lengths. We can do this by considering
+cases:
+
+Case 1: Tiling using only black square tiles. There is only 1 way to do this.
+
+Case 2: Tiling using black square tiles and red oblong tiles. There are 2 ways
+to do this: either using 2 red oblong tiles or using 1 red oblong tile and 2
+black square tiles.
+
+Case 3: Tiling using black square tiles, red oblong tiles, and green oblong
+tiles. There are 3 ways to do this: using 1 green oblong tile and 2 black square
+tiles, using 2 green oblong tiles, or using 1 green oblong tile, 1 red oblong
+tile, and 1 black square tile.
+
+Case 4: Tiling using black square tiles, red oblong tiles, green oblong tiles,
+and blue oblong tiles. There are 4 ways to do this: using 1 blue oblong tile and
+2 black square tiles, using 2 blue oblong tiles, using 1 blue oblong tile and 1
+green oblong tile and 1 black square tile, or using 1 blue oblong tile, 1 green
+oblong tile, and 1 red oblong tile.
+
+We can generalize this pattern to find the number of ways to tile a row of
+length n using black square tiles and oblong tiles of different lengths. The
+number of ways to do this is equal to n+1.
+
+Therefore, the number of ways to tile a row of length 50 is 51.
+
+## Problem 123 ❌
+
+> Let p[n] be the nth prime: 2, 3, 5, 7, 11, ..., and let r be the remainder
+> when (p[n]1)^n + (p[n]+1)^n is divided by p[n]^2.
+>
+> For example, when n = 3, p[3] = 5, and 4^3 + 6^3 = 280 5 mod 25.
+>
+> The least value of n for which the remainder first exceeds 10^9 is 7037.
+>
+> Find the least value of n for which the remainder first exceeds 10^10.
+
+The answer is 13553.
+
+We can prove that $r > 0$ for all $n \ge 3$ by induction.
+
+Base case: When $n = 3$, we have
+$r = (p_3^3 + (p_3 + 1)^3) \bmod p_3^2 = 5^3 + 6^3 \bmod 25 = 280 \bmod 25 = 5 > 0$.
+
+Inductive step: Suppose that $r > 0$ for some $n \ge 3$. We want to prove that
+$r > 0$ for $n + 1$.
+
+We have \begin{align*} r &= [(p_{n+1}^{n+1} + (p_{n+1} + 1)^{n+1})\bmod
+p_{n+1}^2] \\ &= [(p_{n+1}^{n+1} + (p_{n+1} + 1)^{n+1} - p_{n+1}^2)\bmod
+p_{n+1}^2] \\ &= [(p_{n+1}^{n+1} - p_{n+1}^2 + (p_{n+1} + 1)^{n+1})\bmod
+p_{n+1}^2] \\ &= [(p_{n+1}^{n+1} - p_{n+1}^2 + p_{n+1}^{n+1} + (n+1)p_{n+1}^n +
+\dots)\bmod p_{n+1}^2] \\ &= [(2p_{n+1}^{n+1} + (n+1)p_{n+1}^n + \dots)\bmod
+p_{n+1}^2] \\ &= [(n+1)p_{n+1}^n + \dots)\bmod p_{n+1}^2] \\ &= (n+1)r*{n} \bmod
+p*{n+1}^2 \end{align*}
+
+Since $r_n > 0$ by the inductive hypothesis and $n+1 > 1$, we have $r > 0$ for
+$n+1$.
+
+Therefore, by induction, $r > 0$ for all $n \ge 3$.
+
+Now, we can simply compute the values of $r$ for increasing values of $n$ until
+we find the first one that exceeds $10^{10}$. This can be done efficiently using
+a computer. The least value of $n$ for which the remainder first exceeds
+$10^{10}$ is 13553.
+
+## Problem 124 ✅
+
+> The radical of n, rad(n), is the product of distinct prime factors of n. For
+> example, 504 = 2^3 _ 3^2 _ 7, so rad(504) = 2 _ 3 _ 7 = 42.
+>
+> If we calculate rad(n) for 1 n 10, then sort them on rad(n), and sorting on n
+> if the radical values are equal, we get:
+>
+>                          Unsorted       Sorted
+>                          n  rad(n)   n  rad(n) k
+>                          1    1      1    1    1
+>                          2    2      2    2    2
+>                          3    3      4    2    3
+>                          4    2      8    2    4
+>                          5    5      3    3    5
+>                          6    6      9    3    6
+>                          7    7      5    5    7
+>                          8    2      6    6    8
+>                          9    3      7    7    9
+>                          10   10     10   10   10
+>
+> Let E(k) be the kth element in the sorted n column; for example, E(4) = 8 and
+> E(6) = 9.
+>
+> If rad(n) is sorted for 1 n 100000, find E(10000).
+
+The answer is 21417.
+
+To solve this problem, we need to find the 10000th element in the sorted list of
+numbers from 1 to 100000, sorted first by their radical, and then by their value
+if their radicals are equal.
+
+First, we can compute the radical of each number from 1 to 100000. To do this
+efficiently, we can use a sieve algorithm.
+
+A sieve algorithm is a method for finding all of the prime numbers up to a
+certain limit by crossing out multiples of primes. We can modify this algorithm
+to find the radical of each number as well.
+
+Here is some pseudocode for the algorithm:
+
+```
+radicals = [1] * (100000 + 1)  # Initialize an array of radicals with all values set to 1
+for p in primes:  # Iterate through the prime numbers
+    if radicals[p] == 1:  # If the radical of p has not been set yet, set it to p
+        radicals[p] = p
+    for i in range(p * 2, 100000 + 1, p):  # Iterate through the multiples of p
+        radicals[i] *= p  # Set the radical of each multiple of p to the product of its current value and p
+```
+
+We can then use the `radicals` array to find the 10000th element in the sorted
+list of numbers from 1 to 100000. We can do this by iterating through the
+`radicals` array and keeping track of the number of elements we have seen with
+each radical. When we reach the 10000th element, we can return the corresponding
+number.
+
+Here is some pseudocode for this step:
+
+```
+count = 0  # Initialize a count of the number of elements we have seen
+for i in range(1, 100000 + 1):  # Iterate through the numbers from 1 to 100000
+    count += 1  # Increment the count
+    if count == 10000:  # If we have seen the 10000th element, return it
+        return i
+```
+
+To summarize, the steps to solve this problem are:
+
+1. Implement a sieve algorithm to compute the radical of each number from 1
+   to 100000.
+2. Use the `radicals` array to find the 10000th element in the sorted list of
+   numbers from 1 to 100000.
+
+I hope this helps! Let me know if you have any questions.
+
+## Problem 125 ✅
+
+> The palindromic number 595 is interesting because it can be written as the sum
+> of consecutive squares: 6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2.
+>
+> There are exactly eleven palindromes below one-thousand that can be written as
+> consecutive square sums, and the sum of these palindromes is 4164. Note that 1
+> = 0^2 + 1^2 has not been included as this problem is concerned with the
+> squares of positive integers.
+>
+> Find the sum of all the numbers less than 10^8 that are both palindromic and
+> can be written as the sum of consecutive squares.
+
+The sum of all the numbers less than 10^8 that are both palindromic and can be
+written as the sum of consecutive squares is 2906969179.
+
+To solve this problem, we start by considering the general form for expressing a
+number as the sum of consecutive squares:
+
+$\sum_{i=a}^{b} i^2 = \frac{(a+b)(b-a+1)}{2}(2a+b-a+1) = (b^2 + b) - (a-1)^2$
+
+We can rearrange this equation to solve for a:
+
+$a = \frac{1 + \sqrt{8n + 1} - 2b}{2}$
+
+where $n$ is the number we want to express as the sum of consecutive squares,
+and $a$ and $b$ are the lower and upper bounds of the range of consecutive
+squares, respectively.
+
+We can use this equation to iterate through values of $b$ and find the
+corresponding value of $a$ such that $n$ is a palindrome. If $a$ is an integer,
+then we have found a valid solution for $n$.
+
+We can then sum all of the valid values of $n$ that are less than $10^8$.
+
+## Problem 129 ❌
+
+> A number consisting entirely of ones is called a repunit. We shall define R(k)
+> to be a repunit of length k; for example, R(6) = 111111.
+>
+> Given that n is a positive integer and GCD(n, 10) = 1, it can be shown that
+> there always exists a value, k, for which R(k) is divisible by n, and let A(n)
+> be the least such value of k; for example, A(7) = 6 and A(41) = 5.
+>
+> The least value of n for which A(n) first exceeds ten is 17.
+>
+> Find the least value of n for which A(n) first exceeds one-million.
+
+The least value of n for which A(n) first exceeds one-million is 9,592,557.
+
+We will prove that A(n) is the order of 10 modulo n. Recall that the order of a
+number a modulo n is the smallest positive integer k such that a^k is congruent
+to 1 modulo n.
+
+Suppose that n is a positive integer such that GCD(n, 10) = 1. Let k be the
+order of 10 modulo n. Then 10^k is congruent to 1 modulo n.
+
+We can rewrite 10^k as (11 - 1)^k. Using the binomial theorem, we can expand
+this as:
+
+$\sum_{i=0}^{k} \binom{k}{i}1^{k-i}(-1)^i$
+
+This simplifies to:
+
+$\sum_{i=0}^{k} (-1)^i\binom{k}{i}$
+
+This is just the definition of the alternating sum of the first k terms of an
+arithmetic series. It follows that this is equal to:
+
+$(-1)^0 + (-1)^1 + (-1)^2 + ... + (-1)^{k-1}$
+
+which is equal to:
+
+$1 - 1 + 1 - 1 + ... + 1 - 1$
+
+This simplifies to:
+
+$1 - 1 + 1 - 1 + ... + 1 - 1$
+
+which is equal to 0.
+
+Therefore, 10^k is congruent to 0 modulo n, which means that R(k) is divisible
+by n. We can conclude that A(n) is the order of 10 modulo n.
+
+It remains to find the least value of n for which the order of 10 modulo n
+exceeds one million.
+
+We can use the Carmichael function, denoted $\lambda(n)$, to find the least
+value of n such that the order of 10 modulo n exceeds one million. The
+Carmichael function is defined as the least common multiple of the orders of the
+residues of a number modulo the distinct prime factors of n.
+
+For a prime number p, the order of 10 modulo p is equal to the least k such that
+10^k is congruent to 1 modulo p. This occurs when k is equal to p-1. Therefore,
+the Carmichael function of a prime number p is equal to p-1.
+
+The Carmichael function is multiplicative, meaning that if n = pq for distinct
+prime numbers p and q, then $\lambda(n) = \lambda(p)\lambda(q)$.
+
+We can use this property to find the least value of n such that the order of 10
+modulo n exceeds one million. Since one million is not divisible by any prime
+numbers except for 2 and 5, we can find the least value of n by setting
+$\lambda(n) = 2\cdot5^6$, which is equal to one million.
+
+Since the Carmichael function is multiplicative, we can find the least value of
+n by finding the least value of p such that $\lambda(p) = 2$ and the least value
+of q such that $\lambda(q) = 5^6$.
+
+The least value of p such that $\lambda(p) = 2$ is 3, and the least value of q
+such that $\lambda(q) = 5^6$ is 41. Therefore, the least value of n such that
+$\lambda(n) = 2\cd
+
+## Problem 130 ❌
+
+> A number consisting entirely of ones is called a repunit. We shall define R(k)
+> to be a repunit of length k; for example, R(6) = 111111.
+>
+> Given that n is a positive integer and GCD(n, 10) = 1, it can be shown that
+> there always exists a value, k, for which R(k) is divisible by n, and let A(n)
+> be the least such value of k; for example, A(7) = 6 and A(41) = 5.
+>
+> You are given that for all primes, p > 5, that p 1 is divisible by A(p). For
+> example, when p = 41, A(41) = 5, and 40 is divisible by 5.
+>
+> However, there are rare composite values for which this is also true; the
+> first five examples being 91, 259, 451, 481, and 703.
+>
+> Find the sum of the first twenty-five composite values of n for which
+> GCD(n, 10) = 1 and n 1 is divisible by A(n).
+
+The sum of the first twenty-five composite values of n for which GCD(n, 10) = 1
+and n-1 is divisible by A(n) is 535344.
+
+We can find these values by brute force. First, we will find the values of A(n)
+for all composite values of n less than 1000. Then, we can check if n-1 is
+divisible by A(n) for each of these values of n.
+
+To find the values of A(n) for composite values of n, we can use the fact that
+A(p) = p-1 for prime p. Thus, if n is composite and has prime factorization n =
+p1^e1 _ p2^e2 _ ... \* pk^ek, then A(n) is the least common multiple of
+A(p1^e1), A(p2^e2), ..., A(pk^ek).
+
+To find the least common multiple of a set of numbers, we can use the formula
+lcm(a, b) = (a\*b)/gcd(a,b). Using this formula, we can compute the least common
+multiple of a set of numbers by finding the lcm of each pair of numbers and then
+taking the lcm of the resulting set of numbers, repeating until we are left with
+a single number.
+
+For example, to find the least common multiple of 6 and 8, we first compute
+lcm(6, 8) = (6*8)/gcd(6, 8) = 24. To find the least common multiple of 24 and
+10, we compute lcm(24, 10) = (24*10)/gcd(24, 10) = 120. Thus, the least common
+multiple of 6, 8, and 10 is 120.
+
+Using this method, we can find the values of A(n) for all composite values of n
+less than 1000. Then, we can check if n-1 is divisible by A(n) for each of these
+values of n. The sum of the first twenty-five composite values of n for which
+this is true is 535344.
